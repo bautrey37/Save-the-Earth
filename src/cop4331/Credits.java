@@ -1,5 +1,16 @@
 package cop4331;
 
-public class Credits {
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+public class Credits implements ActionListener {
+
+	public Credits() {
+		
+	}
+	
+	public void actionPerformed(ActionEvent e) {
+		//actions for frame
+	}
 
 }
