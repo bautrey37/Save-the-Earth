@@ -1,33 +1,48 @@
 package cop4331;
 
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.List;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
 
 public class TitleMenu extends GUI implements ActionListener {
 
-	private static final int START_ID = 00;
-	private static final int CONTROLS_ID = 01;
-	private static final int CREDITS_ID = 02;
-	private static final int QUIT_ID = 03;
+	private static final int START_ID = 0;
+	private static final int CONTROLS_ID = 1;
+	private static final int CREDITS_ID = 2;
+	private static final int QUIT_ID = 3;
 	
-	private final int gameWidth;
-	private final int gameHeight;
+	private List<JButton> buttons = new ArrayList<JButton>();
+	
+	private JButton test;
 	
 	private JFrame title;
 	
-	public TitleMenu(int gameWidth, int gameHeight) {
-		this.gameWidth = gameWidth;
-		this.gameHeight = gameHeight;
+	public TitleMenu(JFrame title) {
+		this.title = title;
+		
+		test = new JButton("New Game");
+		test.setFont(new Font("Arial", Font.BOLD, 18));
+		test.setPreferredSize(new Dimension(100,50));
+		test.addActionListener(this);
+		test.setBackground(Color.BLUE);
+		
+		title.add(test);
+		setVisible(true);
 	}	
 	
-	public void setupTitleFrame() {
-		title = new JFrame();
-		title.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		title.setVisible(true);
-		title.setResizable(false);
-		title.setSize(gameWidth, gameHeight);
+	public void addButton(int id, int x, int y, int w, int h) {
+		
+	}
+	
+	public void setVisible(boolean v) {
+		title.setVisible(v);
 	}
 
 	public void actionPerformed(ActionEvent e) {
