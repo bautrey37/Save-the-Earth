@@ -11,12 +11,12 @@ public abstract class SpaceObject
 	/**
 	 * The x coordinate of the object in the space created
 	 */
-	private double xPosition;
+	protected double xPosition;
 	
 	/**
 	 * The y coordinate of the object in the space created
 	 */
-	private double yPosition;
+	protected double yPosition;
 	
 	/**
 	 * The distance from the center of the object to its edge

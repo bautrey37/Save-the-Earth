@@ -1,18 +1,15 @@
 package cometsPlusExample;
 
-import cometsPlusExample.Shot;
-import cometsPlusExample.SpaceObject;
-
 /**
  * 
  * @author Thomas James O'Neill
  */
-public class Ship extends SpaceObject
+public class ShipOriginal extends SpaceObject
 {
 	/**
 	 * The angle representing the direction the ship is currently facing.
 	 */
-	protected double angle = 0.0;
+	private double angle = 0.0;
 	double angularVelocity;
 	/**
 	 * Creates a new Ship.  Each ship has a radius of 10.
@@ -22,10 +19,10 @@ public class Ship extends SpaceObject
 	 * @param xVel - The velocity of the ship in the x direction
 	 * @param yVel - The velocity of the ship in the y direction
 	 */
-	public Ship( double xPos, double yPos, double xVel, double yVel )
+	public ShipOriginal( double xPos, double yPos, double xVel, double yVel )
 	{
 		super( xPos, yPos, xVel, yVel, 10.0);
-		angle = Math.PI;
+		angle = 0.0;
 	}
 	
 	/**
@@ -35,15 +32,15 @@ public class Ship extends SpaceObject
 	 */
 	public void accelerate()
 	{
-		xVelocity += .7;// * Math.sin( angle );
-		//yVelocity += .1 * Math.cos( angle );
+		xVelocity += .1 * Math.sin( angle );
+		yVelocity += .1 * Math.cos( angle );
 		
-		double vel = Math.sqrt( xVelocity*xVelocity );//+ yVelocity*yVelocity );
+		double vel = Math.sqrt( xVelocity*xVelocity + yVelocity*yVelocity );
 		
 		if( vel > 10 )
 		{
 			xVelocity *= 10.0 / vel;
-			//yVelocity *= 10.0 / vel;
+			yVelocity *= 10.0 / vel;
 		}
 	}
 	
@@ -56,10 +53,10 @@ public class Ship extends SpaceObject
 	 */
 	public Shot fire( int speed )
 	{
-		double xVel = 30.0*Math.sin( angle );
-		double yVel = 30.0*Math.cos( angle );
+		double xVel = xVelocity + speed*Math.sin( angle );
+		double yVel = yVelocity + speed*Math.cos( angle );
 		
-		Shot s = new Shot( this.getXPosition(), this.getYPosition(), xVel   , yVel );
+		Shot s = new Shot( this.getXPosition(), this.getYPosition(), xVel, yVel );
 		
 		return s;
 	}
@@ -103,42 +100,15 @@ public class Ship extends SpaceObject
 	 */
 	public void decelerate()
 	{
-		xVelocity -= .7;// * Math.sin( angle );
-		//yVelocity -= .1 * Math.cos( angle );
+		xVelocity -= .1 * Math.sin( angle );
+		yVelocity -= .1 * Math.cos( angle );
 		
-		double vel = Math.sqrt( xVelocity*xVelocity );//+ yVelocity*yVelocity );
+		double vel = Math.sqrt( xVelocity*xVelocity + yVelocity*yVelocity );
 		
 		if( vel > 10 )
 		{
 			xVelocity *= 10.0 / vel;
-			//yVelocity *= 10.0 / vel;
-		}
-	}
-	
-	
-	public void lowerSpeed()
-	{
-		if( xVelocity > 0 )
-		{
-			if( xVelocity >= 1.0 )
-			{
-				xVelocity -= 1.0;
-			}
-			else
-			{
-				xVelocity = 0;
-			}
-		}
-		else if( xVelocity < 0 )
-		{
-			if( xVelocity <= -1.0 )
-			{
-				xVelocity += 1.0;
-			}
-			else
-			{
-				xVelocity = 0;
-			}
+			yVelocity *= 10.0 / vel;
 		}
 	}
 } // End of Ship class
