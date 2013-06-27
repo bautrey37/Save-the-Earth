@@ -34,15 +34,11 @@ public class TitleMenu extends GUI implements ActionListener {
 		test.setBackground(Color.BLUE);
 		
 		title.add(test);
-		setVisible(true);
+		title.setVisible(true);
 	}	
 	
 	public void addButton(int id, int x, int y, int w, int h) {
 		
-	}
-	
-	public void setVisible(boolean v) {
-		title.setVisible(v);
 	}
 
 	public void actionPerformed(ActionEvent e) {
