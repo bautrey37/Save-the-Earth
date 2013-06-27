@@ -1,4 +1,5 @@
-package cop4331;
+package gui;
+
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -18,7 +19,7 @@ public class TitleMenu extends GUI implements ActionListener {
 	private static final int CREDITS_ID = 2;
 	private static final int QUIT_ID = 3;
 	
-	private List<JButton> buttons = new ArrayList<JButton>();
+	private List<JButton> buttons = new ArrayList<JButton>();  
 	
 	private JButton test;
 	

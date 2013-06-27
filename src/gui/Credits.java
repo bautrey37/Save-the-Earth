@@ -1,4 +1,4 @@
-package cop4331;
+package gui;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;

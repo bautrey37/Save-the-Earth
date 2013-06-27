@@ -1,4 +1,6 @@
-package cop4331;
+package gameMain;
+
+import gui.GUI;
 
 public class Launcher {
 	

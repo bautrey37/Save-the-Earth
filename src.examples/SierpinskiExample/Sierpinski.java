@@ -339,7 +339,7 @@ public class Sierpinski implements ActionListener {
 	
 	//calls constructor to set up the GUI and action events
 	public static void main(String[] args) {
-		new Sierpinski();
+		new SierpinskiExample.Sierpinski();
 	}
 
 }

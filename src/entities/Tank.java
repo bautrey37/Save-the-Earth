@@ -1,4 +1,4 @@
-package cop4331;
+package entities;
 
 public class Tank {
 
