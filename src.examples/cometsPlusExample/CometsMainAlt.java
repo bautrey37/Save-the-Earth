@@ -609,7 +609,7 @@ public class CometsMainAlt extends MouseAdapter implements KeyListener
 		if(key.getKeyCode() == KeyEvent.VK_LEFT)
 		{
 			//this.turnLeftHeld = true;
-			this.increaseOmega = true;
+			//ship.angle += 0.1;
 		}
 			
 		if(key.getKeyCode() == KeyEvent.VK_RIGHT)
