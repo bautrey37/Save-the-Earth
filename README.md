@@ -1,4 +1,4 @@
 COP4331-Sum13
 =============
 
-Project for Processes for Object Oriented Software class this summer.
+Project in Processes for Object Oriented Software class this summer 2013.
