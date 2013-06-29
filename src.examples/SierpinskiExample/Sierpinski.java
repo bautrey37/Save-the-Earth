@@ -62,13 +62,6 @@ public class Sierpinski implements ActionListener {
 	
 	
 	public Sierpinski() {
-		frame = new JFrame();
-		frame.setLayout(new BorderLayout());
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setVisible(true);
-		frame.setTitle("Sierpinski Triangle Visualizer");
-		frame.setResizable(false); //so the user can't mess up how the program looks
-		
 		triangles = new Canvas(); //used for drawing the Sierpinski triangle
 		triangles.setBackground(Color.BLACK);
 		triangles.setSize(512, 512);
@@ -178,9 +171,13 @@ public class Sierpinski implements ActionListener {
 		MainPanel.add(RPanel, BorderLayout.EAST);	
 		MainPanel.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5)); //creates space around window
 		
+		frame = new JFrame("Sierpinski Triangle Visualizer");
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setResizable(false); //so the user can't mess up how the program looks
 		frame.add(MainPanel); //main panel holds the borderlayout and is the content pane for my program
 		frame.pack();
 		frame.setLocationRelativeTo(null); //sets windows location to center of screen
+		frame.setVisible(true);
 		g = triangles.getGraphics();
 	}
 	
@@ -303,7 +300,7 @@ public class Sierpinski implements ActionListener {
 	
 	
 	//initial call is draw(d, 0, 0, 512)
-	void draw(int d, int x, int y, int S, int i) {
+	private void draw(int d, int x, int y, int S, int i) {
 		if(d == 0) return;
 		
 		

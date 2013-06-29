@@ -1,18 +1,23 @@
 package gameMain;
 
+import javax.swing.SwingUtilities;
+
 import gui.GUI;
 
 public class Launcher {
-	
-	public Launcher() {
-		GUI gui = new GUI();
-		Game game = new Game();
-	}
-	
-	
-	
+
 	public static void main(String[] args) {
-		new Launcher();
+
+		SwingUtilities.invokeLater(new Runnable() {
+			@Override
+			public void run() {
+				new GUI();
+			}
+			
+		});	
 	}
 
+	public void runGame() {
+		//Game startGame = new Game();
+	}
 }

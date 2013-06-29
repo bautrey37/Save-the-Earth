@@ -1,12 +1,15 @@
 package gameMain;
 
+import java.awt.Canvas;
 
-public class Game {
+import javax.swing.JPanel;
 
-	public static final int gameWidth = 800;
-	public static final int gameHeight = gameWidth * 3/4;
+
+public class Game extends Canvas{
 	
-	public Game() {
-		
+	private JPanel container;
+	
+	public Game(JPanel container) {
+		this.container = container;
 	}
 }

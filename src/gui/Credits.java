@@ -3,9 +3,11 @@ package gui;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class Credits implements ActionListener {
+import javax.swing.JPanel;
 
-	public Credits() {
+public class Credits extends JPanel implements ActionListener {
+
+	public Credits(JPanel container) {
 		
 	}
 	
