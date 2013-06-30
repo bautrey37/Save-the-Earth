@@ -14,11 +14,7 @@ public class GUI {
 	public static final int gameHeight = gameWidth * 3/4;
 	
 	private JFrame frame;
-	private JPanel panelContainer;
-	private TitleMenu title;
-	private Credits credits;
-	private Upgrade upgrades;
-	private Game game;
+	private JPanel panelContainer, title, credits, upgrades, game, control;
 	
 	private CardLayout cl;
 	
@@ -30,6 +26,7 @@ public class GUI {
 		credits = new Credits(panelContainer);
 		upgrades = new Upgrade(panelContainer);
 		game = new Game(panelContainer);
+		control = new Controls(panelContainer);
 		
 		cl = new CardLayout();
 		panelContainer.setLayout(cl);
@@ -37,6 +34,7 @@ public class GUI {
 		panelContainer.add(credits, "credits");
 		panelContainer.add(upgrades, "upgrades");
 		panelContainer.add(game, "game");
+		panelContainer.add(control, "controls");
 		
 		cl.show(panelContainer, "title");  //title screen is first to show when launching
 		
