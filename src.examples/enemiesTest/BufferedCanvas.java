@@ -3,15 +3,25 @@ package enemiesTest;
 import java.awt.Canvas;
 import java.awt.Graphics;
 import java.awt.Image;
+import java.io.File;
+
+import javax.imageio.ImageIO;
 
 @SuppressWarnings("serial")
 public class BufferedCanvas extends Canvas {
 	protected static Enemy[] enemies;
+	Image background;
 
 	@SuppressWarnings("static-access")
 	public BufferedCanvas(Enemy[] enemies) {
 		super();
 		this.enemies = enemies;
+		try {
+			background = ImageIO.read(new File("STE-Background-1.jpg"));
+		}
+		catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 	public void update(Graphics g) {
@@ -23,9 +33,8 @@ public class BufferedCanvas extends Canvas {
 		offg = offScreen.getGraphics();
 
 		// Clear old image
-		offg.setColor(getBackground());
-		offg.fillRect(0, 0, getWidth(), getHeight());
 		paint(offg);
+		offg.drawImage(background, 0, 0, null);
 
 		// Draw new enemies
 		for (Enemy e : enemies) {
