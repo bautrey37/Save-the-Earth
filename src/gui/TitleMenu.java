@@ -1,6 +1,7 @@
 package gui;
 
 
+import java.awt.BorderLayout;
 import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -9,9 +10,8 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
-import java.util.List;
 
+import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
@@ -21,16 +21,18 @@ public class TitleMenu extends JPanel implements ActionListener {
 	
 	//private List<JButton> buttons = new ArrayList<JButton>();  
 	
-	private JPanel container, difficultyPane, bottomPane;
+	private JPanel container, difficultyPane, bottomPane, top, buttons;
 	private JButton newGame, quit, credits, controls, easy, medium, hard;
-	private Font font = new Font("Arial", Font.BOLD, 30);
-	private Font difFont = new Font("Arial", Font.BOLD, 20);
+	private Font font = new Font("Bodoni MT", Font.BOLD, 30);
+	private Font difFont = new Font("Bodomu MT", Font.BOLD, 20);
 	
 	private int difficulty;
 	
-	public TitleMenu(JPanel container) {	
+	public TitleMenu(JPanel container) {
+		//container contains the CardLayout.  Used to switch to other panels.
 		this.container = container;
 		
+		//Buttons
 		newGame = new JButton("New Game");
 		newGame.setFont(font);
 		newGame.setPreferredSize(new Dimension(200,50));
@@ -63,27 +65,45 @@ public class TitleMenu extends JPanel implements ActionListener {
 		hard.setBackground(Color.RED);
 		hard.setFont(difFont);
 		
+		//Grouping Panels
 		difficultyPane = new JPanel();
 		difficultyPane.add(easy);
 		difficultyPane.add(medium);
 		difficultyPane.add(hard);
+		difficultyPane.setBackground(new Color(255,255,255,0)); //set transparent
 		
 		bottomPane = new JPanel();
 		bottomPane.add(controls);
 		bottomPane.add(credits);
 		bottomPane.add(quit);
-
-		this.setLayout(new GridBagLayout());
+		bottomPane.setBackground(new Color(255,255,255,0)); //set transparent
+		
+		top = new JPanel();
+		top.setMaximumSize(new Dimension(GUI.gameWidth, GUI.gameHeight/4));
+		top.setMinimumSize(new Dimension(GUI.gameWidth, GUI.gameHeight/4));
+		//top.setForeground(Image);
+		
+		//Groups the grouping panels into a GridBagLayout
+		buttons = new JPanel(new GridBagLayout());
 		GridBagConstraints c = new GridBagConstraints();
 		c.fill = GridBagConstraints.VERTICAL;
 		c.gridx = 0;
 		c.gridy = 0;
-		this.add(newGame, c);
-		c.gridy = 1;
-		this.add(difficultyPane, c);
-		c.gridy = 2;
-		this.add(bottomPane, c);
+		//c.ipady = 50;
+		//c.weighty = 2.0;
+		buttons.add(newGame, c);
+		c.ipady = 50;
+		c.gridy++;
+		buttons.add(difficultyPane, c);
+		//c.ipady = 100;
+		c.gridy++;
+		buttons.add(bottomPane, c);
+		buttons.setBackground(new Color(255,255,255,0));
 		
+		//adds to top level JPanel
+		this.setLayout(new BorderLayout());
+		this.add(top,BorderLayout.NORTH);
+		this.add(buttons, BorderLayout.SOUTH);
 		this.setBackground(Color.GRAY);
 	}	
 	
@@ -104,12 +124,14 @@ public class TitleMenu extends JPanel implements ActionListener {
 		if(e.getSource() == credits) {
 			CardLayout cl = (CardLayout)container.getLayout();
 			cl.show(container, "credits");
+			credits.setBorder(BorderFactory.createLineBorder(Color.BLACK, 4));
 		}
 		if(e.getSource() == quit) {
 			System.exit(0);
 		}
 		if(e.getSource() == easy) {
 			difficulty = 1;
+			easy.setBorder(BorderFactory.createLineBorder(Color.BLACK, 4));
 		}
 		if(e.getSource() == medium) {
 			difficulty = 2;

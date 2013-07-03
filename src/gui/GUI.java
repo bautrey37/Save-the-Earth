@@ -9,17 +9,18 @@ import javax.swing.JPanel;
 
 public class GUI {
 
+	//window properties
 	private final static String gamename = "Save the Earth";
 	public static final int gameWidth = 800;
 	public static final int gameHeight = gameWidth * 3/4;
 	
-	private JFrame frame;
+	private JFrame window;
 	private JPanel panelContainer, title, credits, upgrades, game, control;
 	
 	private CardLayout cl;
 	
 	public GUI() {
-		frame = new JFrame(gamename);
+		window = new JFrame(gamename);
 		
 		panelContainer = new JPanel(); //contains the panels below as cards
 		title = new TitleMenu(panelContainer);
@@ -38,13 +39,12 @@ public class GUI {
 		
 		cl.show(panelContainer, "title");  //title screen is first to show when launching
 		
-		frame.setContentPane(panelContainer);
-		//frame.add(panelContainer);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setSize(gameWidth, gameHeight);
-		frame.setResizable(false);
-		frame.setLocationRelativeTo(null); //sets windows location to center of screen
-		frame.setVisible(true);
+		window.setContentPane(panelContainer);
+		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		window.setSize(gameWidth, gameHeight);
+		window.setResizable(false);
+		window.setLocationRelativeTo(null); //sets windows location to center of screen
+		window.setVisible(true);
 	}
 	
 	public int getWidth() {

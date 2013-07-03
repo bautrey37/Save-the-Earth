@@ -15,6 +15,7 @@ import javax.swing.JPanel;
 
 public class Controls extends JPanel implements ActionListener {
 
+	private static final long serialVersionUID = 1L;
 	private JPanel container;
 	private JButton ret;
 	private JLabel title, con1, con2, con3;
