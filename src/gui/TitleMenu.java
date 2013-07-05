@@ -8,6 +8,7 @@ import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.GridBagConstraints;
@@ -28,13 +29,13 @@ public class TitleMenu extends JPanel implements ActionListener {
 	
 	//private List<JButton> buttons = new ArrayList<JButton>();  
 	
-	private JPanel container, difficultyPane, bottomPane, top, buttons;
+	private JPanel container, difficultyPane, bottomPane, buttons;
 	private JButton newGame, quit, credits, controls, easy, medium, hard;
 	private Font font = new Font("Bodoni MT", Font.BOLD, 30);
 	private Font difFont = new Font("Bodomu MT", Font.BOLD, 20);
 	
-	private Graphics g;
-	private BufferedImage background;
+	//private Graphics g;
+	private BufferedImage logo;
 	
 	private int difficulty;
 	
@@ -44,54 +45,44 @@ public class TitleMenu extends JPanel implements ActionListener {
 		
 		//Buttons
 		newGame = new JButton("New Game");
-		newGame.setFont(font);
-		newGame.setPreferredSize(new Dimension(200,50));
-		newGame.addActionListener(this);
+		setJButtonSettings(newGame, font, 200, 50);
 		
 		controls = new JButton("Controls");
-		controls.setFont(font);
-		controls.setPreferredSize(new Dimension(200,50));
-		controls.addActionListener(this);
+		setJButtonSettings(controls, font, 150, 50);
 		
 		credits = new JButton("Credits");
-		credits.setFont(font);
-		credits.setPreferredSize(new Dimension(200,50));
-		credits.addActionListener(this);
-		
+		setJButtonSettings(credits, font, 150, 50);
+				
 		quit = new JButton("Quit");
-		quit.setFont(font);
-		quit.setPreferredSize(new Dimension(200,50));
-		quit.addActionListener(this);
+		setJButtonSettings(quit, font, 150, 50);
 		
 		easy = new JButton("Easy");
+		setJButtonSettings(easy, difFont, 100, 40);
 		easy.setBackground(Color.GREEN);
-		easy.setFont(difFont);
 		
 		medium = new JButton("Medium");
+		setJButtonSettings(medium, difFont, 120, 40);
 		medium.setBackground(Color.YELLOW);
-		medium.setFont(difFont);
 		
 		hard = new JButton("Hard");
+		setJButtonSettings(hard, difFont, 100, 40);
 		hard.setBackground(Color.RED);
-		hard.setFont(difFont);
 		
 		//Grouping Panels
 		difficultyPane = new JPanel();
+		//FlowLayout(alignment, horizontal gap, vertical gap)
+		difficultyPane.setLayout(new FlowLayout(0, 20, 10));
 		difficultyPane.add(easy);
 		difficultyPane.add(medium);
 		difficultyPane.add(hard);
 		difficultyPane.setBackground(new Color(255,255,255,0)); //set transparent
 		
 		bottomPane = new JPanel();
+		bottomPane.setLayout(new FlowLayout(0, 20, 0));
 		bottomPane.add(controls);
 		bottomPane.add(credits);
 		bottomPane.add(quit);
 		bottomPane.setBackground(new Color(255,255,255,0)); //set transparent
-		
-		top = new JPanel();
-		top.setMaximumSize(new Dimension(GUI.gameWidth, GUI.gameHeight/4));
-		top.setMinimumSize(new Dimension(GUI.gameWidth, GUI.gameHeight/4));
-		top.setBackground(Color.BLUE);
 		
 		//Groups the grouping panels into a GridBagLayout
 		buttons = new JPanel(new GridBagLayout());
@@ -99,12 +90,11 @@ public class TitleMenu extends JPanel implements ActionListener {
 		c.fill = GridBagConstraints.VERTICAL;
 		c.gridx = 0;
 		c.gridy = 0;
-		//c.weighty = 2.0;
 		buttons.add(newGame, c);
-		c.ipady = 50;
+		c.ipady = 20;
 		c.gridy++;
 		buttons.add(difficultyPane, c);
-		//c.ipady = 100;
+		c.ipady = 50;
 		c.gridy++;
 		buttons.add(bottomPane, c);
 		buttons.setBackground(new Color(255,255,255,0));
@@ -112,22 +102,21 @@ public class TitleMenu extends JPanel implements ActionListener {
 		//adds to top level JPanel
 		this.setLayout(new BorderLayout());
 		this.setBackground(Color.GRAY);
-		this.add(top,BorderLayout.NORTH);
 		this.add(buttons, BorderLayout.SOUTH);
 		
 		//try to get image from file
-//		try {
-//			background = ImageIO.read(new File("Save-the-Earth.png"));
-//		} catch(Exception e) {
-//			e.printStackTrace();
-//		}
-//		paintComponent(g);
+		try {
+			logo = ImageIO.read(new File("Save-the-Earth.png"));
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
 	}	
 	
 	@Override
 	protected void paintComponent(Graphics g) {
-		super.paintComponent(g);
-		g.drawImage(background, 0, 0, null);
+		super.paintComponent(g); 
+		//calculated logo in scale and center of screen based of the height, 350
+		g.drawImage(logo, 64, 0, 672, 350, null);
 	}
 
 	public void actionPerformed(ActionEvent e) {
@@ -157,13 +146,13 @@ public class TitleMenu extends JPanel implements ActionListener {
 		if(e.getSource() == credits) {
 			CardLayout cl = (CardLayout)container.getLayout();
 			cl.show(container, "credits");
-			credits.setBorder(BorderFactory.createLineBorder(Color.BLACK, 4));
 		}
 		if(e.getSource() == quit) {
 			System.exit(0);
 		}
 		if(e.getSource() == easy) {
 			difficulty = 1;
+			//if()
 			easy.setBorder(BorderFactory.createLineBorder(Color.BLACK, 4));
 		}
 		if(e.getSource() == medium) {
@@ -174,4 +163,10 @@ public class TitleMenu extends JPanel implements ActionListener {
 		}
 	}
 		
+	private void setJButtonSettings(JButton button, Font font, int width, int height) {
+		button.addActionListener(this); //allows it to be interactive
+		button.setFocusPainted(false); //gets rid of small border inside button
+		button.setFont(font);
+		button.setPreferredSize(new Dimension(width, height)); //sets size
+	}
 }
