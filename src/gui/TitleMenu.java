@@ -9,11 +9,15 @@ import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.Graphics;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
+import java.io.File;
 
+import javax.imageio.ImageIO;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JPanel;
@@ -28,6 +32,9 @@ public class TitleMenu extends JPanel implements ActionListener {
 	private JButton newGame, quit, credits, controls, easy, medium, hard;
 	private Font font = new Font("Bodoni MT", Font.BOLD, 30);
 	private Font difFont = new Font("Bodomu MT", Font.BOLD, 20);
+	
+	private Graphics g;
+	private BufferedImage background;
 	
 	private int difficulty;
 	
@@ -84,7 +91,7 @@ public class TitleMenu extends JPanel implements ActionListener {
 		top = new JPanel();
 		top.setMaximumSize(new Dimension(GUI.gameWidth, GUI.gameHeight/4));
 		top.setMinimumSize(new Dimension(GUI.gameWidth, GUI.gameHeight/4));
-		//top.setForeground(Image);
+		top.setBackground(Color.BLUE);
 		
 		//Groups the grouping panels into a GridBagLayout
 		buttons = new JPanel(new GridBagLayout());
@@ -92,7 +99,6 @@ public class TitleMenu extends JPanel implements ActionListener {
 		c.fill = GridBagConstraints.VERTICAL;
 		c.gridx = 0;
 		c.gridy = 0;
-		//c.ipady = 50;
 		//c.weighty = 2.0;
 		buttons.add(newGame, c);
 		c.ipady = 50;
@@ -105,14 +111,24 @@ public class TitleMenu extends JPanel implements ActionListener {
 		
 		//adds to top level JPanel
 		this.setLayout(new BorderLayout());
+		this.setBackground(Color.GRAY);
 		this.add(top,BorderLayout.NORTH);
 		this.add(buttons, BorderLayout.SOUTH);
-		this.setBackground(Color.GRAY);
+		
+		//try to get image from file
+//		try {
+//			background = ImageIO.read(new File("Save-the-Earth.png"));
+//		} catch(Exception e) {
+//			e.printStackTrace();
+//		}
+//		paintComponent(g);
 	}	
 	
-//	public void addButton(int id, int x, int y, int w, int h) {
-//	
-//	}
+	@Override
+	protected void paintComponent(Graphics g) {
+		super.paintComponent(g);
+		g.drawImage(background, 0, 0, null);
+	}
 
 	public void actionPerformed(ActionEvent e) {
 		//actions for frame
