@@ -23,6 +23,22 @@ public class BufferedCanvas extends Canvas {
 			e.printStackTrace();
 		}
 	}
+	
+	
+	
+	
+	public BufferedCanvas() {
+		super();
+		//this.enemies = enemies;
+		try {
+			background = ImageIO.read(new File("STE-Background-1.jpg"));
+		}
+		catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	
 
 	public void update(Graphics g) {
 		Graphics offg;

@@ -1,9 +1,12 @@
 package gui;
 
 
+import gameMain.Game;
+
 import java.awt.BorderLayout;
 import java.awt.CardLayout;
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
@@ -116,6 +119,20 @@ public class TitleMenu extends JPanel implements ActionListener {
 		if(e.getSource() == newGame) {
 			CardLayout cl = (CardLayout)container.getLayout();
 			cl.show(container, "game");
+			
+			
+			/*
+			 * Next, obtain "game", the specific component in question, in order to begin the game.
+			 */
+			for( Component comp : container.getComponents() )
+			{
+				//  If the component is of instance type "Game", call the runGame() method on this component.
+				if( comp instanceof Game )
+				{
+					( (Game) comp ).runGame( difficulty );
+					break;
+				}
+			}
 		}
 		if(e.getSource() == controls) {
 			CardLayout cl = (CardLayout)container.getLayout();
