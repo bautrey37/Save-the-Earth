@@ -132,7 +132,6 @@ public class TitleMenu extends JPanel implements ActionListener {
 			
 			/*
 			 * Next, obtain "game", the specific component in question, in order to begin the game.
-			 * 
 			 */
 			for( Component comp : container.getComponents() )
 			{

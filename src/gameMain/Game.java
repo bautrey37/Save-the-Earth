@@ -44,8 +44,7 @@ public class Game extends Canvas implements KeyListener {
 	{
 		this.container = container;
 		
-		//levelArea.setSize(GUI.gameWidth, GUI.gameHeight);
-		g = levelArea.getGraphics();
+		setupGame();
 		
 		/*
 		 * Add in code that configures level 1 - 10 variables, possibly by reading a file.
@@ -58,6 +57,16 @@ public class Game extends Canvas implements KeyListener {
 		levelInfo = new int[10];
 		
 	} 
+	
+	/*
+	 * Overrides paint method in Canvas
+	 * @see java.awt.Canvas#paint(java.awt.Graphics)
+	 */
+	@Override
+	public void paint(Graphics g) {
+		g.drawImage(background, 0, 0, null);
+		
+	}
 	
 	
 	
