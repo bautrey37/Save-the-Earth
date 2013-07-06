@@ -6,6 +6,7 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -62,7 +63,7 @@ public class Credits extends JPanel implements ActionListener {
 		c.gridy++;
 		this.add(name5, c);
 		c.gridy++;
-		c.ipady = 100;
+		c.insets = new Insets(40, 0, 20, 0);
 		this.add(ret, c);
 		
 		this.setBackground(Color.PINK);

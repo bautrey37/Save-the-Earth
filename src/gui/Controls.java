@@ -6,6 +6,7 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -56,6 +57,7 @@ public class Controls extends JPanel implements ActionListener {
 		c.gridy = 3;
 		this.add(con3, c);
 		c.gridy = 4;
+		c.insets = new Insets(40, 0, 0, 0);
 		this.add(ret, c);
 		
 		this.setBackground(Color.MAGENTA);

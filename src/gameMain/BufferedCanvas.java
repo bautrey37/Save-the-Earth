@@ -39,7 +39,7 @@ public class BufferedCanvas extends Canvas {
 	}
 	
 	
-
+	@Override
 	public void update(Graphics g) {
 		Graphics offg;
 		Image offScreen = null;

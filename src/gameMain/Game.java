@@ -1,7 +1,5 @@
 package gameMain;
 
-import gui.GUI;
-
 import java.awt.Canvas;
 import java.awt.CardLayout;
 import java.awt.Color;
@@ -9,6 +7,7 @@ import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.image.BufferedImage;
 import java.io.File;
 
 import javax.imageio.ImageIO;
@@ -21,7 +20,7 @@ public class Game extends Canvas implements KeyListener {
 	private static final long serialVersionUID = 1L;
 	private JPanel container;
 	
-	private Canvas levelArea;
+	//private Canvas levelArea = new Canvas();
 	private Graphics g;
 	
 	/**
@@ -30,11 +29,8 @@ public class Game extends Canvas implements KeyListener {
 	 */
 	private static int[] levelInfo;
 	
-	
-	private Image background;
-	
-	
-	
+	private BufferedImage background;
+		
 	/**
 	 * Constructs a new Game JPanel for which to run the level that the user is playing on.
 	 * 
@@ -44,7 +40,17 @@ public class Game extends Canvas implements KeyListener {
 	{
 		this.container = container;
 		
-		setupGame();
+		this.addKeyListener(this); //adds keylistener to this class
+		
+		g = getGraphics(); //gets graphics object of current class and stores it in g
+		try {
+			background = ImageIO.read(new File("res/STE-Background-1.jpg"));
+			System.out.println("Passed");
+			//g.drawImage(background, 0, 0, null); //causes error
+		}
+		catch (Exception e) {
+			e.printStackTrace();
+		}
 		
 		/*
 		 * Add in code that configures level 1 - 10 variables, possibly by reading a file.
@@ -64,10 +70,18 @@ public class Game extends Canvas implements KeyListener {
 	 */
 	@Override
 	public void paint(Graphics g) {
-		g.drawImage(background, 0, 0, null);
+		//super.paint(g);
+		g.drawImage(background, 0, 0, this);
 		
 	}
 	
+	/*
+	 * Overrides update method in Canvas
+	 */
+	@Override
+	public void update(Graphics g) {
+		
+	}
 	
 	
 	/**
@@ -76,8 +90,7 @@ public class Game extends Canvas implements KeyListener {
 	 */
 	public void runGame( int dif )
 	{
-		//  Run the initial commands to configure the display
-		setupGame();
+		//start running game, display should already be set up
 		
 	}
 	
@@ -99,14 +112,20 @@ public class Game extends Canvas implements KeyListener {
 			e.printStackTrace();
 		}
 		
+//		if(background != null) {
+//			g.drawImage(background, 0, 0, null);
+//		} else {
+//			System.out.println("background was null");
+//		}
 		
-		//paintBackground( levelArea.getGraphics() );
+		//paintBackground(g);
 	}  
 	
 	
 	
 	/**
 	 * This method handles painting the background image at the start of the level and in between frames.
+	 * This method is not an override
 	 */
 	public void paintBackground(Graphics g)
 	{
@@ -144,7 +163,8 @@ public class Game extends Canvas implements KeyListener {
 	}
 
 
-//these are not working...
+	//For some reason you must click the screen first before it can register key events.  
+	//Maybe the focus is not on the canvas initially.
 	@Override
 	public void keyPressed(KeyEvent e) {
 		int key = e.getKeyCode();

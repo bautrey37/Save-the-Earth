@@ -35,7 +35,7 @@ public class TitleMenu extends JPanel implements ActionListener {
 	private Font difFont = new Font("Bodomu MT", Font.BOLD, 20);
 	
 	//private Graphics g;
-	private BufferedImage logo;
+	private BufferedImage logo, background;
 	
 	private int difficulty;
 	
@@ -107,9 +107,11 @@ public class TitleMenu extends JPanel implements ActionListener {
 		//try to get image from file
 		try {
 			logo = ImageIO.read(new File("res/Save-the-Earth.png"));
+			background = ImageIO.read(new File("res/STE-Title.jpg")); //this image looks silly as title image lol
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
+		
 	}	
 	
 	/**
@@ -119,8 +121,10 @@ public class TitleMenu extends JPanel implements ActionListener {
 	@Override
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g); //calls paintComponent in JPanel
+		g.drawImage(background, 0, 0, null);
 		//calculated logo in scale and center of screen based of the height, 350
 		g.drawImage(logo, 64, 0, 672, 350, null);
+		
 	}
 
 	public void actionPerformed(ActionEvent e) {
