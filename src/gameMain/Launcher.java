@@ -1,8 +1,8 @@
 package gameMain;
 
-import javax.swing.SwingUtilities;
-
 import gui.GUI;
+
+import javax.swing.SwingUtilities;
 
 public class Launcher {
 

@@ -15,12 +15,11 @@ import javax.swing.JPanel;
 
 
 
-public class Game extends Canvas implements KeyListener {
+public class Game extends JPanel implements KeyListener {
 	
 	private static final long serialVersionUID = 1L;
 	private JPanel container;
 	
-	//private Canvas levelArea = new Canvas();
 	private Graphics g;
 	
 	/**
@@ -65,8 +64,8 @@ public class Game extends Canvas implements KeyListener {
 	} 
 	
 	/*
-	 * Overrides paint method in Canvas
-	 * @see java.awt.Canvas#paint(java.awt.Graphics)
+	 * Overrides paint method in JPanel
+	 * @see javax.swing.JComponent#paint(java.awt.Graphics)
 	 */
 	@Override
 	public void paint(Graphics g) {
@@ -76,10 +75,19 @@ public class Game extends Canvas implements KeyListener {
 	}
 	
 	/*
-	 * Overrides update method in Canvas
+	 * Overrides update method in JPanel
+	 * @see javax.swing.JComponent#update(java.awt.Graphics)
 	 */
 	@Override
 	public void update(Graphics g) {
+		
+	}
+	/*
+	 * 
+	 * @see javax.swing.JPanel#updateUI()
+	 */
+	@Override
+	public void updateUI() {
 		
 	}
 	

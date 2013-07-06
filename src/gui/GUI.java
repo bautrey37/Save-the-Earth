@@ -16,8 +16,7 @@ public class GUI {
 	public static final int gameHeight = gameWidth * 3/4;
 	
 	private JFrame window;
-	private JPanel panelContainer, title, credits, upgrades, control, pause;
-	private Canvas game;
+	private JPanel panelContainer, title, credits, upgrades, control, pause, game;
 	
 	private CardLayout cl;
 	
