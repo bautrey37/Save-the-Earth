@@ -17,7 +17,7 @@ public class Launcher {
 		});	
 	}
 
-	public void runGame() {
-		//Game startGame = new Game();
-	}
+//	public void runGame() {
+//		
+//	}
 }

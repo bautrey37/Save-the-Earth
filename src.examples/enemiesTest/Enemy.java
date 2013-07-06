@@ -16,7 +16,7 @@ public class Enemy {
 		yVel = Math.random() - .45;
 
 		try {
-			image = ImageIO.read(new File("Large-Alien-Ship.png"));
+			image = ImageIO.read(new File("res/Large-Alien-Ship.png"));
 		}
 		catch (Exception e) {
 			e.printStackTrace();

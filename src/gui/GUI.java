@@ -2,6 +2,7 @@ package gui;
 
 import gameMain.Game;
 
+import java.awt.Canvas;
 import java.awt.CardLayout;
 
 import javax.swing.JFrame;
@@ -15,7 +16,8 @@ public class GUI {
 	public static final int gameHeight = gameWidth * 3/4;
 	
 	private JFrame window;
-	private JPanel panelContainer, title, credits, upgrades, game, control;
+	private JPanel panelContainer, title, credits, upgrades, control, pause;
+	private Canvas game;
 	
 	private CardLayout cl;
 	
@@ -28,6 +30,7 @@ public class GUI {
 		upgrades = new Upgrade(panelContainer);
 		game = new Game(panelContainer);
 		control = new Controls(panelContainer);
+		pause = new Pause(panelContainer);
 		
 		cl = new CardLayout();
 		panelContainer.setLayout(cl);
@@ -36,6 +39,7 @@ public class GUI {
 		panelContainer.add(upgrades, "upgrades");
 		panelContainer.add(game, "game");
 		panelContainer.add(control, "controls");
+		panelContainer.add(pause, "pause");
 		
 		cl.show(panelContainer, "title");  //title screen is first to show when launching
 		

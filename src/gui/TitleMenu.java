@@ -101,20 +101,24 @@ public class TitleMenu extends JPanel implements ActionListener {
 		
 		//adds to top level JPanel
 		this.setLayout(new BorderLayout());
-		this.setBackground(Color.GRAY);
+		this.setBackground(Color.LIGHT_GRAY);
 		this.add(buttons, BorderLayout.SOUTH);
 		
 		//try to get image from file
 		try {
-			logo = ImageIO.read(new File("Save-the-Earth.png"));
+			logo = ImageIO.read(new File("res/Save-the-Earth.png"));
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
 	}	
 	
+	/**
+	 * This overrides the paintComponent method in JPanel.  It is implicitly called in this class.
+	 * @param g - Graphics object
+	 */
 	@Override
 	protected void paintComponent(Graphics g) {
-		super.paintComponent(g); 
+		super.paintComponent(g); //calls paintComponent in JPanel
 		//calculated logo in scale and center of screen based of the height, 350
 		g.drawImage(logo, 64, 0, 672, 350, null);
 	}
@@ -123,11 +127,12 @@ public class TitleMenu extends JPanel implements ActionListener {
 		//actions for frame
 		if(e.getSource() == newGame) {
 			CardLayout cl = (CardLayout)container.getLayout();
-			cl.show(container, "game");
+			cl.show(container, "game"); //shows the game
 			
 			
 			/*
 			 * Next, obtain "game", the specific component in question, in order to begin the game.
+			 * 
 			 */
 			for( Component comp : container.getComponents() )
 			{

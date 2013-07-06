@@ -1,24 +1,28 @@
 package gameMain;
 
+import gui.GUI;
+
 import java.awt.Canvas;
+import java.awt.CardLayout;
 import java.awt.Color;
-import java.awt.FlowLayout;
 import java.awt.Graphics;
 import java.awt.Image;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.io.File;
 
 import javax.imageio.ImageIO;
-import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 
 
-public class Game extends JPanel{
+public class Game extends Canvas implements KeyListener {
 	
 	private static final long serialVersionUID = 1L;
 	private JPanel container;
 	
 	private Canvas levelArea;
+	private Graphics g;
 	
 	/**
 	 * Defines the values used in determining enemy count and enemy type in levels 1 - 10.
@@ -34,13 +38,14 @@ public class Game extends JPanel{
 	/**
 	 * Constructs a new Game JPanel for which to run the level that the user is playing on.
 	 * 
-	 * @param container - ???
+	 * @param container - used to switch to other cards  
 	 */
 	public Game(JPanel container)
 	{
 		this.container = container;
 		
-		
+		//levelArea.setSize(GUI.gameWidth, GUI.gameHeight);
+		g = levelArea.getGraphics();
 		
 		/*
 		 * Add in code that configures level 1 - 10 variables, possibly by reading a file.
@@ -52,7 +57,7 @@ public class Game extends JPanel{
 		
 		levelInfo = new int[10];
 		
-	}  //  End of Game constructor.
+	} 
 	
 	
 	
@@ -65,9 +70,7 @@ public class Game extends JPanel{
 		//  Run the initial commands to configure the display
 		setupGame();
 		
-		
 	}
-	
 	
 	
 	/**
@@ -76,25 +79,11 @@ public class Game extends JPanel{
 	 */
 	public void setupGame()
 	{
-		// Set up display.
-		this.setSize( 800, 600 );
+		// Set up display. (Display is already set up because of the GUI class)
 		this.setBackground( Color.WHITE );
-		
-		
-		this.setLayout(new FlowLayout());
-		
-		
-		
-//		
-//		this.setLayout(new FlowLayout());
-//		//this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-//		//this.setResizable(false);
-//		this.setSize(WIDTH, HEIGHT);
-//		this.setBackground(Color.WHITE);
-//		
-//		
+				
 		try {
-			background = ImageIO.read(new File("STE-Background-1.jpg"));
+			background = ImageIO.read(new File("res/STE-Background-1.jpg"));
 			System.out.println("Passed");
 		}
 		catch (Exception e) {
@@ -103,28 +92,15 @@ public class Game extends JPanel{
 		
 		
 		//paintBackground( levelArea.getGraphics() );
-	}  //  End of setupGame() method.
+	}  
 	
 	
 	
 	/**
 	 * This method handles painting the background image at the start of the level and in between frames.
 	 */
-	public void paintBackground( Graphics g)
+	public void paintBackground(Graphics g)
 	{
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
 		
 		Graphics offg = this.getGraphics();
 		Image offScreen = null;
@@ -156,6 +132,29 @@ public class Game extends JPanel{
 	
 	public void render() {
 		
+	}
+
+
+//these are not working...
+	@Override
+	public void keyPressed(KeyEvent e) {
+		int key = e.getKeyCode();
+		System.out.println("Key pressed");
+		
+		if(key == KeyEvent.VK_ESCAPE) {
+			System.out.println("Escape key got");
+			
+			CardLayout cl = (CardLayout)container.getLayout();
+			cl.show(container, "pause");
+		}
+	}
+
+	@Override
+	public void keyReleased(KeyEvent e) {
+	}
+
+	@Override
+	public void keyTyped(KeyEvent e) {
 	}
 	
 	

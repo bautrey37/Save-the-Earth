@@ -17,7 +17,7 @@ public class BufferedCanvas extends Canvas {
 		super();
 		this.enemies = enemies;
 		try {
-			background = ImageIO.read(new File("STE-Background-1.jpg"));
+			background = ImageIO.read(new File("res/STE-Background-1.jpg"));
 		}
 		catch (Exception e) {
 			e.printStackTrace();
