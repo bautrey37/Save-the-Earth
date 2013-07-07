@@ -36,8 +36,6 @@ public class Pause extends JPanel implements ActionListener {
 		title = new JButton("Main Menu");
 		setJButtonSettings(title, font, 200, 70);
 		
-		this.setBackground(new Color(60,170,255,50)); //partially transparent, will display over the game
-		
 		this.setLayout(new GridBagLayout());
 		GridBagConstraints c = new GridBagConstraints();
 		c.fill = GridBagConstraints.VERTICAL;
@@ -50,6 +48,9 @@ public class Pause extends JPanel implements ActionListener {
 		this.add(resume, c);
 		c.gridy++;
 		this.add(title, c);
+		
+		this.setBackground(new Color(60,170,255,50)); //partially transparent, will display over the game
+		this.setOpaque(true);
 	}
 
 	public void actionPerformed(ActionEvent e) {

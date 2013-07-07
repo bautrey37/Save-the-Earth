@@ -2,9 +2,9 @@ package gui;
 
 import gameMain.Game;
 
-import java.awt.Canvas;
 import java.awt.CardLayout;
 
+import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
@@ -16,7 +16,8 @@ public class GUI {
 	public static final int gameHeight = gameWidth * 3/4;
 	
 	private JFrame window;
-	private JPanel panelContainer, title, credits, upgrades, control, pause, game;
+	private JPanel panelContainer, title, credits, upgrades, control, pause;
+	private JComponent game;
 	
 	private CardLayout cl;
 	

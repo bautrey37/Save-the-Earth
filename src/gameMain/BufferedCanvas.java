@@ -9,10 +9,10 @@ import javax.imageio.ImageIO;
 
 @SuppressWarnings("serial")
 public class BufferedCanvas extends Canvas {
-	protected static Enemy[] enemies;
+	protected Enemy[] enemies;
 	Image background;
 
-	@SuppressWarnings("static-access")
+	//@SuppressWarnings("static-access")
 	public BufferedCanvas(Enemy[] enemies) {
 		super();
 		this.enemies = enemies;

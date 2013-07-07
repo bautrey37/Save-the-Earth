@@ -1,6 +1,5 @@
 package gameMain;
 
-import java.awt.Canvas;
 import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Graphics;
@@ -11,19 +10,22 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 
 import javax.imageio.ImageIO;
+import javax.swing.JComponent;
 import javax.swing.JPanel;
 
 
 
-public class Game extends JPanel implements KeyListener {
+public class Game extends JComponent implements KeyListener {
 	
 	private static final long serialVersionUID = 1L;
 	private JPanel container;
 	
 	private Graphics g;
 	
+	private boolean running;
+	
 	/**
-	 * Defines the values used in determining enemy count and enemy type in levels 1 - 10.
+	 * Defines the values used in determining enemy count and enemy type in levels 1 - 10.	
 	 * This variable is static so that it can be defined only once and used throughout the entire program's running time.
 	 */
 	private static int[] levelInfo;
@@ -39,7 +41,8 @@ public class Game extends JPanel implements KeyListener {
 	{
 		this.container = container;
 		
-		this.addKeyListener(this); //adds keylistener to this class
+		addKeyListener(this); //adds keylistener to this class
+		this.setFocusable(true);
 		
 		g = getGraphics(); //gets graphics object of current class and stores it in g
 		try {
@@ -68,8 +71,8 @@ public class Game extends JPanel implements KeyListener {
 	 * @see javax.swing.JComponent#paint(java.awt.Graphics)
 	 */
 	@Override
-	public void paint(Graphics g) {
-		//super.paint(g);
+	public void paintComponent(Graphics g) {
+		super.paintComponent(g);
 		g.drawImage(background, 0, 0, this);
 		
 	}
@@ -96,10 +99,15 @@ public class Game extends JPanel implements KeyListener {
 	 * Runs the game for the user with certain aspects defined by the 
 	 * @param dif
 	 */
-	public void runGame( int dif )
+	public void start(int dif)
 	{
+		running = true;
 		//start running game, display should already be set up
 		
+	}
+	
+	public void stop() {
+		running = false;
 	}
 	
 	

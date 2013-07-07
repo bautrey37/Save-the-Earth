@@ -142,7 +142,7 @@ public class TitleMenu extends JPanel implements ActionListener {
 				//  If the component is of instance type "Game", call the runGame() method on this component.
 				if( comp instanceof Game )
 				{
-					( (Game) comp ).runGame( difficulty );
+					( (Game) comp ).start( difficulty );
 					break;
 				}
 			}
