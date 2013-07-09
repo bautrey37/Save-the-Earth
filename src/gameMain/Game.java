@@ -13,6 +13,8 @@ import javax.imageio.ImageIO;
 import javax.swing.JComponent;
 import javax.swing.JPanel;
 
+import entities.*;
+
 
 
 public class Game extends JComponent implements KeyListener {
@@ -29,6 +31,19 @@ public class Game extends JComponent implements KeyListener {
 	 * This variable is static so that it can be defined only once and used throughout the entire program's running time.
 	 */
 	private static int[] levelInfo;
+	
+	
+	
+	/**
+	 * Manages the objects for displaying the user's tank.
+	 */
+	private Tank[] tank;
+	
+	
+	
+	
+	private boolean accelLeft, accelRight;
+	
 	
 	private BufferedImage background;
 		
@@ -47,7 +62,7 @@ public class Game extends JComponent implements KeyListener {
 		g = getGraphics(); //gets graphics object of current class and stores it in g
 		try {
 			background = ImageIO.read(new File("res/STE-Background-1.jpg"));
-			System.out.println("Passed");
+			
 			//g.drawImage(background, 0, 0, null); //causes error
 		}
 		catch (Exception e) {
@@ -74,6 +89,10 @@ public class Game extends JComponent implements KeyListener {
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		g.drawImage(background, 0, 0, this);
+		g.drawImage( tank[0].getImage(),
+				(int)tank[0].getX() - tank[0].getImage().getWidth() / 2,
+				(int)tank[0].getY() - tank[0].getImage().getHeight() / 2,
+				     this );
 		
 	}
 	
@@ -95,6 +114,27 @@ public class Game extends JComponent implements KeyListener {
 	}
 	
 	
+	
+	/**
+	 * Handles moving all entities across the screen.
+	 */
+	public void moveEntities()
+	{
+		//  Handle tank movement.
+		if( accelLeft )
+			tank[0].accelerateLeft();
+		if( accelRight )
+			tank[0].accelerateRight();
+		if( !accelLeft && !accelRight )
+			tank[0].lowerTankSpeed();
+		
+		tank[0].move();
+		
+	}
+	
+	
+	
+	
 	/**
 	 * Runs the game for the user with certain aspects defined by the 
 	 * @param dif
@@ -103,6 +143,37 @@ public class Game extends JComponent implements KeyListener {
 	{
 		running = true;
 		//start running game, display should already be set up
+		this.setFocusable( true );
+		
+		container.addKeyListener( this );
+		
+		setupGame();
+		
+		
+		//accelLeft = true;
+		while( running )
+		{
+			long time = System.currentTimeMillis();
+			
+			
+			this.paintComponent( this.getGraphics() );;
+			//this.paintEntities( this.getGraphics() );
+			
+			
+			
+			this.moveEntities();
+			//System.out.println( tank[0].getX() );
+			
+			try
+			{
+				long delay = Math.max(0, 32-(System.currentTimeMillis()-time));
+				
+				Thread.sleep(delay);
+			}
+			catch(InterruptedException e)
+			{
+			}
+		}
 		
 	}
 	
@@ -117,53 +188,17 @@ public class Game extends JComponent implements KeyListener {
 	 */
 	public void setupGame()
 	{
-		// Set up display. (Display is already set up because of the GUI class)
-		this.setBackground( Color.WHITE );
-				
-		try {
-			background = ImageIO.read(new File("res/STE-Background-1.jpg"));
-			System.out.println("Passed");
-		}
-		catch (Exception e) {
-			e.printStackTrace();
-		}
+		//  Create user's tank
+		tank = new Tank[2];
+		tank[0] = new TankBody( getWidth() * 0.5, getHeight() * 0.9, 0, 0 );
+		tank[0].setTankSpeedLimit( 10 );
 		
-//		if(background != null) {
-//			g.drawImage(background, 0, 0, null);
-//		} else {
-//			System.out.println("background was null");
-//		}
 		
-		//paintBackground(g);
+		
 	}  
 	
 	
 	
-	/**
-	 * This method handles painting the background image at the start of the level and in between frames.
-	 * This method is not an override
-	 */
-	public void paintBackground(Graphics g)
-	{
-		
-		Graphics offg = this.getGraphics();
-		Image offScreen = null;
-		
-		// Initialize off screen image
-		offScreen = createImage(getWidth(), getHeight());
-		offg = offScreen.getGraphics();
-		
-		// Clear old image
-		paint(offg);
-		offg.drawImage(background, 0, 0, null);
-		//playLevel();
-		
-		// Make off screen image visible
-		g.drawImage(offScreen, 0, 0, this);
-		
-		
-		
-	}  //  End of paintBackground() method.
 	
 	public void playLevel()
 	{
@@ -181,7 +216,7 @@ public class Game extends JComponent implements KeyListener {
 
 	//For some reason you must click the screen first before it can register key events.  
 	//Maybe the focus is not on the canvas initially.
-	@Override
+	//@Override
 	public void keyPressed(KeyEvent e) {
 		int key = e.getKeyCode();
 		System.out.println("Key pressed");
@@ -192,10 +227,33 @@ public class Game extends JComponent implements KeyListener {
 			CardLayout cl = (CardLayout)container.getLayout();
 			cl.show(container, "pause");
 		}
+		
+		
+		
+		if( key == KeyEvent.VK_A || key == KeyEvent.VK_LEFT )
+		{
+			accelLeft = true;
+			System.out.println( " A " );
+		}
+		if( key == KeyEvent.VK_D || key == KeyEvent.VK_RIGHT )
+		{
+			accelRight = true;
+		}
 	}
 
-	@Override
-	public void keyReleased(KeyEvent e) {
+	//@Override
+	public void keyReleased(KeyEvent e)
+	{
+		int key = e.getKeyCode();
+		
+		if( key == KeyEvent.VK_A || key == KeyEvent.VK_LEFT )
+		{
+			accelLeft = false;
+		}
+		if( key == KeyEvent.VK_D || key == KeyEvent.VK_RIGHT )
+		{
+			accelRight = false;
+		}
 	}
 
 	@Override

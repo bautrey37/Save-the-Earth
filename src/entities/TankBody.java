@@ -31,7 +31,7 @@ public class TankBody extends Tank
 		//  Obtain image file for this tank body.
 		try
 		{
-			image = ImageIO.read( new File( "Tank-Body-1.png" ) );
+			image = ImageIO.read( new File( "res/Tank-Body.png" ) );
 		}
 		catch (Exception e)
 		{
