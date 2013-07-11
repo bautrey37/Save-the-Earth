@@ -1,4 +1,4 @@
-package gameMain;
+package entities;
 
 
 import java.awt.image.BufferedImage;
@@ -6,13 +6,14 @@ import java.io.File;
 
 import javax.imageio.ImageIO;
 
-public class Enemy {
+public class Enemy extends Entity{
 	private double x, y, xVel, yVel; // location and velocity
 	private BufferedImage image; // holds the visual image for an enemy
 	private double halfWidth, halfHeight;
 
 	// Basic constructor
 	public Enemy(int width) {
+		super();
 		xVel = Math.random() - .45;
 		yVel = Math.random() - .45;
 

@@ -95,6 +95,8 @@ public class Game extends JComponent implements KeyListener, Runnable {
 	 */
 	public void start() {
 		running = true;
+		this.requestFocusInWindow();
+		this.addKeyListener(this);
 		game = new Thread(this);
 		game.setPriority(Thread.MAX_PRIORITY);
 		game.start();
@@ -116,7 +118,7 @@ public class Game extends JComponent implements KeyListener, Runnable {
 		System.out.println("run was called");
 		while( running )
 		{
-			//System.out.println("Iteration #" + iteration);
+			System.out.println("Iteration #" + iteration);
 			iteration++;
 			
 			long time = System.currentTimeMillis();
@@ -163,10 +165,10 @@ public class Game extends JComponent implements KeyListener, Runnable {
 		offg.drawImage(background, 0, 0, this);
 
 		// Draw new enemies
-		/*for (Enemy e : enemies) {
+		for (Enemy e : enemies) {
 			offg.drawImage(e.getSprite(), (int) (e.getX() - e.getSprite().getWidth() / 2), (int) (e.getY() - e
 					.getSprite().getHeight() / 2), null);
-		}*/
+		}
 		
 		//Draw Tank
 		offg.drawImage( tank[0].getImage(),
