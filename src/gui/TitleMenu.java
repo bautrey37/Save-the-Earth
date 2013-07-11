@@ -23,6 +23,11 @@ import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
+/**
+ * TBA
+ *
+ */
+
 public class TitleMenu extends JPanel implements ActionListener {
 	
 	private static final long serialVersionUID = 1L;
@@ -142,7 +147,7 @@ public class TitleMenu extends JPanel implements ActionListener {
 				//  If the component is of instance type "Game", call the runGame() method on this component.
 				if( comp instanceof Game )
 				{
-					( (Game) comp ).start( difficulty );
+					((Game)comp).init(difficulty);
 					break;
 				}
 			}

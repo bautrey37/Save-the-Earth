@@ -1,7 +1,10 @@
 package gui;
 
+import gameMain.Game;
+
 import java.awt.CardLayout;
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
@@ -49,7 +52,7 @@ public class Pause extends JPanel implements ActionListener {
 		c.gridy++;
 		this.add(title, c);
 		
-		this.setBackground(new Color(60,170,255,50)); //partially transparent, will display over the game
+		this.setBackground(new Color(60,170,255,100)); //partially transparent, will display over the game
 		this.setOpaque(true);
 	}
 
@@ -60,6 +63,13 @@ public class Pause extends JPanel implements ActionListener {
 		}
 		
 		if(e.getSource() == resume) {
+			for(Component comp : container.getComponents()) {
+				//  If the component is of instance type "Game", call the runGame() method on this component.
+				if(comp instanceof Game)  {
+					((Game)comp).resume();
+					break;
+				}
+			}
 			CardLayout lm = (CardLayout)container.getLayout();
 			lm.show(container, "game");
 		}

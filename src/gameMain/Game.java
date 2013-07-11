@@ -1,9 +1,7 @@
 package gameMain;
 
 import java.awt.CardLayout;
-import java.awt.Color;
 import java.awt.Graphics;
-import java.awt.Image;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.image.BufferedImage;
@@ -13,18 +11,22 @@ import javax.imageio.ImageIO;
 import javax.swing.JComponent;
 import javax.swing.JPanel;
 
-import entities.*;
+import entities.Tank;
+import entities.TankBody;
 
+/**
+ * This is the main class that runs the game.  
+ * 
+ */
 
-
-public class Game extends JComponent implements KeyListener {
+public class Game extends JComponent implements KeyListener, Runnable {
 	
 	private static final long serialVersionUID = 1L;
 	private JPanel container;
 	
-	private Graphics g;
-	
 	private boolean running;
+	private int iteration;
+	private Thread game;
 	
 	/**
 	 * Defines the values used in determining enemy count and enemy type in levels 1 - 10.	
@@ -32,18 +34,12 @@ public class Game extends JComponent implements KeyListener {
 	 */
 	private static int[] levelInfo;
 	
-	
-	
 	/**
 	 * Manages the objects for displaying the user's tank.
 	 */
 	private Tank[] tank;
 	
-	
-	
-	
 	private boolean accelLeft, accelRight;
-	
 	
 	private BufferedImage background;
 		
@@ -56,14 +52,11 @@ public class Game extends JComponent implements KeyListener {
 	{
 		this.container = container;
 		
-		addKeyListener(this); //adds keylistener to this class
-		this.setFocusable(true);
+		this.addKeyListener(this); //adds keylistener to this class
 		
-		g = getGraphics(); //gets graphics object of current class and stores it in g
+		
 		try {
 			background = ImageIO.read(new File("res/STE-Background-1.jpg"));
-			
-			//g.drawImage(background, 0, 0, null); //causes error
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -72,87 +65,73 @@ public class Game extends JComponent implements KeyListener {
 		/*
 		 * Add in code that configures level 1 - 10 variables, possibly by reading a file.
 		 * Formatting will be decided at a later time.
-		 * 
-		 * @author Thomas J. O'Neill
-		 * @date July 5, 2013, at 12:27 PM
-		 */
-		
+		 */		
 		levelInfo = new int[10];
 		
 	} 
 	
-	/*
-	 * Overrides paint method in JPanel
-	 * @see javax.swing.JComponent#paint(java.awt.Graphics)
-	 */
-	@Override
-	public void paintComponent(Graphics g) {
-		super.paintComponent(g);
-		g.drawImage(background, 0, 0, this);
-		g.drawImage( tank[0].getImage(),
-				(int)tank[0].getX() - tank[0].getImage().getWidth() / 2,
-				(int)tank[0].getY() - tank[0].getImage().getHeight() / 2,
-				     this );
-		
-	}
-	
-	/*
-	 * Overrides update method in JPanel
-	 * @see javax.swing.JComponent#update(java.awt.Graphics)
-	 */
-	@Override
-	public void update(Graphics g) {
-		
-	}
-	/*
-	 * 
-	 * @see javax.swing.JPanel#updateUI()
-	 */
-	@Override
-	public void updateUI() {
-		
-	}
-	
-	
 	
 	/**
-	 * Handles moving all entities across the screen.
+	 * This method configures the initial game settings, including setting up the playing field, creating the initial
+	 * enemies, and spawning the user's tank.
 	 */
-	public void moveEntities()
+	public void init(int dif)
 	{
-		//  Handle tank movement.
-		if( accelLeft )
-			tank[0].accelerateLeft();
-		if( accelRight )
-			tank[0].accelerateRight();
-		if( !accelLeft && !accelRight )
-			tank[0].lowerTankSpeed();
+		//System.out.println("Init called");
+		this.requestFocusInWindow();
+		//this.requestFocus();
+		this.addKeyListener(this);
 		
-		tank[0].move();
+		//  Create user's tank
+		tank = new Tank[2];
+		tank[0] = new TankBody( getWidth() * 0.5, getHeight() * 0.9, 0, 0 );
+		tank[0].setTankSpeedLimit( 10 );
 		
-	}
-	
-	
-	
+		//makes new game thread
+		
+		
+		start();
+	}  
 	
 	/**
-	 * Runs the game for the user with certain aspects defined by the 
-	 * @param dif
+	 * Starts the thread for running the game.
 	 */
-	public void start(int dif)
-	{
+	public void start() {
 		running = true;
-		//start running game, display should already be set up
-		this.setFocusable( true );
+		game = new Thread(this);
+		game.setPriority(Thread.MAX_PRIORITY);
+		game.start();
+	}
+	
+	/**
+	 * resumes the game
+	 */
+	public void resume() {
+		running = true;
+	}
+	
+	/**
+	 * Stops the game from running
+	 */
+	public void stop() {
+		running = false;
+	}
 		
-		container.addKeyListener( this );
+	
+	/**
+	 * Runs the game in its own thread.
+	 */
+	@Override
+	public void run() {
+		System.out.println("run was called");
 		
-		setupGame();
-		
-		
-		//accelLeft = true;
+		iteration = 0;
 		while( running )
 		{
+			
+			//System.out.println("Iteration #" + iteration);
+			//iteration++;
+			
 			long time = System.currentTimeMillis();
 			
 			
@@ -174,36 +153,42 @@ public class Game extends JComponent implements KeyListener {
 			{
 			}
 		}
+	}
+	
+	@Override
+	public void paintComponent(Graphics g) {
+		super.paintComponent(g);
+		g.drawImage(background, 0, 0, this);
+		g.drawImage( tank[0].getImage(),
+				(int)tank[0].getX() - tank[0].getImage().getWidth() / 2,
+				(int)tank[0].getY() - tank[0].getImage().getHeight() / 2,
+				     this );
 		
 	}
 	
-	public void stop() {
-		running = false;
+	@Override
+	public void update(Graphics g) {
+		
 	}
 	
 	
 	/**
-	 * This method configures the initial game settings, including setting up the playing field, creating the initial
-	 * enemies, and spawning the user's tank.
+	 * Handles moving all entities across the screen.
 	 */
-	public void setupGame()
+	public void moveEntities()
 	{
-		//  Create user's tank
-		tank = new Tank[2];
-		tank[0] = new TankBody( getWidth() * 0.5, getHeight() * 0.9, 0, 0 );
-		tank[0].setTankSpeedLimit( 10 );
+		//  Handle tank movement.
+		if( accelLeft )
+			tank[0].accelerateLeft();
+		if( accelRight )
+			tank[0].accelerateRight();
+		if( !accelLeft && !accelRight )
+			tank[0].lowerTankSpeed();
 		
-		
-		
-	}  
-	
-	
-	
-	
-	public void playLevel()
-	{
+		tank[0].move();
 		
 	}
+	
 	
 	public void tick() {
 		
@@ -214,34 +199,31 @@ public class Game extends JComponent implements KeyListener {
 	}
 
 
-	//For some reason you must click the screen first before it can register key events.  
-	//Maybe the focus is not on the canvas initially.
-	//@Override
+	@Override
 	public void keyPressed(KeyEvent e) {
 		int key = e.getKeyCode();
-		System.out.println("Key pressed");
+		//System.out.println("Key pressed");
 		
 		if(key == KeyEvent.VK_ESCAPE) {
-			System.out.println("Escape key got");
-			
+			stop();
 			CardLayout cl = (CardLayout)container.getLayout();
 			cl.show(container, "pause");
 		}
 		
 		
-		
 		if( key == KeyEvent.VK_A || key == KeyEvent.VK_LEFT )
 		{
 			accelLeft = true;
-			System.out.println( " A " );
+			System.out.println("A");
 		}
 		if( key == KeyEvent.VK_D || key == KeyEvent.VK_RIGHT )
 		{
+			System.out.println("D");
 			accelRight = true;
 		}
 	}
 
-	//@Override
+	@Override
 	public void keyReleased(KeyEvent e)
 	{
 		int key = e.getKeyCode();
@@ -259,7 +241,7 @@ public class Game extends JComponent implements KeyListener {
 	@Override
 	public void keyTyped(KeyEvent e) {
 	}
-	
+
 	
 	
 }
