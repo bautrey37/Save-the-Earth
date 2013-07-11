@@ -2,6 +2,7 @@ package gameMain;
 
 import java.awt.CardLayout;
 import java.awt.Graphics;
+import java.awt.Image;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.image.BufferedImage;
@@ -11,6 +12,7 @@ import javax.imageio.ImageIO;
 import javax.swing.JComponent;
 import javax.swing.JPanel;
 
+import enemiesTest.Enemy;
 import entities.Tank;
 import entities.TankBody;
 
@@ -22,11 +24,17 @@ import entities.TankBody;
 public class Game extends JComponent implements KeyListener, Runnable {
 	
 	private static final long serialVersionUID = 1L;
-	private JPanel container;
 	
-	private boolean running;
-	private int iteration;
+	private JPanel container;
+	private BufferedImage background;
 	private Thread game;
+	
+	private volatile boolean running; //volatile makes it thread safe
+	private int iteration;
+	
+	private boolean accelLeft, accelRight;
+	
+	private Enemy[] enemies;
 	
 	/**
 	 * Defines the values used in determining enemy count and enemy type in levels 1 - 10.	
@@ -38,10 +46,6 @@ public class Game extends JComponent implements KeyListener, Runnable {
 	 * Manages the objects for displaying the user's tank.
 	 */
 	private Tank[] tank;
-	
-	private boolean accelLeft, accelRight;
-	
-	private BufferedImage background;
 		
 	/**
 	 * Constructs a new Game JPanel for which to run the level that the user is playing on.
@@ -50,10 +54,7 @@ public class Game extends JComponent implements KeyListener, Runnable {
 	 */
 	public Game(JPanel container)
 	{
-		this.container = container;
-		
-		this.addKeyListener(this); //adds keylistener to this class
-		
+		this.container = container;	
 		
 		try {
 			background = ImageIO.read(new File("res/STE-Background-1.jpg"));
@@ -74,21 +75,17 @@ public class Game extends JComponent implements KeyListener, Runnable {
 	/**
 	 * This method configures the initial game settings, including setting up the playing field, creating the initial
 	 * enemies, and spawning the user's tank.
+	 * @param dif - difficulty of game 
 	 */
 	public void init(int dif)
 	{
-		//System.out.println("Init called");
 		this.requestFocusInWindow();
-		//this.requestFocus();
 		this.addKeyListener(this);
 		
 		//  Create user's tank
 		tank = new Tank[2];
 		tank[0] = new TankBody( getWidth() * 0.5, getHeight() * 0.9, 0, 0 );
 		tank[0].setTankSpeedLimit( 10 );
-		
-		//makes new game thread
-		
 		
 		start();
 	}  
@@ -104,38 +101,28 @@ public class Game extends JComponent implements KeyListener, Runnable {
 	}
 	
 	/**
-	 * resumes the game
-	 */
-	public void resume() {
-		running = true;
-	}
-	
-	/**
-	 * Stops the game from running
+	 * Stops the game from running, essentially ending the thread
 	 */
 	public void stop() {
 		running = false;
 	}
-		
 	
 	/**
 	 * Runs the game in its own thread.
 	 */
 	@Override
 	public void run() {
-		System.out.println("run was called");
-		
 		iteration = 0;
+		System.out.println("run was called");
 		while( running )
 		{
-			
 			//System.out.println("Iteration #" + iteration);
-			//iteration++;
+			iteration++;
 			
 			long time = System.currentTimeMillis();
 			
 			
-			this.paintComponent( this.getGraphics() );;
+			this.paintComponent( this.getGraphics() );
 			//this.paintEntities( this.getGraphics() );
 			
 			
@@ -146,7 +133,6 @@ public class Game extends JComponent implements KeyListener, Runnable {
 			try
 			{
 				long delay = Math.max(0, 32-(System.currentTimeMillis()-time));
-				
 				Thread.sleep(delay);
 			}
 			catch(InterruptedException e)
@@ -158,12 +144,37 @@ public class Game extends JComponent implements KeyListener, Runnable {
 	@Override
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
-		g.drawImage(background, 0, 0, this);
+		/*g.drawImage(background, 0, 0, this);
 		g.drawImage( tank[0].getImage(),
 				(int)tank[0].getX() - tank[0].getImage().getWidth() / 2,
 				(int)tank[0].getY() - tank[0].getImage().getHeight() / 2,
 				     this );
+				     */
 		
+		Graphics offg;
+		Image offScreen = null;
+
+		// Initialize off screen image
+		offScreen = createImage(getWidth(), getHeight());
+		offg = offScreen.getGraphics();
+
+		// Clear old image
+		//paintComponent(offg);
+		offg.drawImage(background, 0, 0, this);
+
+		// Draw new enemies
+		/*for (Enemy e : enemies) {
+			offg.drawImage(e.getSprite(), (int) (e.getX() - e.getSprite().getWidth() / 2), (int) (e.getY() - e
+					.getSprite().getHeight() / 2), null);
+		}*/
+		
+		//Draw Tank
+		offg.drawImage( tank[0].getImage(),
+				(int)tank[0].getX() - tank[0].getImage().getWidth() / 2,
+				(int)tank[0].getY() - tank[0].getImage().getHeight() / 2, this);
+
+		// Make off screen image visible
+		g.drawImage(offScreen, 0, 0, this);
 	}
 	
 	@Override

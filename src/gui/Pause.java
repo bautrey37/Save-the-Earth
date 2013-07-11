@@ -66,7 +66,7 @@ public class Pause extends JPanel implements ActionListener {
 			for(Component comp : container.getComponents()) {
 				//  If the component is of instance type "Game", call the runGame() method on this component.
 				if(comp instanceof Game)  {
-					((Game)comp).resume();
+					((Game)comp).start();
 					break;
 				}
 			}
