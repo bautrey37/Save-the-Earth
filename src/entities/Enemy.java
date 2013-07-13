@@ -1,60 +1,52 @@
 package entities;
 
-
-import java.awt.image.BufferedImage;
 import java.io.File;
 
 import javax.imageio.ImageIO;
 
-public class Enemy extends Entity{
-	private double x, y, xVel, yVel; // location and velocity
-	private BufferedImage image; // holds the visual image for an enemy
-	private double halfWidth, halfHeight;
+public class Enemy extends Entity {
+	private int screenWidth;
 
 	// Basic constructor
-	public Enemy(int width) {
-		super();
-		xVel = Math.random() - .45;
-		yVel = Math.random() - .45;
+	public Enemy(int screenWidth) {
+		super(0, 0, 0, 0);
+		xVelocity = 10*Math.random() - 4.5;
+		yVelocity = 5*Math.random() + 1;
+
+		this.screenWidth = screenWidth;
 
 		try {
-			image = ImageIO.read(new File("Large-Alien-Ship.png"));
+			image = ImageIO.read(new File("res/Large-Alien-Ship.png"));
 		}
 		catch (Exception e) {
 			e.printStackTrace();
 		}
 
-		halfWidth = image.getWidth() / 2;
-		halfHeight = image.getHeight() / 2;
-
-		x = halfWidth + 1 + (1000 * Math.random()) % (width - halfWidth - 1);
-		y = halfHeight;
+		xPosition = 1000 * Math.random() % (screenWidth - image.getWidth());
+		yPosition = 0;
 	}
 
-	// Movement
-	public void move(int width, int height) {
-		// update coordinates
-		x += xVel;
-		y += yVel;
+	@Override
+	public void move() {
+		super.move();
 
-		if ((x + halfWidth) > width || (x - halfWidth) < 0) {
-			xVel *= -1;
-		}
-		if ((y + halfHeight) > height || (y - halfHeight) < 0) {
-			yVel *= -1;
+		if (xPosition + image.getWidth() > screenWidth || xPosition < 0) {
+			xVelocity *= -1;
 		}
 	}
 
-	// Getters
-	public BufferedImage getSprite() {
-		return image;
-	}
+	// // Movement
+	// public void move(int width, int height) {
+	// // update coordinates
+	// xPosition += xVelocity;
+	// yPosition += yVelocity;
+	//
+	// if (xPosition + image.getWidth() > width || xPosition < 0) {
+	// xVelocity *= -1;
+	// }
+	// if (yPosition + image.getHeight() > height || yPosition < 0) {
+	// yVelocity *= -1;
+	// }
+	// }
 
-	public double getX() {
-		return x;
-	}
-
-	public double getY() {
-		return y;
-	}
 }

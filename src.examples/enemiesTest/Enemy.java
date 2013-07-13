@@ -14,6 +14,8 @@ public class Enemy {
 	public Enemy(int width) {
 		xVel = Math.random() - .45;
 		yVel = Math.random() - .45;
+		
+		System.out.println("INCORRECT ENEMY MADE");
 
 		try {
 			image = ImageIO.read(new File("res/Large-Alien-Ship.png"));
