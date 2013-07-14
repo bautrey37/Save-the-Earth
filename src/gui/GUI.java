@@ -3,6 +3,11 @@ package gui;
 import gameMain.Game;
 
 import java.awt.CardLayout;
+import java.awt.Font;
+import java.awt.FontFormatException;
+import java.awt.GraphicsEnvironment;
+import java.io.File;
+import java.io.IOException;
 
 import javax.swing.JComponent;
 import javax.swing.JFrame;
@@ -16,13 +21,35 @@ public class GUI {
 	public static final int gameHeight = gameWidth * 3/4;
 	
 	private JFrame window;
-	private JPanel panelContainer, title, credits, upgrades, control, pause;
+	private JPanel panelContainer, title, credits, upgrades, control, pause, synopsis;
 	private JComponent game;
 	
 	private CardLayout cl;
 	
+	public Font basicaFont;
+	
 	public GUI() {
 		window = new JFrame(gamename);
+		
+		try {
+			//creates a new custom font from file
+			basicaFont = Font.createFont(Font.TRUETYPE_FONT, new File("res/Basica v2012.ttf"));
+			GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
+			//registers font within java, can be used anywhere now
+			ge.registerFont(basicaFont);
+			
+			/* // print out all available font names
+			String []fontNames = ge.getAvailableFontFamilyNames();
+			for(String str: fontNames) {
+				System.out.println(str);
+			}*/
+		} catch (IOException e) {
+			System.err.println("Cannot find file");
+			e.printStackTrace();
+		} catch (FontFormatException e) {
+			System.err.println("Font formmating error happened");
+			e.printStackTrace();
+		}
 		
 		panelContainer = new JPanel(); //contains the panels below as cards
 		title = new TitleMenu(panelContainer);
@@ -31,6 +58,8 @@ public class GUI {
 		game = new Game(panelContainer);
 		control = new Controls(panelContainer);
 		pause = new Pause(panelContainer);
+		
+		synopsis = new Synopsis(panelContainer);
 		
 		cl = new CardLayout();
 		panelContainer.setLayout(cl);
@@ -59,7 +88,4 @@ public class GUI {
 		return gameHeight;
 	}
 	
-	public void exit() {
-		System.exit(0);
-	}
 }

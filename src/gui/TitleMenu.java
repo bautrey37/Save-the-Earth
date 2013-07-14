@@ -17,6 +17,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.imageio.ImageIO;
 import javax.swing.BorderFactory;
@@ -32,17 +34,16 @@ public class TitleMenu extends JPanel implements ActionListener {
 	
 	private static final long serialVersionUID = 1L;
 	
-	//private List<JButton> buttons = new ArrayList<JButton>();  
+	private List<JButton> difButtons = new ArrayList<JButton>(3);  
+	private int difficulty;
 	
 	private JPanel container, difficultyPane, bottomPane, buttons;
 	private JButton newGame, quit, credits, controls, easy, medium, hard;
-	private Font font = new Font("Bodoni MT", Font.BOLD, 30);
-	private Font difFont = new Font("Bodomu MT", Font.BOLD, 20);
+	private Font font = new Font("Basica v.2012", Font.PLAIN, 22);
+	private Font difFont = new Font("Basica v.2012", Font.PLAIN, 18);
 	
 	//private Graphics g;
 	private BufferedImage logo, background;
-	
-	private int difficulty;
 	
 	public TitleMenu(JPanel container) {
 		//container contains the CardLayout.  Used to switch to other panels.
@@ -53,10 +54,10 @@ public class TitleMenu extends JPanel implements ActionListener {
 		setJButtonSettings(newGame, font, 200, 50);
 		
 		controls = new JButton("Controls");
-		setJButtonSettings(controls, font, 150, 50);
+		setJButtonSettings(controls, font, 200, 50);
 		
 		credits = new JButton("Credits");
-		setJButtonSettings(credits, font, 150, 50);
+		setJButtonSettings(credits, font, 180, 50);
 				
 		quit = new JButton("Quit");
 		setJButtonSettings(quit, font, 150, 50);
@@ -72,6 +73,11 @@ public class TitleMenu extends JPanel implements ActionListener {
 		hard = new JButton("Hard");
 		setJButtonSettings(hard, difFont, 100, 40);
 		hard.setBackground(Color.RED);
+		
+		//add difficulty level buttons to arraylist
+		difButtons.add(easy);
+		difButtons.add(medium);
+		difButtons.add(hard);
 		
 		//Grouping Panels
 		difficultyPane = new JPanel();
@@ -112,7 +118,7 @@ public class TitleMenu extends JPanel implements ActionListener {
 		//try to get image from file
 		try {
 			logo = ImageIO.read(new File("res/Save-the-Earth.png"));
-			background = ImageIO.read(new File("res/STE-Title.jpg")); //this image looks silly as title image lol
+			background = ImageIO.read(new File("res/STE-Title.jpg")); //this image looks silly as title image
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
@@ -165,17 +171,28 @@ public class TitleMenu extends JPanel implements ActionListener {
 		}
 		if(e.getSource() == easy) {
 			difficulty = 1;
-			//if()
-			easy.setBorder(BorderFactory.createLineBorder(Color.BLACK, 4));
+			setActiveButton(easy);
 		}
 		if(e.getSource() == medium) {
 			difficulty = 2;
+			setActiveButton(medium);
 		}
 		if(e.getSource() == hard) {
 			difficulty = 3;
+			setActiveButton(hard);
 		}
 	}
 		
+	private void setActiveButton(JButton button) {
+		//clear all borders
+		for(JButton b: difButtons) {
+			b.setBorder(BorderFactory.createEmptyBorder());
+		}
+		//set button selected to border
+		button.setBorder(BorderFactory.createLineBorder(Color.BLACK, 4));
+		System.out.println(button.getText());
+	}
+	
 	private void setJButtonSettings(JButton button, Font font, int width, int height) {
 		button.addActionListener(this); //allows it to be interactive
 		button.setFocusPainted(false); //gets rid of small border inside button

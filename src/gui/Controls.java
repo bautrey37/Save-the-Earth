@@ -21,8 +21,8 @@ public class Controls extends JPanel implements ActionListener {
 	private JButton ret;
 	private JLabel title, con1, con2, con3;
 	
-	private Font head = new Font("Arial", Font.BOLD, 50);
-	private Font text = new Font("Arial", Font.BOLD, 30);
+	private Font head = new Font("Basica v.2012", Font.PLAIN, 50);
+	private Font text = new Font("Basica v.2012", Font.PLAIN, 30);
 	
 	public Controls(JPanel container) {
 		this.container = container;
@@ -30,9 +30,8 @@ public class Controls extends JPanel implements ActionListener {
 		ret = new JButton("Return");
 		ret.setFont(text);
 		ret.setPreferredSize(new Dimension(200,100));
-		ret.setLocation(100, 200);
 		ret.addActionListener(this);
-		ret.setBackground(Color.YELLOW);
+		ret.setBackground(Color.RED);
 				
 		title = new JLabel("Controls");
 		title.setFont(head);
@@ -60,7 +59,7 @@ public class Controls extends JPanel implements ActionListener {
 		c.insets = new Insets(40, 0, 0, 0);
 		this.add(ret, c);
 		
-		this.setBackground(Color.MAGENTA);
+		this.setBackground(Color.GREEN);
 	}
 	
 	public void actionPerformed(ActionEvent e) {
