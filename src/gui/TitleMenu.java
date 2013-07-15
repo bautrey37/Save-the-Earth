@@ -144,7 +144,6 @@ public class TitleMenu extends JPanel implements ActionListener {
 			CardLayout cl = (CardLayout)container.getLayout();
 			cl.show(container, "game"); //shows the game
 			
-			
 			/*
 			 * Next, obtain "game", the specific component in question, in order to begin the game.
 			 */

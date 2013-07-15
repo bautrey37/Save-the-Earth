@@ -44,7 +44,7 @@ public class Synopsis extends JPanel {
 			System.out.print(str + " ");
 			
 			//prints new line after so many lines
-			if(counter == 10) {
+			if(counter == 20) {
 				System.out.println();
 				counter = 0;
 			}

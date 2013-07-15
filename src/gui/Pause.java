@@ -12,20 +12,22 @@ import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-public class Pause extends JPanel implements ActionListener {
+public class Pause extends JPanel implements ActionListener, KeyListener {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel container;
 	private JLabel pause;
 	private JButton resume, title;
 	
-	private Font font = new Font("Bodoni MT", Font.BOLD, 30);
-	private Font Pfont = new Font("Bodoni MT", Font.BOLD, 80);
+	private Font font = new Font("Basica v.2012", Font.PLAIN, 30);
+	private Font Pfont = new Font("Basica v.2012", Font.PLAIN, 80);
 	
 	public Pause(JPanel container) {
 		this.container = container;
@@ -34,10 +36,10 @@ public class Pause extends JPanel implements ActionListener {
 		pause.setFont(Pfont);
 		
 		resume = new JButton("Resume to Game");
-		setJButtonSettings(resume, font, 250, 70);
+		setJButtonSettings(resume, font, 400, 70);
 		
 		title = new JButton("Main Menu");
-		setJButtonSettings(title, font, 200, 70);
+		setJButtonSettings(title, font, 300, 70);
 		
 		this.setLayout(new GridBagLayout());
 		GridBagConstraints c = new GridBagConstraints();
@@ -54,6 +56,7 @@ public class Pause extends JPanel implements ActionListener {
 		
 		this.setBackground(new Color(60,170,255,100)); //partially transparent, will display over the game
 		this.setOpaque(true);
+		this.addKeyListener(this);
 	}
 
 	public void actionPerformed(ActionEvent e) {
@@ -63,6 +66,9 @@ public class Pause extends JPanel implements ActionListener {
 		}
 		
 		if(e.getSource() == resume) {
+			CardLayout lm = (CardLayout)container.getLayout();
+			lm.show(container, "game");
+			
 			for(Component comp : container.getComponents()) {
 				//  If the component is of instance type "Game", call the runGame() method on this component.
 				if(comp instanceof Game)  {
@@ -70,8 +76,7 @@ public class Pause extends JPanel implements ActionListener {
 					break;
 				}
 			}
-			CardLayout lm = (CardLayout)container.getLayout();
-			lm.show(container, "game");
+			
 		}
 	}
 	
@@ -80,5 +85,18 @@ public class Pause extends JPanel implements ActionListener {
 		button.setFocusPainted(false); //gets rid of small border inside button
 		button.setFont(font); //sets font
 		button.setPreferredSize(new Dimension(width, height)); //sets size
+	}
+
+	@Override
+	public void keyPressed(KeyEvent arg0) {
+		System.out.println("Key Pressed");
+	}
+
+	@Override
+	public void keyReleased(KeyEvent arg0) {
+	}
+
+	@Override
+	public void keyTyped(KeyEvent arg0) {
 	}
 }

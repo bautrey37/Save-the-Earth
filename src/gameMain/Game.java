@@ -29,7 +29,7 @@ public class Game extends JComponent implements KeyListener, Runnable {
 	private BufferedImage background;
 	private Thread game;
 
-	private volatile boolean running; // volatile makes it thread safe
+	private volatile boolean running, pause; // volatile makes it thread safe
 	private int iteration;
 
 	private boolean accelLeft, accelRight;
@@ -70,19 +70,18 @@ public class Game extends JComponent implements KeyListener, Runnable {
 		 */
 		levelInfo = new int[10];
 
+		this.addKeyListener(this);
 	}
 
 	/**
 	 * This method configures the initial game settings, including setting up the playing field, creating the initial
 	 * enemies, and spawning the user's tank.
 	 * 
-	 * @param dif
-	 *            - difficulty of game
+	 * @param dif - difficulty of game
 	 */
 	public void init(int dif) {
-		this.requestFocusInWindow();
-		this.addKeyListener(this);
-
+		//clear previous game data
+		
 		// Create user's tank
 		tank = new Tank[2];
 		tank[0] = new TankBody(getWidth() * 0.5, getHeight() * 0.9, 0, 0);
@@ -92,12 +91,13 @@ public class Game extends JComponent implements KeyListener, Runnable {
 	}
 
 	/**
-	 * Starts the thread for running the game.
+	 * Starts the thread for running the game.  Keeps existing game data
 	 */
 	public void start() {
 		running = true;
+		pause = false;
 		this.requestFocusInWindow();
-		this.addKeyListener(this);
+		
 		game = new Thread(this);
 		game.setPriority(Thread.MAX_PRIORITY);
 		game.start();
@@ -118,7 +118,7 @@ public class Game extends JComponent implements KeyListener, Runnable {
 		iteration = 0;
 		System.out.println("run was called");
 		while (running) {
-			// System.out.println("Iteration #" + iteration);
+			//System.out.println("Iteration #" + iteration);
 			iteration++;
 
 			// Make an enemy
@@ -126,7 +126,7 @@ public class Game extends JComponent implements KeyListener, Runnable {
 				enemies[numEnemies] = new Enemy(getWidth());
 				numEnemies = (numEnemies + 1) % enemies.length;
 			}
-
+			
 			long time = System.currentTimeMillis();
 
 			this.paintComponent(this.getGraphics());
@@ -178,11 +178,7 @@ public class Game extends JComponent implements KeyListener, Runnable {
 		g.drawImage(offScreen, 0, 0, this);
 	}
 
-	@Override
-	public void update(Graphics g) {
-		//paint(g);
-	}
-
+	
 	/**
 	 * Handles moving all entities across the screen.
 	 */
@@ -205,13 +201,6 @@ public class Game extends JComponent implements KeyListener, Runnable {
 
 	}
 
-	public void tick() {
-
-	}
-
-	public void render() {
-
-	}
 
 	@Override
 	public void keyPressed(KeyEvent e) {
