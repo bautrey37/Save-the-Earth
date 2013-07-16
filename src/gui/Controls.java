@@ -38,7 +38,6 @@ public class Controls extends JPanel implements ActionListener {
 		ret.setFont(text);
 		ret.setPreferredSize(new Dimension(200,60));
 		ret.addActionListener(this);
-		ret.setBackground(Color.RED);
 				
 		title = new JLabel(" ");
 		title.setFont(head);

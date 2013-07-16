@@ -52,7 +52,7 @@ public class TitleMenu extends JPanel implements ActionListener {
 		
 		//Buttons
 		newGame = new JButton("Begin Mission");
-		setJButtonSettings(newGame, font, 230, 50);
+		setJButtonSettings(newGame, font, 250, 50);
 		
 		controls = new JButton("Controls");
 		setJButtonSettings(controls, font, 200, 50);
