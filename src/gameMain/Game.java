@@ -34,7 +34,7 @@ public class Game extends JComponent implements KeyListener, Runnable {
 
 	private boolean accelLeft, accelRight;
 
-	private Enemy[] enemies = new Enemy[50];
+	private Enemy[] enemies;
 	private int numEnemies = 0;
 
 	/**
@@ -86,7 +86,9 @@ public class Game extends JComponent implements KeyListener, Runnable {
 		tank = new Tank[2];
 		tank[0] = new TankBody(getWidth() * 0.5, getHeight() * 0.9, 0, 0);
 		tank[0].setTankSpeedLimit(10);
-
+		
+		enemies = new Enemy[50];
+		
 		start();
 	}
 
@@ -94,6 +96,8 @@ public class Game extends JComponent implements KeyListener, Runnable {
 	 * Starts the thread for running the game.  Keeps existing game data
 	 */
 	public void start() {
+		accelLeft = false;
+		accelRight = false;
 		running = true;
 		pause = false;
 		this.requestFocusInWindow();
