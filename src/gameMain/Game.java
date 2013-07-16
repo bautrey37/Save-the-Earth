@@ -125,7 +125,7 @@ public class Game extends JComponent implements KeyListener, Runnable {
 			iteration++;
 
 			// Make an enemy
-			if (100 * Math.random() > 0) {
+			if (100 * Math.random() > 98) {
 				enemies[numEnemies] = new Enemy(getWidth());
 				numEnemies = (numEnemies + 1) % enemies.length;
 			}

@@ -51,8 +51,8 @@ public class TitleMenu extends JPanel implements ActionListener {
 		this.container = container;
 		
 		//Buttons
-		newGame = new JButton("New Game");
-		setJButtonSettings(newGame, font, 200, 50);
+		newGame = new JButton("Begin Mission");
+		setJButtonSettings(newGame, font, 230, 50);
 		
 		controls = new JButton("Controls");
 		setJButtonSettings(controls, font, 200, 50);

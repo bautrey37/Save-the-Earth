@@ -23,7 +23,7 @@ public class Credits extends JPanel implements ActionListener {
 	private static final long serialVersionUID = 1L;
 	private JPanel container;
 	private JButton ret;
-	private JLabel name1, name2, name3, name4, name5, name6, name7;
+	private JLabel name1, name2, name3, name4, name5, name6, name7, name8;
 	private Font font = new Font("Basica v.2012", Font.PLAIN, 35);
 	private Font retFont = new Font("Basica v.2012", Font.PLAIN, 30);
 	
@@ -55,6 +55,8 @@ public class Credits extends JPanel implements ActionListener {
 		name6.setFont(font);
 		name7 = new JLabel(" ");
 		name7.setFont(font);
+		name8 = new JLabel(" ");
+		name8.setFont(font);
 		
 		
 		//Groups into GridBagLayout
@@ -76,6 +78,8 @@ public class Credits extends JPanel implements ActionListener {
 		this.add(name6, c);
 		c.gridy++;
 		this.add(name7, c);
+		c.gridy++;
+		this.add(name8, c);
 		c.gridy++;
 		c.insets = new Insets(40, 0, 20, 0);
 		this.add(ret, c);
