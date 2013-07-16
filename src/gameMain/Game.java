@@ -29,7 +29,7 @@ public class Game extends JComponent implements KeyListener, Runnable {
 	private BufferedImage background;
 	private Thread game;
 
-	private volatile boolean running, pause; // volatile makes it thread safe
+	private volatile boolean running; // volatile makes it thread safe
 	private int iteration;
 
 	private boolean accelLeft, accelRight;
@@ -99,7 +99,6 @@ public class Game extends JComponent implements KeyListener, Runnable {
 		accelLeft = false;
 		accelRight = false;
 		running = true;
-		pause = false;
 		this.requestFocusInWindow();
 		
 		game = new Thread(this);

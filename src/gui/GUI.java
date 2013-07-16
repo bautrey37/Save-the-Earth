@@ -14,7 +14,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 public class GUI {
-
+	
 	//window properties
 	private final static String gamename = "Save the Earth";
 	public static final int gameWidth = 800;
