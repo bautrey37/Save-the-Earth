@@ -169,7 +169,8 @@ public class Game extends JComponent implements KeyListener, Runnable {
 		// Draw new enemies
 		for (Enemy e : enemies) {
 			if (null != e) {
-				offg.drawImage(e.getImage(), (int) e.getX(), (int) e.getY(), null);
+				offg.drawImage(e.getImage(), (int)(e.getX() - e.getImage().getWidth() / 2),
+						             (int)(e.getY() - e.getImage().getHeight() / 2), null);
 			}
 		}
 
