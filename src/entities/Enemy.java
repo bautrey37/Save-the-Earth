@@ -22,7 +22,7 @@ public class Enemy extends Entity {
 			e.printStackTrace();
 		}
 
-		xPosition = 1000 * Math.random() % (screenWidth - image.getWidth());
+		xPosition = (1000 * Math.random()) % (screenWidth - image.getWidth());
 		yPosition = 0;
 	}
 
@@ -30,7 +30,7 @@ public class Enemy extends Entity {
 	public void move() {
 		super.move();
 
-		if (xPosition + image.getWidth() > screenWidth || xPosition < 0) {
+		if (xPosition < 3 || xPosition + image.getWidth() > screenWidth) {
 			xVelocity *= -1;
 		}
 	}

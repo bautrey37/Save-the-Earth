@@ -26,8 +26,8 @@ public class Pause extends JPanel implements ActionListener, KeyListener {
 	private JLabel pause;
 	private JButton resume, title;
 	
-	private Font font = new Font("Basica v.2012", Font.PLAIN, 30);
-	private Font Pfont = new Font("Basica v.2012", Font.PLAIN, 80);
+	private Font font = new Font("Xolonium", Font.PLAIN, 30);
+	private Font Pfont = new Font("Xolonium", Font.PLAIN, 80);
 	
 	public Pause(JPanel container) {
 		this.container = container;
@@ -35,11 +35,11 @@ public class Pause extends JPanel implements ActionListener, KeyListener {
 		pause = new JLabel("Pause");
 		pause.setFont(Pfont);
 		
-		resume = new JButton("Resume to Game");
-		setJButtonSettings(resume, font, 400, 70);
+		resume = new JButton("Resume Game");
+		setJButtonSettings(resume, font, 350, 70);
 		
 		title = new JButton("Main Menu");
-		setJButtonSettings(title, font, 300, 70);
+		setJButtonSettings(title, font, 350, 70);
 		
 		this.setLayout(new GridBagLayout());
 		GridBagConstraints c = new GridBagConstraints();
@@ -54,7 +54,7 @@ public class Pause extends JPanel implements ActionListener, KeyListener {
 		c.gridy++;
 		this.add(title, c);
 		
-		this.setBackground(new Color(60,170,255,100)); //partially transparent, will display over the game
+		this.setBackground(new Color(50,50,50,100)); //partially transparent, will display over the game
 		this.setOpaque(true);
 		this.addKeyListener(this);
 	}
