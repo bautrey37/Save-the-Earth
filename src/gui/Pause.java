@@ -36,10 +36,10 @@ public class Pause extends JPanel implements ActionListener, KeyListener {
 		pause.setFont(Pfont);
 		
 		resume = new JButton("Resume Game");
-		setJButtonSettings(resume, font, 400, 70);
+		setJButtonSettings(resume, font, 350, 70);
 		
 		title = new JButton("Main Menu");
-		setJButtonSettings(title, font, 300, 70);
+		setJButtonSettings(title, font, 350, 70);
 		
 		this.setLayout(new GridBagLayout());
 		GridBagConstraints c = new GridBagConstraints();
