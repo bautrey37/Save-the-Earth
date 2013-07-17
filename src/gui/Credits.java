@@ -24,8 +24,8 @@ public class Credits extends JPanel implements ActionListener {
 	private JPanel container;
 	private JButton ret;
 	private JLabel name1, name2, name3, name4, name5, name6, name7, name8;
-	private Font font = new Font("Basica v.2012", Font.PLAIN, 35);
-	private Font retFont = new Font("Basica v.2012", Font.PLAIN, 30);
+	private Font font = new Font("Xolonium", Font.PLAIN, 35);
+	private Font retFont = new Font("Xolonium", Font.PLAIN, 30);
 	
 	//private Graphics g;
 	private BufferedImage background;

@@ -25,8 +25,8 @@ public class Controls extends JPanel implements ActionListener {
 	private JButton ret;
 	private JLabel title, con1, con2, con3, con4, con5, con6;
 	
-	private Font head = new Font("Basica v.2012", Font.PLAIN, 50);
-	private Font text = new Font("Basica v.2012", Font.PLAIN, 30);
+	private Font head = new Font("Xolonium", Font.PLAIN, 50);
+	private Font text = new Font("Xolonium", Font.PLAIN, 30);
 	
 	//private Graphics g;
 	private BufferedImage background;
