@@ -23,30 +23,6 @@ public class Enemy extends Entity {
 		}
 
 		xPosition = (1000 * Math.random()) % (screenWidth - image.getWidth());
-		yPosition = 0;
+		yPosition = -1*image.getHeight();
 	}
-
-	@Override
-	public void move() {
-		super.move();
-
-		if (xPosition < 3 || xPosition + image.getWidth() > screenWidth) {
-			xVelocity *= -1;
-		}
-	}
-
-	// // Movement
-	// public void move(int width, int height) {
-	// // update coordinates
-	// xPosition += xVelocity;
-	// yPosition += yVelocity;
-	//
-	// if (xPosition + image.getWidth() > width || xPosition < 0) {
-	// xVelocity *= -1;
-	// }
-	// if (yPosition + image.getHeight() > height || yPosition < 0) {
-	// yVelocity *= -1;
-	// }
-	// }
-
 }

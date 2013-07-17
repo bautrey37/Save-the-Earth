@@ -78,7 +78,7 @@ public abstract class Entity
 		//  Update position of Entity based on current location and speed variables.
 		//  For x coordinate, ensure screen wrapping.  Do this by adding WIDTH to maintain position value, then
 		//		that value modulus WIDTH again to get current position within screen.
-		xPosition = ( xPosition + xVelocity + WIDTH) % WIDTH;
+		xPosition = ( xPosition + xVelocity + WIDTH ) % WIDTH;
 		
 		
 		//  For y coordinate, DO NOT ensure screen wrapping:
