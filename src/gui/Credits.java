@@ -36,7 +36,7 @@ public class Credits extends JPanel implements ActionListener {
 		//Return Button
 		ret = new JButton("Return");
 		ret.setFont(retFont);
-		ret.setPreferredSize(new Dimension(200,60));
+		ret.setPreferredSize(new Dimension(200,50));
 		ret.addActionListener(this);
 		
 		//Labels

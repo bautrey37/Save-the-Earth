@@ -23,7 +23,7 @@ public class Controls extends JPanel implements ActionListener {
 	private static final long serialVersionUID = 1L;
 	private JPanel container;
 	private JButton ret;
-	private JLabel title, con1, con2, con3, con4, con5;
+	private JLabel title, con1, con2, con3, con4, con5, con6;
 	
 	private Font head = new Font("Basica v.2012", Font.PLAIN, 50);
 	private Font text = new Font("Basica v.2012", Font.PLAIN, 30);
@@ -36,7 +36,7 @@ public class Controls extends JPanel implements ActionListener {
 		
 		ret = new JButton("Return");
 		ret.setFont(text);
-		ret.setPreferredSize(new Dimension(200,60));
+		ret.setPreferredSize(new Dimension(200,50));
 		ret.addActionListener(this);
 				
 		title = new JLabel(" ");
@@ -52,6 +52,8 @@ public class Controls extends JPanel implements ActionListener {
 		con4.setFont(text);
 		con5 = new JLabel(" ");
 		con5.setFont(text);
+		con6 = new JLabel(" ");
+		con6.setFont(text);
 		
 		this.setLayout(new GridBagLayout());
 		GridBagConstraints c = new GridBagConstraints();
@@ -70,6 +72,8 @@ public class Controls extends JPanel implements ActionListener {
 		c.gridy = 5;
 		this.add(con5, c);
 		c.gridy = 6;
+		this.add(con6, c);
+		c.gridy = 7;
 		c.insets = new Insets(40, 0, 0, 0);
 		this.add(ret, c);
 		
