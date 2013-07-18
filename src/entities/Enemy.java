@@ -16,7 +16,7 @@ public class Enemy extends Entity {
 		this.screenWidth = screenWidth;
 
 		try {
-			image = ImageIO.read(new File("res/Large-Alien-Ship.png"));
+			image = ImageIO.read(new File("res/Meteor.png"));
 		}
 		catch (Exception e) {
 			e.printStackTrace();

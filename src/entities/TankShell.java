@@ -20,7 +20,7 @@ public class TankShell extends Tank
 	 */
 	private static int shellStrength;
 	
-	
+	private int shellLife;
 	
 	
 	/**
@@ -37,7 +37,7 @@ public class TankShell extends Tank
 		//  Call parent class constructor
 		super(xPos, yPos, xVel, yVel);
 		
-		
+		shellLife = 50;
 		
 		//  Calculate the proper coordinates and velocities.
 		this.xPosition = Math.sin( angle ) * 40.0 + xPos;
@@ -94,5 +94,15 @@ public class TankShell extends Tank
 	}  //  End of setShellStrength() method.
 	
 	
+	
+	public void decreaseLife()
+	{
+		shellLife -= 1;
+	}
+	
+	public int getLife()
+	{
+		return shellLife;
+	}
 	
 }  //  End of TankShell class.
