@@ -3,7 +3,7 @@
   associations="true" dependencies="false" nesting-relationships="true">  
   <class id="1" language="java" name="entities.Entity" project="Save the Earth" 
     file="/Save the Earth/src/entities/Entity.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="381" y="185"/>    
+    <position height="315" width="197" x="225" y="37"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -12,7 +12,7 @@
   </class>  
   <class id="2" language="java" name="entities.Tank" project="Save the Earth" 
     file="/Save the Earth/src/entities/Tank.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="379" y="459"/>    
+    <position height="171" width="193" x="297" y="392"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -21,7 +21,7 @@
   </class>  
   <class id="3" language="java" name="entities.Enemy" project="Save the Earth" 
     file="/Save the Earth/src/entities/Enemy.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="729" y="260"/>    
+    <position height="117" width="104" x="153" y="392"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -30,7 +30,7 @@
   </class>  
   <class id="4" language="java" name="entities.TankBody" project="Save the Earth" 
     file="/Save the Earth/src/entities/TankBody.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="379" y="634"/>    
+    <position height="81" width="218" x="297" y="603"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -39,7 +39,7 @@
   </class>  
   <class id="5" language="java" name="entities.TankCannon" project="Save the Earth" 
     file="/Save the Earth/src/entities/TankCannon.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="697" y="479"/>    
+    <position height="135" width="230" x="555" y="603"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -48,7 +48,7 @@
   </class>  
   <class id="6" language="java" name="entities.TankShell" project="Save the Earth" 
     file="/Save the Earth/src/entities/TankShell.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="108" y="484"/>    
+    <position height="135" width="216" x="41" y="603"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      

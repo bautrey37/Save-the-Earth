@@ -3,7 +3,7 @@
   associations="false" dependencies="false" nesting-relationships="true">  
   <class id="1" language="java" name="gui.Controls" project="Save the Earth" 
     file="/Save the Earth/src/gui/Controls.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="261" width="194" x="41" y="858"/>    
+    <position height="351" width="194" x="43" y="632"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -12,7 +12,7 @@
   </class>  
   <class id="2" language="java" name="gui.Credits" project="Save the Earth" file="/Save the Earth/src/gui/Credits.java" 
     binary="false" corner="BOTTOM_RIGHT">    
-    <position height="279" width="194" x="275" y="858"/>    
+    <position height="369" width="194" x="277" y="632"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -21,7 +21,7 @@
   </class>  
   <class id="3" language="java" name="gui.GUI" project="Save the Earth" file="/Save the Earth/src/gui/GUI.java" 
     binary="false" corner="BOTTOM_RIGHT">    
-    <position height="369" width="135" x="666" y="37"/>    
+    <position height="369" width="135" x="668" y="37"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -30,7 +30,7 @@
   </class>  
   <class id="4" language="java" name="gui.Pause" project="Save the Earth" file="/Save the Earth/src/gui/Pause.java" 
     binary="false" corner="BOTTOM_RIGHT">    
-    <position height="297" width="235" x="784" y="858"/>    
+    <position height="297" width="235" x="786" y="632"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -39,7 +39,7 @@
   </class>  
   <class id="5" language="java" name="gui.Synopsis" project="Save the Earth" 
     file="/Save the Earth/src/gui/Synopsis.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="189" width="131" x="1059" y="858"/>    
+    <position height="189" width="131" x="1061" y="632"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -48,7 +48,7 @@
   </class>  
   <class id="6" language="java" name="gui.TitleMenu" project="Save the Earth" 
     file="/Save the Earth/src/gui/TitleMenu.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="477" width="235" x="509" y="858"/>    
+    <position height="477" width="235" x="511" y="632"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -57,7 +57,7 @@
   </class>  
   <class id="7" language="java" name="gui.Upgrade" project="Save the Earth" file="/Save the Earth/src/gui/Upgrade.java" 
     binary="false" corner="BOTTOM_RIGHT">    
-    <position height="135" width="131" x="1230" y="858"/>    
+    <position height="135" width="131" x="1232" y="632"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -66,16 +66,16 @@
   </class>  
   <class id="8" language="java" name="javax.swing.JPanel" project="Save the Earth" 
     file="C:/Program Files/Java/jre7/lib/rt.jar" binary="true" corner="BOTTOM_RIGHT">    
-    <position height="279" width="234" x="549" y="539"/>    
+    <position height="53" width="87" x="668" y="539"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+      <attributes public="false" package="false" protected="false" private="false" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
     </display>  
   </class>  
   <interface id="9" language="java" name="java.awt.event.ActionListener" project="Applet" 
     file="C:/Program Files/Java/jre7/lib/rt.jar" binary="true" corner="BOTTOM_RIGHT">    
-    <position height="81" width="194" x="403" y="1375"/>    
+    <position height="81" width="194" x="404" y="1149"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -84,7 +84,7 @@
   </interface>  
   <interface id="10" language="java" name="java.awt.event.KeyListener" project="Applet" 
     file="C:/Program Files/Java/jre7/lib/rt.jar" binary="true" corner="BOTTOM_RIGHT">    
-    <position height="117" width="165" x="784" y="1375"/>    
+    <position height="117" width="165" x="786" y="1149"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -93,7 +93,7 @@
   </interface>  
   <class id="11" language="java" name="javax.swing.JComponent" project="Applet" 
     file="C:/Program Files/Java/jre7/lib/rt.jar" binary="true" corner="BOTTOM_RIGHT">    
-    <position height="53" width="96" x="549" y="446"/>    
+    <position height="53" width="96" x="551" y="446"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="false" package="false" protected="false" private="false" static="true"/>      
@@ -105,8 +105,8 @@
     <end type="TARGET" refId="9"/>  
   </realization>  
   <dependency id="13">    
-    <bendpoint x="871" y="446"/>    
-    <bendpoint x="871" y="539"/>    
+    <bendpoint x="874" y="446"/>    
+    <bendpoint x="874" y="539"/>    
     <end type="SOURCE" refId="3"/>    
     <end type="TARGET" refId="5"/>  
   </dependency>  
@@ -131,19 +131,19 @@
     <end type="TARGET" refId="9"/>  
   </realization>  
   <dependency id="19">    
-    <bendpoint x="675" y="446"/>    
+    <bendpoint x="677" y="446"/>    
     <end type="SOURCE" refId="3"/>    
     <end type="TARGET" refId="8"/>  
   </dependency>  
   <dependency id="20">    
-    <bendpoint x="518" y="446"/>    
-    <bendpoint x="518" y="539"/>    
+    <bendpoint x="520" y="446"/>    
+    <bendpoint x="520" y="539"/>    
     <end type="SOURCE" refId="3"/>    
     <end type="TARGET" refId="6"/>  
   </dependency>  
   <dependency id="21">    
-    <bendpoint x="957" y="446"/>    
-    <bendpoint x="957" y="539"/>    
+    <bendpoint x="959" y="446"/>    
+    <bendpoint x="959" y="539"/>    
     <end type="SOURCE" refId="3"/>    
     <end type="TARGET" refId="7"/>  
   </dependency>  
@@ -176,20 +176,20 @@
     <end type="TARGET" refId="9"/>  
   </realization>  
   <dependency id="29">    
-    <bendpoint x="479" y="446"/>    
-    <bendpoint x="479" y="539"/>    
+    <bendpoint x="481" y="446"/>    
+    <bendpoint x="481" y="539"/>    
     <end type="SOURCE" refId="3"/>    
     <end type="TARGET" refId="2"/>  
   </dependency>  
   <dependency id="30">    
-    <bendpoint x="363" y="446"/>    
-    <bendpoint x="363" y="539"/>    
+    <bendpoint x="365" y="446"/>    
+    <bendpoint x="365" y="539"/>    
     <end type="SOURCE" refId="3"/>    
     <end type="TARGET" refId="1"/>  
   </dependency>  
   <dependency id="31">    
-    <bendpoint x="813" y="446"/>    
-    <bendpoint x="813" y="539"/>    
+    <bendpoint x="785" y="446"/>    
+    <bendpoint x="785" y="539"/>    
     <end type="SOURCE" refId="3"/>    
     <end type="TARGET" refId="4"/>  
   </dependency>  
