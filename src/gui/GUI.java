@@ -30,17 +30,17 @@ public class GUI {
 	
 	private CardLayout cl;
 	
-	public Font basicaFont;
+	public Font xoloniumFont;
 	
 	public GUI() {
 		window = new JFrame(gamename);
 		
 		try {
 			//creates a new custom font from file
-			basicaFont = Font.createFont(Font.TRUETYPE_FONT, new File("res/Basica v2012.ttf"));
+			xoloniumFont = Font.createFont(Font.TRUETYPE_FONT, new File("res/Xolonium-Regular.otf"));
 			GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
 			//registers font within java, can be used anywhere now
-			ge.registerFont(basicaFont);
+			ge.registerFont(xoloniumFont);
 			
 			/* // print out all available font names
 			String []fontNames = ge.getAvailableFontFamilyNames();

@@ -40,8 +40,8 @@ public class TitleMenu extends JPanel implements ActionListener {
 	
 	private JPanel container, difficultyPane, bottomPane, buttons;
 	private JButton newGame, quit, credits, controls, easy, medium, hard;
-	private Font font = new Font("Xolonium", Font.PLAIN, 22);
-	private Font difFont = new Font("Xolonium", Font.PLAIN, 18);
+	private Font font = new Font("Xolonium", Font.PLAIN, 25);
+	private Font difFont = new Font("Xolonium", Font.PLAIN, 20);
 	
 	//private Graphics g;
 	private BufferedImage logo, background;

@@ -39,6 +39,7 @@ public class Game extends JComponent implements KeyListener, Runnable {
 
 	private Enemy[] enemies;
 	private int numEnemies = 0;
+	
 
 	/**
 	 * Defines the values used in determining enemy count and enemy type in levels 1 - 10. This variable is static so
@@ -219,7 +220,7 @@ public class Game extends JComponent implements KeyListener, Runnable {
 	/**
 	 * Handles moving all entities across the screen.
 	 */
-	public void moveEntities() {
+	public synchronized void moveEntities() {
 		// Handle tank movement.
 		if (accelLeft)
 			tank[0].accelerateLeft();
