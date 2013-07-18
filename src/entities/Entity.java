@@ -46,6 +46,8 @@ public abstract class Entity
 	private static int HEIGHT = 600;
 	
 	
+	protected int health;
+	
 	
 	/**
 	 * Constructs a new Entity object within given coordinates and initial speeds.
@@ -160,5 +162,15 @@ public abstract class Entity
 	}  //  End of getImage() method.
 	
 	
+	
+	public int getHealth()
+	{
+		return health;
+	}
+	
+	public void setHealth( int health )
+	{
+		this.health = health;
+	}
 	
 }  //  End of Entity class.
