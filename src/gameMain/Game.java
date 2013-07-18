@@ -56,6 +56,7 @@ public class Game extends JComponent implements KeyListener, Runnable {
 	 * Manages the objects for displaying and tracking shots fired by user.
 	 */
 	private volatile Vector<TankShell> shells;
+	private boolean needCooldown;
 
 	/**
 	 * Constructs a new Game JPanel for which to run the level that the user is playing on.
@@ -98,6 +99,7 @@ public class Game extends JComponent implements KeyListener, Runnable {
 		tank[1] = new TankCannon( getWidth() * 0.5, getHeight() * 0.9, 0, 0);
 		
 		shells = new Vector<TankShell>();
+		needCooldown = false;
 		
 		enemies = new Enemy[50];
 		
@@ -268,8 +270,11 @@ public class Game extends JComponent implements KeyListener, Runnable {
 			System.out.println("D");
 			accelRight = true;
 		}
-		if (key == KeyEvent.VK_SPACE)
+		if (key == KeyEvent.VK_SPACE && !needCooldown)
+		{
 			shells.add( new TankShell(tank[0].getX(), tank[0].getY(), 0, 0, ((TankCannon)tank[1]).getAngle() ) );
+			needCooldown = true;
+		}
 	}
 
 	@Override
@@ -281,6 +286,9 @@ public class Game extends JComponent implements KeyListener, Runnable {
 		}
 		if (key == KeyEvent.VK_D || key == KeyEvent.VK_RIGHT) {
 			accelRight = false;
+		}
+		if (key == KeyEvent.VK_SPACE){
+			needCooldown = false;
 		}
 	}
 
