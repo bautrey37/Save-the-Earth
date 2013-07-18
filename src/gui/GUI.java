@@ -20,7 +20,11 @@ public class GUI {
 	public static final int gameWidth = 800;
 	public static final int gameHeight = gameWidth * 3/4;
 	
-	private JFrame window;
+	/**
+	 * Handles the entire graphics environment.  Only one JFrame is needed throughout the game
+	 * and the window information is needed by other classes, so this object may be static.
+	 */
+	public static JFrame window;
 	private JPanel panelContainer, credits, upgrades, control, pause, synopsis;
 	private JComponent game, title;
 	
@@ -87,5 +91,6 @@ public class GUI {
 	public int getHeight() {
 		return gameHeight;
 	}
+	
 	
 }

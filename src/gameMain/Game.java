@@ -2,19 +2,22 @@ package gameMain;
 
 import java.awt.CardLayout;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.Image;
+import java.awt.MouseInfo;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.geom.AffineTransform;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.util.Vector;
 
 import javax.imageio.ImageIO;
 import javax.swing.JComponent;
 import javax.swing.JPanel;
 
-import entities.Enemy;
-import entities.Tank;
-import entities.TankBody;
+import entities.*;
+import gui.GUI;
 
 /**
  * This is the main class that runs the game.
@@ -47,6 +50,11 @@ public class Game extends JComponent implements KeyListener, Runnable {
 	 * Manages the objects for displaying the user's tank.
 	 */
 	private Tank[] tank;
+	
+	/**
+	 * Manages the objects for displaying and tracking shots fired by user.
+	 */
+	private volatile Vector<TankShell> shells;
 
 	/**
 	 * Constructs a new Game JPanel for which to run the level that the user is playing on.
@@ -86,6 +94,9 @@ public class Game extends JComponent implements KeyListener, Runnable {
 		tank = new Tank[2];
 		tank[0] = new TankBody(getWidth() * 0.5, getHeight() * 0.9, 0, 0);
 		tank[0].setTankSpeedLimit(10);
+		tank[1] = new TankCannon( getWidth() * 0.5, getHeight() * 0.9, 0, 0);
+		
+		shells = new Vector<TankShell>();
 		
 		enemies = new Enemy[50];
 		
@@ -174,10 +185,32 @@ public class Game extends JComponent implements KeyListener, Runnable {
 			}
 		}
 
-		// Draw Tank
+		
+		//  Draw all shells on screen.
+		for (TankShell e : shells) {
+			if (null != e) {
+				offg.drawImage(e.getImage(), (int)(e.getX() - e.getImage().getWidth() / 2),
+						             (int)(e.getY() - e.getImage().getHeight() / 2), null);
+			}
+		}
+		
+		
+		
+		
+		//  Get cannon angle and image.
+		double num = ((TankCannon)tank[1]).getAngle() / Math.PI * 180.0;
+		System.out.println((int)num);
+		BufferedImage temp = ((TankCannon)tank[1]).cannon[ (int) num - 90];
+		
+		//  Draw appropriate cannon image.
+		offg.drawImage(temp, (int) tank[0].getX() - temp.getWidth() / 2,
+				(int) tank[0].getY() - temp.getHeight() / 2, this);
+		
+		//  Draw tank body.
 		offg.drawImage(tank[0].getImage(), (int) tank[0].getX() - tank[0].getImage().getWidth() / 2,
 				(int) tank[0].getY() - tank[0].getImage().getHeight() / 2, this);
-
+		
+		
 		// Make off screen image visible
 		g.drawImage(offScreen, 0, 0, this);
 	}
@@ -196,7 +229,16 @@ public class Game extends JComponent implements KeyListener, Runnable {
 			tank[0].lowerTankSpeed();
 
 		tank[0].move();
-
+		
+		//  Move all shells on screen.
+		for( TankShell s : shells)
+			s.move();
+		
+		//  Handle tank cannon rotation
+		double mouseX = MouseInfo.getPointerInfo().getLocation().getX() - GUI.window.getX();
+		double mouseY = MouseInfo.getPointerInfo().getLocation().getY() - GUI.window.getY();
+		((TankCannon)tank[1]).updateAngleMouse( (int) mouseX, (int) mouseY, (int) tank[0].getX(), (int) tank[0].getY() );
+		
 		// Move Enemies
 		for (Enemy e : enemies) {
 			if (e != null)
@@ -225,6 +267,8 @@ public class Game extends JComponent implements KeyListener, Runnable {
 			System.out.println("D");
 			accelRight = true;
 		}
+		if (key == KeyEvent.VK_SPACE)
+			shells.add( new TankShell(tank[0].getX(), tank[0].getY(), 0, 0, ((TankCannon)tank[1]).getAngle() ) );
 	}
 
 	@Override

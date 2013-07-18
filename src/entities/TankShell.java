@@ -32,16 +32,26 @@ public class TankShell extends Tank
 	 * @param xVel - x velocity to spawn TankShell with.
 	 * @param yVel - y velocity to spawn TankShell with.
 	 */
-	public TankShell(double xPos, double yPos, double xVel, double yVel)
+	public TankShell(double xPos, double yPos, double xVel, double yVel, double angle)
 	{
 		//  Call parent class constructor
 		super(xPos, yPos, xVel, yVel);
 		
 		
-		//  Obtain image file for this tank body.
+		
+		//  Calculate the proper coordinates and velocities.
+		this.xPosition = Math.sin( angle ) * 40.0 + xPos;
+		this.yPosition = Math.cos( angle ) * 40.0 + yPos;
+		
+		this.xVelocity = Math.sin( angle ) * 20.0;
+		this.yVelocity = Math.cos( angle ) * 20.0;
+		
+		
+		
+		//  Obtain image file for this tank shell.
 		try
 		{
-			image = ImageIO.read( new File( "Tank-Shell-1.png" ) );
+			image = ImageIO.read( new File( "res/Tank-Shell.png" ) );
 		}
 		catch (Exception e)
 		{
