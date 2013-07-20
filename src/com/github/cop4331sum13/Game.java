@@ -1,4 +1,4 @@
-package gameMain;
+package com.github.cop4331sum13;
 
 import java.awt.CardLayout;
 import java.awt.Graphics;
@@ -16,8 +16,8 @@ import javax.imageio.ImageIO;
 import javax.swing.JComponent;
 import javax.swing.JPanel;
 
-import entities.*;
-import gui.GUI;
+import com.github.cop4331sum13.entities.*;
+import com.github.cop4331sum13.gui.GUI;
 
 /**
  * This is the main class that runs the game.

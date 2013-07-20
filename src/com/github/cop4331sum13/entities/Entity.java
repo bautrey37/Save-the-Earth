@@ -2,7 +2,7 @@
  * This is the parent/super class for all entities of the game, including the tank with tank aspects, shells fired,
  * and all enemies that will appear throughout the game.  This class contains the common aspects of all entities.
  */
-package entities;
+package com.github.cop4331sum13.entities;
 
 import java.awt.image.BufferedImage;
 

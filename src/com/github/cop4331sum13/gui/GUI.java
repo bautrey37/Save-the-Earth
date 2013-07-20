@@ -1,6 +1,4 @@
-package gui;
-
-import gameMain.Game;
+package com.github.cop4331sum13.gui;
 
 import java.awt.CardLayout;
 import java.awt.Font;
@@ -12,6 +10,8 @@ import java.io.IOException;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+
+import com.github.cop4331sum13.Game;
 
 public class GUI {
 	

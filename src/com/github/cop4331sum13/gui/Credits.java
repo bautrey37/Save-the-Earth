@@ -1,4 +1,4 @@
-package gui;
+package com.github.cop4331sum13.gui;
 
 import java.awt.CardLayout;
 import java.awt.Color;

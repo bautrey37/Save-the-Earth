@@ -1,7 +1,5 @@
-package gui;
+package com.github.cop4331sum13.gui;
 
-
-import gameMain.Game;
 
 import java.awt.BorderLayout;
 import java.awt.CardLayout;
@@ -25,6 +23,8 @@ import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JComponent;
 import javax.swing.JPanel;
+
+import com.github.cop4331sum13.Game;
 
 /**
  * TBA

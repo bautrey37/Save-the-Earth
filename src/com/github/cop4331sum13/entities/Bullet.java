@@ -1,4 +1,4 @@
-package entities;
+package com.github.cop4331sum13.entities;
 
 import java.io.File;
 import java.io.IOException;
@@ -18,6 +18,5 @@ public class Bullet extends Projectile {
 		}
 	}
 	
-	public void 
 
 }

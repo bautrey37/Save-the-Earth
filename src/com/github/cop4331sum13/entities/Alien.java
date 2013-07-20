@@ -1,7 +1,7 @@
 /**
  * 
  */
-package entities;
+package com.github.cop4331sum13.entities;
 
 /**
  * @author Thomas

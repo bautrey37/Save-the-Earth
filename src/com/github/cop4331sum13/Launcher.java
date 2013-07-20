@@ -1,8 +1,8 @@
-package gameMain;
-
-import gui.GUI;
+package com.github.cop4331sum13;
 
 import javax.swing.SwingUtilities;
+
+import com.github.cop4331sum13.gui.GUI;
 
 public class Launcher {
 

@@ -1,4 +1,4 @@
-package gui;
+package com.github.cop4331sum13.gui;
 
 import javax.swing.JButton;
 import javax.swing.JPanel;

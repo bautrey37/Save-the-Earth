@@ -1,4 +1,4 @@
-package gui;
+package com.github.cop4331sum13.gui;
 
 import java.io.File;
 import java.io.FileNotFoundException;

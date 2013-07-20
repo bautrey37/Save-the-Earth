@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <class-diagram version="1.1.3" icons="true" always-add-relationships="false" generalizations="true" realizations="true" 
   associations="false" dependencies="false" nesting-relationships="true">  
-  <class id="1" language="java" name="gui.Controls" project="Save the Earth" 
-    file="/Save the Earth/src/gui/Controls.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="1" language="java" name="com.github.cop4331sum13.gui.Controls" project="Save the Earth" 
+    file="/Save the Earth/src/com/github/cop4331sum13/gui/Controls.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="351" width="194" x="212" y="789"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
@@ -10,8 +10,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="2" language="java" name="gui.Credits" project="Save the Earth" file="/Save the Earth/src/gui/Credits.java" 
-    binary="false" corner="BOTTOM_RIGHT">    
+  <class id="2" language="java" name="com.github.cop4331sum13.gui.Credits" project="Save the Earth" 
+    file="/Save the Earth/src/com/github/cop4331sum13/gui/Credits.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="369" width="194" x="446" y="789"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
@@ -19,8 +19,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="3" language="java" name="gui.Pause" project="Save the Earth" file="/Save the Earth/src/gui/Pause.java" 
-    binary="false" corner="BOTTOM_RIGHT">    
+  <class id="3" language="java" name="com.github.cop4331sum13.gui.Pause" project="Save the Earth" 
+    file="/Save the Earth/src/com/github/cop4331sum13/gui/Pause.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="297" width="235" x="976" y="789"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
@@ -28,8 +28,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="4" language="java" name="gui.Synopsis" project="Save the Earth" 
-    file="/Save the Earth/src/gui/Synopsis.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="4" language="java" name="com.github.cop4331sum13.gui.Synopsis" project="Save the Earth" 
+    file="/Save the Earth/src/com/github/cop4331sum13/gui/Synopsis.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="189" width="131" x="41" y="789"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
@@ -37,8 +37,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="5" language="java" name="gui.TitleMenu" project="Save the Earth" 
-    file="/Save the Earth/src/gui/TitleMenu.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="5" language="java" name="com.github.cop4331sum13.gui.TitleMenu" project="Save the Earth" 
+    file="/Save the Earth/src/com/github/cop4331sum13/gui/TitleMenu.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="477" width="235" x="680" y="789"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
@@ -46,8 +46,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="6" language="java" name="gui.Upgrade" project="Save the Earth" file="/Save the Earth/src/gui/Upgrade.java" 
-    binary="false" corner="BOTTOM_RIGHT">    
+  <class id="6" language="java" name="com.github.cop4331sum13.gui.Upgrade" project="Save the Earth" 
+    file="/Save the Earth/src/com/github/cop4331sum13/gui/Upgrade.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="135" width="131" x="1293" y="789"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
@@ -55,8 +55,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="7" language="java" name="gameMain.Game" project="Save the Earth" 
-    file="/Save the Earth/src/gameMain/Game.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="7" language="java" name="com.github.cop4331sum13.Game" project="Save the Earth" 
+    file="/Save the Earth/src/com/github/cop4331sum13/Game.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="459" width="178" x="936" y="1306"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
@@ -64,8 +64,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="8" language="java" name="gameMain.Launcher" project="Save the Earth" 
-    file="/Save the Earth/src/gameMain/Launcher.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="8" language="java" name="com.github.cop4331sum13.Launcher" project="Save the Earth" 
+    file="/Save the Earth/src/com/github/cop4331sum13/Launcher.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="117" width="113" x="780" y="37"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
@@ -73,8 +73,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="9" language="java" name="entities.Enemy" project="Save the Earth" 
-    file="/Save the Earth/src/entities/Enemy.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="9" language="java" name="com.github.cop4331sum13.entities.Enemy" project="Save the Earth" 
+    file="/Save the Earth/src/com/github/cop4331sum13/entities/Enemy.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="117" width="104" x="522" y="1805"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
@@ -82,8 +82,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="10" language="java" name="entities.Entity" project="Save the Earth" 
-    file="/Save the Earth/src/entities/Entity.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="10" language="java" name="com.github.cop4331sum13.entities.Entity" project="Save the Earth" 
+    file="/Save the Earth/src/com/github/cop4331sum13/entities/Entity.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="315" width="197" x="443" y="1306"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
@@ -91,8 +91,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="11" language="java" name="entities.Tank" project="Save the Earth" 
-    file="/Save the Earth/src/entities/Tank.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="11" language="java" name="com.github.cop4331sum13.entities.Tank" project="Save the Earth" 
+    file="/Save the Earth/src/com/github/cop4331sum13/entities/Tank.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="171" width="193" x="666" y="1805"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
@@ -100,8 +100,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="12" language="java" name="entities.TankBody" project="Save the Earth" 
-    file="/Save the Earth/src/entities/TankBody.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="12" language="java" name="com.github.cop4331sum13.entities.TankBody" project="Save the Earth" 
+    file="/Save the Earth/src/com/github/cop4331sum13/entities/TankBody.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="81" width="218" x="936" y="2016"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
@@ -109,8 +109,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="13" language="java" name="entities.TankCannon" project="Save the Earth" 
-    file="/Save the Earth/src/entities/TankCannon.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="13" language="java" name="com.github.cop4331sum13.entities.TankCannon" project="Save the Earth" 
+    file="/Save the Earth/src/com/github/cop4331sum13/entities/TankCannon.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="135" width="230" x="666" y="2016"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
@@ -118,8 +118,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="14" language="java" name="entities.TankShell" project="Save the Earth" 
-    file="/Save the Earth/src/entities/TankShell.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="14" language="java" name="com.github.cop4331sum13.entities.TankShell" project="Save the Earth" 
+    file="/Save the Earth/src/com/github/cop4331sum13/entities/TankShell.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="135" width="216" x="410" y="2016"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
@@ -172,8 +172,8 @@
       <operations public="false" package="false" protected="false" private="false" static="true"/>    
     </display>  
   </class>  
-  <class id="20" language="java" name="gui.GUI" project="Save the Earth" file="/Save the Earth/src/gui/GUI.java" 
-    binary="false" corner="BOTTOM_RIGHT">    
+  <class id="20" language="java" name="com.github.cop4331sum13.gui.GUI" project="Save the Earth" 
+    file="/Save the Earth/src/com/github/cop4331sum13/gui/GUI.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="369" width="135" x="780" y="194"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      

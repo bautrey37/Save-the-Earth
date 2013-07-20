@@ -1,6 +1,4 @@
-package gui;
-
-import gameMain.Game;
+package com.github.cop4331sum13.gui;
 
 import java.awt.CardLayout;
 import java.awt.Color;
@@ -18,6 +16,8 @@ import java.awt.event.KeyListener;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+
+import com.github.cop4331sum13.Game;
 
 public class Pause extends JPanel implements ActionListener, KeyListener {
 
