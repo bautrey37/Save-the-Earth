@@ -85,7 +85,7 @@ public abstract class Entity
 		
 		//  For y coordinate, DO NOT ensure screen wrapping:
 		//		* Enemies will be spawned off screen
-		//		* Program must be able to track when enemies "decend to low" to account for enemies "crashing" into planet.
+		//		* Program must be able to track when enemies "descend too low" to account for enemies "crashing" into planet.
 		yPosition = yPosition + yVelocity;
 		
 		

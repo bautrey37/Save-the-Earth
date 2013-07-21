@@ -2,12 +2,10 @@ package com.github.cop4331sum13;
 
 import java.awt.CardLayout;
 import java.awt.Graphics;
-import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.MouseInfo;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import java.awt.geom.AffineTransform;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.util.Vector;
@@ -57,6 +55,12 @@ public class Game extends JComponent implements KeyListener, Runnable {
 	 */
 	private volatile Vector<TankShell> shells;
 	private boolean needCooldown;
+	
+	/**
+	 * Manages the objects for displaying alien ships
+	 */
+	private Vector<Alien> aliens;
+	private Vector<AlienLaser> lasers;
 
 	/**
 	 * Constructs a new Game JPanel for which to run the level that the user is playing on.
@@ -99,6 +103,8 @@ public class Game extends JComponent implements KeyListener, Runnable {
 		tank[1] = new TankCannon( getWidth() * 0.5, getHeight() * 0.9, 0, 0);
 		
 		shells = new Vector<TankShell>();
+		aliens = new Vector<Alien>();
+		lasers = new Vector<AlienLaser>();
 		needCooldown = false;
 		
 		enemies = new Enemy[50];
@@ -142,6 +148,8 @@ public class Game extends JComponent implements KeyListener, Runnable {
 			if (1000 * Math.random() > 980) {
 				enemies[numEnemies] = new Enemy(getWidth());
 				numEnemies = (numEnemies + 1) % enemies.length;
+				
+				aliens.add( new LargeAlien( (int)(Math.random() * 800.0), 0, 0 ,0 ) );
 			}
 			
 			long time = System.currentTimeMillis();
@@ -196,7 +204,18 @@ public class Game extends JComponent implements KeyListener, Runnable {
 						             (int)(e.getY() - e.getImage().getHeight() / 2), null);
 			}
 		}
-		
+		for (Alien e : aliens) {
+			if (null != e) {
+				offg.drawImage(e.getImage(), (int)(e.getX() - e.getImage().getWidth() / 2),
+						             (int)(e.getY() - e.getImage().getHeight() / 2), null);
+			}
+		}
+		for (AlienLaser e : lasers) {
+			if (null != e) {
+				offg.drawImage(e.getImage(), (int)(e.getX() - e.getImage().getWidth() / 2),
+						             (int)(e.getY() - e.getImage().getHeight() / 2), null);
+			}
+		}
 		
 		
 		
@@ -247,7 +266,26 @@ public class Game extends JComponent implements KeyListener, Runnable {
 			if (e != null)
 				e.move();
 		}
-
+		
+		
+		//  Move Aliens
+		for ( Alien e : aliens )
+		{
+			if ( e != null && e instanceof LargeAlien)
+			{
+				((LargeAlien)e).updateAngleToTank( (int)tank[0].getX(), (int)tank[0].getY() );
+				((LargeAlien)e).autoAccelerate();
+				e.move();
+				((LargeAlien)e).fireLasers( lasers );
+			}
+		}
+		for ( AlienLaser e : lasers )
+		{
+			if( e!= null )
+			{
+				e.move();
+			}
+		}
 	}
 
 

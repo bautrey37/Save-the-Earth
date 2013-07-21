@@ -94,22 +94,6 @@ public class TankCannon extends Tank
 		
 		
 		
-		//**************************
-		/* 
-		 * 
-		 * KEEP IN MIND FOR LATER:  DO WE ALLOW FULL 360 DEGREE ROTATION OR LIMIT IT, TO 180 DEGREES?
-		 * 
-		 * FOR NOW, METHOD ALLOWS FOR FULL 360 DEGREE ROTATION
-		 * 
-		 * 
-		 * THIS IS IN ALL CAPS TO GRAB EVERYONE'S ATTENTION AND TO ENSURE RESOLUTION BY FINAL PRODUCT  :D
-		 * 
-		 * 
-		 ****************************/
-		
-		
-		
-		
 		//  Take the temporary angle variable and get the true angle of inclination (0 - 360 degrees).
 		if(tempY == 0 && tempX == 0)
 			this.angle = Math.PI / 2.0;//0;
