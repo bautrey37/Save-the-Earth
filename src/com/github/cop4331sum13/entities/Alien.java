@@ -8,13 +8,8 @@ package com.github.cop4331sum13.entities;
  *
  */
 public abstract class Alien extends Entity
-{
-	/**
-	 * keeps track of whether this alien is alive
-	 */
-	protected boolean alive;
+{	
 	
-
 	/**
 	 * This value tracks the angle of inclination from the alien ship midpoint to the
 	 * user tank midpoint.  It is used for sending small ships straight at the tank and
@@ -23,10 +18,15 @@ public abstract class Alien extends Entity
 	
 	protected double angleToTank;
 	
+	
+	
 	public static Alien spawnAlien(double xPos, double yPos, double xVel, double yVel){
 		int chance = (int)(100*Math.random());
 		
-		if (chance < 50){
+		if (chance < 55){
+			
+			System.out.println("large");
+			
 			return new LargeAlien(xPos, yPos, xVel, yVel);
 		}
 		else{
@@ -94,16 +94,6 @@ public abstract class Alien extends Entity
 		
 		
 	}  //  End of updateAngleToTank() method.
-	
-	
-	// Getter and setter for alive
-	public void kill(){
-		alive = false;
-	}
-	
-	public boolean isAlive(){
-		return alive;
-	}
 	
 	
 }  //  End of Alien class.

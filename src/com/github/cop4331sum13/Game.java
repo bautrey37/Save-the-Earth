@@ -281,14 +281,15 @@ public class Game extends JComponent implements KeyListener, Runnable {
 			
 			if (e != null && e instanceof SmallAlien)
 			{
-				if (e.isAlive()){
+				if (!((SmallAlien) e).isGrounded()){
 					((SmallAlien)e).autoAccelerate((int)tank[0].getX(), (int)tank[0].getY() );
 					e.move();
-					if (e.getY() > GUI.gameHeight - 50)
-						e.kill();
+					if (e.getY() > GUI.gameHeight - 60)
+						((SmallAlien)e).ground();
 				}
 				else{
-					;
+					((SmallAlien)e).bounce();
+					e.move();
 				}
 			}
 		}
