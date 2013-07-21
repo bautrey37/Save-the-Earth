@@ -8,22 +8,24 @@ import java.io.File;
 import javax.imageio.ImageIO;
 
 /**
+ * This class creates a laser fired by an alien ship and manages each laser shot
+ * as a separate object.
+ * 
  * @author Thomas J. O'Neill
  */
 public class AlienLaser extends Alien
 {
 	
 	
-	
 	/**
-	 * 
+	 * Constructs a new "laser" that was "fired" by an alien ship.
 	 */
 	public AlienLaser(double xPos, double yPos, double xVel, double yVel, double angleToTank)
 	{
 		super( xPos, yPos, xVel, yVel );
-		// TODO Auto-generated constructor stub
 		
 		
+		//  Set proper starting position
 		this.xPosition = Math.sin( angleToTank ) + xPos;
 		this.yPosition = Math.cos( angleToTank ) + yPos;
 		
@@ -32,7 +34,7 @@ public class AlienLaser extends Alien
 		
 		
 		
-		//  Obtain image file for this tank shell.
+		//  Obtain image file for this alien laser.
 		try
 		{
 			image = ImageIO.read( new File( "res/Alien-Laser.png" ) );
