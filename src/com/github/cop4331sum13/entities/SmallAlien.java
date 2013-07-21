@@ -40,40 +40,33 @@ public class SmallAlien extends Alien {
 	 * This method updates the ship's movement direction and speed.
 	 */
 	public void autoAccelerate(int tankX, int tankY) {
-		if (!(System.currentTimeMillis() - systemTimeForAccel > SmallAlien.timeToWaitForAccel)) {
-			return;
+		if (!grounded) {
+			if (!(System.currentTimeMillis() - systemTimeForAccel > SmallAlien.timeToWaitForAccel)) {
+				return;
+			}
+			else {
+				systemTimeForAccel = System.currentTimeMillis();
+			}
+
+			// Check if rotation is possible
+			if (yPosition < SmallAlien.nonRotateHeight)
+				updateAngleToTank(tankX, tankY);
+
+			// Accelerate
+			xVelocity += Math.sin(angleToTank) * multiplier;
+			yVelocity += Math.cos(angleToTank) * multiplier;
+
+			// Check for grounded
+			if (yPosition > GUI.gameHeight - 60) {
+				grounded = true;
+
+				yVelocity = -0.3 * yVelocity;
+				xVelocity = 0.1 * xVelocity;
+			}
 		}
 		else {
-			systemTimeForAccel = System.currentTimeMillis();
+			yVelocity += gravConst;
 		}
-
-		// Check if rotation is possible
-		if (yPosition < SmallAlien.nonRotateHeight)
-			updateAngleToTank(tankX, tankY);
-
-		// Accelerate
-		xVelocity += Math.sin(angleToTank) * multiplier;
-		yVelocity += Math.cos(angleToTank) * multiplier;
-	}
-
-	/**
-	 * This method makes the ship bounce once it has hit the ground.
-	 */
-	public void bounce() {
-		yVelocity += gravConst;
-	}
-
-	// Getter and setter for grounded
-	public void ground() {
-		grounded = true;
-
-		yVelocity = -0.3 * yVelocity;
-		xVelocity = 0.1 * xVelocity;
-
-	}
-
-	public boolean isGrounded() {
-		return grounded;
 	}
 
 }

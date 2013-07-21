@@ -34,9 +34,10 @@ public class Game extends JComponent implements KeyListener, Runnable {
 	private int iteration;
 
 	private boolean accelLeft, accelRight;
-
-	private Enemy[] enemies;
-	private int numEnemies = 0;
+	
+	
+	// controls whether the game shakes
+	private int shaking;
 	
 
 	/**
@@ -55,6 +56,11 @@ public class Game extends JComponent implements KeyListener, Runnable {
 	 */
 	private volatile Vector<TankShell> shells;
 	private boolean needCooldown;
+	
+	/**
+	 * Manages the objects for displaying meteors
+	 */
+	private Vector<Meteor> meteors;
 	
 	/**
 	 * Manages the objects for displaying alien ships
@@ -104,10 +110,9 @@ public class Game extends JComponent implements KeyListener, Runnable {
 		
 		shells = new Vector<TankShell>();
 		aliens = new Vector<Alien>();
+		meteors = new Vector<Meteor>();
 		lasers = new Vector<AlienLaser>();
 		needCooldown = false;
-		
-		enemies = new Enemy[50];
 		
 		start();
 	}
@@ -139,16 +144,19 @@ public class Game extends JComponent implements KeyListener, Runnable {
 	@Override
 	public void run() {
 		iteration = 0;
+		double chance = 0;
 		System.out.println("run was called");
 		while (running) {
 			//System.out.println("Iteration #" + iteration);
 			iteration++;
 
 			// Make an enemy
-			if (1000 * Math.random() > 980) {
-				enemies[numEnemies] = new Enemy(getWidth());
-				numEnemies = (numEnemies + 1) % enemies.length;
+			if ((chance = 1000 * Math.random()) > 980) {
+				// Meteors
+				if (chance > 990)
+					meteors.add(new Meteor((int)(Math.random() * 800.0), 0, 0 ,0 ));
 				
+				// Aliens
 				aliens.add( Alien.spawnAlien( (int)(Math.random() * 800.0), 0, 0 ,0 ) );
 			}
 			
@@ -188,8 +196,8 @@ public class Game extends JComponent implements KeyListener, Runnable {
 		// paintComponent(offg);
 		offg.drawImage(background, 0, 0, this);
 
-		// Draw new enemies
-		for (Enemy e : enemies) {
+		// Draw meteors
+		for (Meteor e : meteors) {
 			if (null != e) {
 				offg.drawImage(e.getImage(), (int)(e.getX() - e.getImage().getWidth() / 2),
 						             (int)(e.getY() - e.getImage().getHeight() / 2), null);
@@ -232,9 +240,12 @@ public class Game extends JComponent implements KeyListener, Runnable {
 		offg.drawImage(tank[0].getImage(), (int) tank[0].getX() - tank[0].getImage().getWidth() / 2,
 				(int) tank[0].getY() - tank[0].getImage().getHeight() / 2, this);
 		
+		// Handle shaking
+		int xOffset = (shaking > 0)?(int)(10*Math.random()-4.5):0;
+		int yOffset = (shaking > 0)?(int)(10*Math.random()-4.5):0;
 		
 		// Make off screen image visible
-		g.drawImage(offScreen, 0, 0, this);
+		g.drawImage(offScreen, xOffset, yOffset, this);
 	}
 
 	
@@ -262,10 +273,14 @@ public class Game extends JComponent implements KeyListener, Runnable {
 		((TankCannon)tank[1]).updateAngleMouse( (int) mouseX, (int) mouseY, (int) tank[0].getX(), (int) tank[0].getY() );
 		
 		// Move Enemies
-		for (Enemy e : enemies) {
-			if (e != null)
+		for (Meteor e : meteors) {
+			if (e != null){
+				shaking += e.autoAccelerate();
 				e.move();
+			}
 		}
+		if (shaking > 0)
+			shaking--;
 		
 		
 		//  Move Aliens
@@ -281,16 +296,8 @@ public class Game extends JComponent implements KeyListener, Runnable {
 			
 			if (e != null && e instanceof SmallAlien)
 			{
-				if (!((SmallAlien) e).isGrounded()){
-					((SmallAlien)e).autoAccelerate((int)tank[0].getX(), (int)tank[0].getY() );
-					e.move();
-					if (e.getY() > GUI.gameHeight - 60)
-						((SmallAlien)e).ground();
-				}
-				else{
-					((SmallAlien)e).bounce();
-					e.move();
-				}
+				((SmallAlien)e).autoAccelerate((int)tank[0].getX(), (int)tank[0].getY() );
+				e.move();
 			}
 		}
 		for ( AlienLaser e : lasers )
