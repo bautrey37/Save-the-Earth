@@ -149,7 +149,7 @@ public class Game extends JComponent implements KeyListener, Runnable {
 				enemies[numEnemies] = new Enemy(getWidth());
 				numEnemies = (numEnemies + 1) % enemies.length;
 				
-				aliens.add( new LargeAlien( (int)(Math.random() * 800.0), 0, 0 ,0 ) );
+				aliens.add( Alien.spawnAlien( (int)(Math.random() * 800.0), 0, 0 ,0 ) );
 			}
 			
 			long time = System.currentTimeMillis();
@@ -221,7 +221,7 @@ public class Game extends JComponent implements KeyListener, Runnable {
 		
 		//  Get cannon angle and image.
 		double num = ((TankCannon)tank[1]).getAngle() / Math.PI * 180.0;
-		System.out.println((int)num);
+		//System.out.println((int)num);
 		BufferedImage temp = ((TankCannon)tank[1]).cannon[ (int) num - 90];
 		
 		//  Draw appropriate cannon image.
@@ -278,6 +278,19 @@ public class Game extends JComponent implements KeyListener, Runnable {
 				e.move();
 				((LargeAlien)e).fireLasers( lasers );
 			}
+			
+			if (e != null && e instanceof SmallAlien)
+			{
+				if (e.isAlive()){
+					((SmallAlien)e).autoAccelerate((int)tank[0].getX(), (int)tank[0].getY() );
+					e.move();
+					if (e.getY() > GUI.gameHeight - 50)
+						e.kill();
+				}
+				else{
+					;
+				}
+			}
 		}
 		for ( AlienLaser e : lasers )
 		{
@@ -302,10 +315,10 @@ public class Game extends JComponent implements KeyListener, Runnable {
 
 		if (key == KeyEvent.VK_A || key == KeyEvent.VK_LEFT) {
 			accelLeft = true;
-			System.out.println("A");
+			//System.out.println("A");
 		}
 		if (key == KeyEvent.VK_D || key == KeyEvent.VK_RIGHT) {
-			System.out.println("D");
+			//System.out.println("D");
 			accelRight = true;
 		}
 		if (key == KeyEvent.VK_SPACE && !needCooldown)
