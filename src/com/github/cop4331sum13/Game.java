@@ -242,8 +242,11 @@ public class Game extends JComponent implements KeyListener, Runnable {
 				(int) tank[0].getY() - tank[0].getImage().getHeight() / 2, this);
 		
 		// Handle shaking
-		int xOffset = (shaking > 0)?(int)(10*Math.random()-4.5):0;
-		int yOffset = (shaking > 0)?(int)(10*Math.random()-4.5):0;
+		int xOffset = (int) ((shaking > 0)? ((Math.random() < .5) ? -1:1) * shaking * Math.random():0);
+		int yOffset = (int) ((shaking > 0)? ((Math.random() < .5) ? -1:1) * shaking * Math.random():0);
+
+//		if (xOffset != 0 && yOffset != 0)
+//		System.out.printf("%d %d\n", xOffset, yOffset);
 		
 		// Make off screen image visible
 		g.drawImage(offScreen, xOffset, yOffset, this);
