@@ -106,6 +106,7 @@ public class Game extends JComponent implements KeyListener, Runnable {
 		tank = new Tank[2];
 		tank[0] = new TankBody(getWidth() * 0.5, getHeight() * 0.9, 0, 0);
 		tank[0].setTankSpeedLimit(10);
+		tank[0].setHealth(5);
 		tank[1] = new TankCannon( getWidth() * 0.5, getHeight() * 0.9, 0, 0);
 		
 		shells = new Vector<TankShell>();
