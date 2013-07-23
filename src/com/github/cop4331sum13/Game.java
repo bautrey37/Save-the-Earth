@@ -453,7 +453,7 @@ public class Game extends JComponent implements KeyListener, Runnable {
 		//  Lastly, handle deletion of dead aliens, destroyed meteors, dead tank, and old shells/lasers
 		for( int index = aliens.size() - 1; index >= 0; index-- )
 		{
-			if( aliens.get( index ).getHealth() <= 0 || aliens.get( index ).getY() >= this.getY() + 50 )
+			if( aliens.get( index ).getHealth() <= 0 || aliens.get( index ).getY() >= this.getHeight() + 50 )
 			{
 				aliens.remove( index );
 			}
@@ -462,7 +462,7 @@ public class Game extends JComponent implements KeyListener, Runnable {
 		
 		for( int index = meteors.size() - 1; index >= 0; index-- )
 		{
-			if( meteors.get( index ).getHealth() <= 0 || meteors.get( index ).getY() >= this.getY() + 100 )
+			if( meteors.get( index ).getHealth() <= 0 || meteors.get( index ).getY() >= this.getHeight() + 100 )
 			{
 				meteors.remove( index );
 			}
