@@ -43,19 +43,18 @@ public class TankBody extends Tank
 		
 		if( Game.difficulty == 1 )
 		{
-			this.health = 15;
+			this.health = 50;
 		}
 		else if( Game.difficulty == 2 )
 		{
-			this.health = 10;
+			this.health = 30;
 		}
 		else //  Game.difficulty == 3
 		{
-			this.health = 5;
+			this.health = 15;
 		}
 		
 		
-	}  //  End of TankBody constructor.
-
+	}  
 	
-}  //  End of TankBody class.
+}  

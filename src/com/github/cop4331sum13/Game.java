@@ -1,6 +1,7 @@
 package com.github.cop4331sum13;
 
 import java.awt.CardLayout;
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.MouseInfo;
@@ -60,6 +61,8 @@ public class Game extends JComponent implements KeyListener, Runnable
 	 */
 	public static int planetHealth;
 	
+	private int maxTankHealth;
+	
 	/**
 	 * Used to manage movement of the tank based on user input.
 	 */
@@ -74,7 +77,7 @@ public class Game extends JComponent implements KeyListener, Runnable
 	 * Defines the values used in determining enemy count and enemy type in levels 1 - 10. This variable is static so
 	 * that it can be defined only once and used throughout the entire program's running time.
 	 */
-	private static int[] levelInfo;
+	//private static int[] levelInfo;
 
 	/**
 	 * Manages the objects for displaying the user's tank.
@@ -130,9 +133,8 @@ public class Game extends JComponent implements KeyListener, Runnable
 		 * Add in code that configures level 1 - 10 variables, possibly by reading a file. Formatting will be decided at
 		 * a later time.
 		 */
-		levelInfo = new int[10];
+		//levelInfo = new int[10];
 		
-		//  Enables keyboard input.
 		this.addKeyListener(this);
 	}
 
@@ -169,6 +171,9 @@ public class Game extends JComponent implements KeyListener, Runnable
 		tank[0].setTankSpeedLimit(10);
 		tank[1] = new TankCannon( getWidth() * 0.5, getHeight() * 0.9, 0, 0);
 		
+		//max health is needed to draw health bar
+		maxTankHealth = tank[0].getHealth();
+		
 		//  Initialize all lists for managing on-screen entities.
 		shells = new Vector<TankShell>();
 		aliens = new Vector<Alien>();
@@ -178,7 +183,7 @@ public class Game extends JComponent implements KeyListener, Runnable
 		start();
 		
 		
-	}  //  End of init() method.
+	} 
 	
 	
 	
@@ -201,7 +206,7 @@ public class Game extends JComponent implements KeyListener, Runnable
 		game.start();
 		
 		
-	}  //  End of start() method.
+	} 
 	
 	
 	
@@ -213,7 +218,7 @@ public class Game extends JComponent implements KeyListener, Runnable
 		//  Setting running to false stops all processing for the level.
 		running = false;
 		
-	}  //  End of stop() method.
+	} 
 	
 	
 	
@@ -261,13 +266,10 @@ public class Game extends JComponent implements KeyListener, Runnable
 			}
 			catch (InterruptedException e) {
 			}
-			
-			
-		}  //  End of while loop.
+				
+		}
 		
-		
-	}  //  End of run() method.
-	
+	}
 	
 	
 	/**
@@ -278,7 +280,6 @@ public class Game extends JComponent implements KeyListener, Runnable
 	@Override
 	public void paintComponent(Graphics g)
 	{
-		//  Call super class method.
 		super.paintComponent(g);
 		
 		
@@ -354,6 +355,25 @@ public class Game extends JComponent implements KeyListener, Runnable
 		offg.drawImage(tank[0].getImage(), (int) tank[0].getX() - tank[0].getImage().getWidth() / 2,
 										   (int) tank[0].getY() - tank[0].getImage().getHeight() / 2, this);
 		
+		//  Draw health bar for tank
+		offg.setColor(Color.BLUE); //good health
+		int yPos = (int) tank[0].getY() + 45;
+		int xPos = (int) tank[0].getX() - 42;
+		int width = 100;
+		int height = 10;
+		int tankHealth = tank[0].getHealth();
+		//System.out.println("X: " + xPos + ", Y: " + yPos + ", tankHealth: " + tank[0].getHealth());
+		
+		offg.fillRect(xPos, yPos, width, height); //by default draw the entire length of health bar
+		offg.setColor(Color.RED); //missing health
+		if(tankHealth < 0) {
+			//you have died
+			offg.fillRect(xPos, yPos, width, height);
+		}			
+		else {
+			offg.fillRect(xPos + width * tankHealth/maxTankHealth, yPos, width - width * tankHealth/maxTankHealth, height);
+		}
+		
 		// Handle shaking during meteor impact.
 		int xOffset = (int) ((shaking > 0)? ((Math.random() < .5) ? -1:1) * shaking * Math.random():0);
 		int yOffset = (int) ((shaking > 0)? ((Math.random() < .5) ? -1:1) * shaking * Math.random():0);
@@ -363,9 +383,8 @@ public class Game extends JComponent implements KeyListener, Runnable
 		g.drawImage(offScreen, xOffset, yOffset, this);
 		
 		
-	}  //  End of paintComponent() method.
-	
-	
+	}
+
 	
 	/**
 	 * Handles moving all entities across the screen.
@@ -681,12 +700,7 @@ public class Game extends JComponent implements KeyListener, Runnable
 	 */
 	@Override
 	public void keyTyped(KeyEvent e)
-	{
-		//  Place holder method.
-		
-		
-	}  //  End of keyTyped() method.
+	{}	
 	
 	
-	
-}  //  End of Game class.
+}

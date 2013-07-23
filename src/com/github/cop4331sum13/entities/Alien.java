@@ -25,13 +25,13 @@ public abstract class Alien extends Entity
 		
 		if (chance < 55){
 			
-			System.out.println("large");
+			//System.out.println("large");
 			
 			return new LargeAlien(xPos, yPos, xVel, yVel);
 		}
 		else{
 			
-			System.out.println("small");
+			//System.out.println("small");
 			
 			return new SmallAlien(xPos, yPos, xVel, yVel);
 		}
