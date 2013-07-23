@@ -37,7 +37,6 @@ public class TankShell extends Tank
 		//  Call parent class constructor
 		super(xPos, yPos, xVel, yVel);
 		
-		shellLife = 50;
 		
 		//  Calculate the proper coordinates and velocities.
 		this.xPosition = Math.sin( angle ) * 40.0 + xPos;
@@ -57,6 +56,11 @@ public class TankShell extends Tank
 		{
 			e.printStackTrace();
 		}
+		
+		
+		
+		this.health = 1;
+		this.shellLife = 25;
 		
 		
 	}  //  End of TankShell constructor.

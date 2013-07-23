@@ -32,6 +32,9 @@ public class Game extends JComponent implements KeyListener, Runnable {
 
 	private volatile boolean running; // volatile makes it thread safe
 	private int iteration;
+	
+	public static int difficulty;
+	public static int planetHealth;
 
 	private boolean accelLeft, accelRight;
 	
@@ -102,11 +105,27 @@ public class Game extends JComponent implements KeyListener, Runnable {
 	public void init(int dif) {
 		//clear previous game data
 		
+		Game.difficulty = dif;
+		
+		if( dif == 1 )
+		{
+			Game.planetHealth = 30;
+		}
+		else if( dif == 2 )
+		{
+			Game.planetHealth = 20;
+		}
+		else  //  dif == 3
+		{
+			Game.planetHealth = 10;
+		}
+		
+		
+		
 		// Create user's tank
 		tank = new Tank[2];
 		tank[0] = new TankBody(getWidth() * 0.5, getHeight() * 0.9, 0, 0);
 		tank[0].setTankSpeedLimit(10);
-		tank[0].setHealth(5);
 		tank[1] = new TankCannon( getWidth() * 0.5, getHeight() * 0.9, 0, 0);
 		
 		shells = new Vector<TankShell>();
@@ -167,6 +186,7 @@ public class Game extends JComponent implements KeyListener, Runnable {
 			// this.paintEntities( this.getGraphics() );
 
 			this.moveEntities();
+			this.processHits();
 			// System.out.println( tank[0].getX() );
 
 			try {
@@ -304,16 +324,168 @@ public class Game extends JComponent implements KeyListener, Runnable {
 				e.move();
 			}
 		}
+		
+		
+		
+		//  Move all shells on screen.
+		for( TankShell e : shells)
+		{
+			if( e != null )
+			{
+				e.decreaseLife();
+				e.move();
+			}
+		}
+		
+		
 		for ( AlienLaser e : lasers )
 		{
 			if( e!= null )
 			{
+				e.decreaseLife();
 				e.move();
 			}
 		}
 	}
-
-
+	
+	
+	public void processHits()
+	{
+		//  First, check for hits
+		/*
+		 * 
+		 * First handle collisions between TankShell to Alien/Meteor objects
+		 * 
+		 * 
+		 * 
+		 * Then, handle collisions between AlienLaser and TankBody
+		 * 
+		 * 
+		 * Finally, check "collisions" between Meteor/SmallAlien and planet (y-coor) 
+		 * 
+		 */
+		
+		//  This for loop handles collisions between the tank shells and all aliens and meteors
+		for( int index = shells.size() - 1; index >= 0; index-- )
+		{
+			for( Alien e : aliens )
+			{
+				if( e != null )
+				{
+					if( shells.get( index ).getX() > e.getX() - e.getImage().getWidth() / 2 && 
+						shells.get( index ).getX() < e.getX() + e.getImage().getWidth() / 2 &&
+						shells.get( index ).getY() > e.getY() - e.getImage().getWidth() / 2 &&
+						shells.get( index ).getY() < e.getY() + e.getImage().getWidth() / 2 )
+					{
+						shells.get( index ).setHealth( 0 );
+						e.setHealth( e.getHealth() - 1 );
+					}
+				}
+			}
+			for( Meteor e : meteors )
+			{
+				if( e!= null )
+				{
+					if( Math.sqrt( Math.pow( shells.get( index ).getX() - e.getX(), 2.0 ) +
+							       Math.pow( shells.get( index ).getY() - e.getY(), 2.0 ) )
+							       <= e.getImage().getWidth() / 2 )
+					{
+						shells.get( index ).setHealth( 0 );
+						e.setHealth( e.getHealth() - 1 );
+					}
+				}
+			}
+			
+			
+		}  //  Finished checking for user hits on enemy entities.
+		
+		
+		//  This for loop checks for collisions between small aliens, meteors, and lasers to the user tank.
+		for( Alien e : aliens )
+		{
+			if( e != null )
+			{
+				if( e instanceof Alien && 
+					e.getX() >= tank[0].getX() - tank[0].getImage().getWidth() / 2 &&
+					e.getX() <= tank[0].getX() + tank[0].getImage().getWidth() / 2  &&
+					e.getY() >= tank[0].getY() - tank[0].getImage().getHeight() / 4 &&
+					e.getY() <= tank[0].getY() + tank[0].getImage().getHeight() / 2 )
+				{
+					e.setHealth( 0 );
+					tank[0].setHealth( tank[0].getHealth() - 2 );
+				}
+			}
+		}
+		for( Meteor e : meteors )
+		{
+			if( e.getX() >= tank[0].getX() - tank[0].getImage().getWidth() / 2 - 25 &&
+				e.getX() <= tank[0].getX() + tank[0].getImage().getWidth() / 2 + 25 &&
+				e.getY() >= tank[0].getY() - tank[0].getImage().getHeight() / 4 - 25 &&
+				e.getY() <= tank[0].getY() + tank[0].getImage().getHeight() / 2 + 25 )
+			{
+				e.setHealth( 0 );
+				tank[0].setHealth( tank[0].getHealth() - 5 );
+			}
+		}
+		for( AlienLaser e : lasers )
+		{
+			if( e.getX() >= tank[0].getX() - tank[0].getImage().getWidth() / 3 &&
+				e.getX() <= tank[0].getX() + tank[0].getImage().getWidth() / 3  &&
+				e.getY() >= tank[0].getY() &&//- tank[0].getImage().getHeight() / 5 &&
+				e.getY() <= tank[0].getY() + tank[0].getImage().getHeight() / 3 )
+			{
+				e.setHealth( 0 );
+				tank[0].setHealth( tank[0].getHealth() - 1 );
+			}
+		}
+		
+		//  This for loop checks for "collisions" between meteors and the planet.
+		for( int index = meteors.size() - 1; index >= 0; index-- )
+		{
+			if( meteors.get( index ).getY() >= this.getHeight() )
+			{
+				Game.planetHealth -= 3;
+				meteors.get( index ).setHealth( 0 );
+			}
+		}
+		
+		
+		//  Lastly, handle deletion of dead aliens, destroyed meteors, dead tank, and old shells/lasers
+		for( int index = aliens.size() - 1; index >= 0; index-- )
+		{
+			if( aliens.get( index ).getHealth() <= 0 || aliens.get( index ).getY() >= this.getY() + 50 )
+			{
+				aliens.remove( index );
+			}
+		}  //  Finished deleting dead aliens.
+		
+		
+		for( int index = meteors.size() - 1; index >= 0; index-- )
+		{
+			if( meteors.get( index ).getHealth() <= 0 || meteors.get( index ).getY() >= this.getY() + 100 )
+			{
+				meteors.remove( index );
+			}
+		}
+		
+		for( int index = shells.size() - 1; index >= 0; index-- )
+		{
+			if( shells.get( index ).getLife() <= 0 || shells.get( index ).getHealth() <= 0 )
+			{
+				shells.remove( index );
+			}
+		}
+		for( int index = lasers.size() - 1; index >= 0; index-- )
+		{
+			if( lasers.get( index ).getLife() <= 0 || lasers.get( index ).getHealth() <= 0 )
+			{
+				lasers.remove( index );
+			}
+		}
+	}
+	
+	
+	
 	@Override
 	public void keyPressed(KeyEvent e) {
 		int key = e.getKeyCode();

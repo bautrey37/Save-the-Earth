@@ -8,6 +8,8 @@ import java.util.Vector;
 
 import javax.imageio.ImageIO;
 
+import com.github.cop4331sum13.Game;
+
 /**
  * 
  * 
@@ -42,6 +44,21 @@ public class LargeAlien extends Alien
 		catch (Exception e)
 		{
 			e.printStackTrace();
+		}
+		
+		
+		//  Set unit's health based on difficulty
+		if( Game.difficulty == 1 )
+		{
+			this.health = 2;
+		}
+		else if( Game.difficulty == 2)
+		{
+			this.health = 3;
+		}
+		else  //  Game.difficulty == 3
+		{
+			this.health = 4;
 		}
 		
 		

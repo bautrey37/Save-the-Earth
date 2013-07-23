@@ -4,6 +4,8 @@ import java.io.File;
 
 import javax.imageio.ImageIO;
 
+import com.github.cop4331sum13.Game;
+
 
 /**
  * This class creates and manages the body of the Tank that the user controls.
@@ -36,6 +38,20 @@ public class TankBody extends Tank
 		catch (Exception e)
 		{
 			e.printStackTrace();
+		}
+		
+		
+		if( Game.difficulty == 1 )
+		{
+			this.health = 15;
+		}
+		else if( Game.difficulty == 2 )
+		{
+			this.health = 10;
+		}
+		else //  Game.difficulty == 3
+		{
+			this.health = 5;
 		}
 		
 		

@@ -4,6 +4,7 @@ import java.io.File;
 
 import javax.imageio.ImageIO;
 
+import com.github.cop4331sum13.Game;
 import com.github.cop4331sum13.gui.GUI;
 
 public class Meteor extends Entity {
@@ -24,6 +25,24 @@ public class Meteor extends Entity {
 		catch (Exception e) {
 			e.printStackTrace();
 		}
+		
+		
+		
+		//  Set unit's health based on difficulty
+		if( Game.difficulty == 1 )
+		{
+			this.health = 4;
+		}
+		else if( Game.difficulty == 2)
+		{
+			this.health = 5;
+		}
+		else  //  Game.difficulty == 3
+		{
+			this.health = 6;
+		}
+		
+		
 	}
 	
 

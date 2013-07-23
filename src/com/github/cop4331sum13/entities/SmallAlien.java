@@ -4,6 +4,7 @@ import java.io.File;
 
 import javax.imageio.ImageIO;
 
+import com.github.cop4331sum13.Game;
 import com.github.cop4331sum13.gui.GUI;
 
 /**
@@ -33,6 +34,22 @@ public class SmallAlien extends Alien {
 		}
 		catch (Exception e) {
 			e.printStackTrace();
+		}
+		
+		
+		
+		//  Set unit's health based on difficulty
+		if( Game.difficulty == 1 )
+		{
+			this.health = 1;
+		}
+		else if( Game.difficulty == 2)
+		{
+			this.health = 1;
+		}
+		else //  Game.difficulty == 3
+		{
+			this.health = 2;
 		}
 	}
 

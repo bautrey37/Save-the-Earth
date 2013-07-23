@@ -16,6 +16,8 @@ import javax.imageio.ImageIO;
 public class AlienLaser extends Alien
 {
 	
+	private int laserLife;
+	
 	
 	/**
 	 * Constructs a new "laser" that was "fired" by an alien ship.
@@ -45,7 +47,22 @@ public class AlienLaser extends Alien
 		}
 		
 		
+		
+		this.health = 1;
+		this.laserLife = 95;
+		
 	}  //  End of AlienLaser() constructor.
+	
+	
+	public void decreaseLife()
+	{
+		laserLife -= 1;
+	}
+	
+	public int getLife()
+	{
+		return laserLife;
+	}
 	
 	
 	
