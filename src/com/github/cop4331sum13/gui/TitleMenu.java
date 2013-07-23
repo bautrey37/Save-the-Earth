@@ -190,7 +190,6 @@ public class TitleMenu extends JPanel implements ActionListener {
 		}
 		//set button selected to border
 		button.setBorder(BorderFactory.createLineBorder(Color.BLACK, 4));
-		System.out.println(button.getText());
 	}
 	
 	private void setJButtonSettings(JButton button, Font font, int width, int height) {

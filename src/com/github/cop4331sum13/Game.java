@@ -23,6 +23,8 @@ import com.github.cop4331sum13.gui.GUI;
  */
 public class Game extends JComponent implements KeyListener, Runnable
 {
+	private boolean GODMODE = false;
+	
 	/**
 	 * This value is necessary for managing separate threads properly. 
 	 */
@@ -55,13 +57,7 @@ public class Game extends JComponent implements KeyListener, Runnable
 	 */
 	public static int difficulty;
 	
-	/**
-	 * Used to manage the health of the planet that the user is defending and is declared as static as there is only
-	 * one planet to defend during game play.
-	 */
-	public static int planetHealth;
-	
-	private int maxTankHealth;
+	private int maxPlanetHealth, planetHealth, maxTankHealth, tankHealth, xPos, yPos, width, height;
 	
 	/**
 	 * Used to manage movement of the tank based on user input.
@@ -153,17 +149,17 @@ public class Game extends JComponent implements KeyListener, Runnable
 		//  Set the planet health based on difficulty level.
 		if( dif == 1 )
 		{
-			Game.planetHealth = 30;
+			planetHealth = 30;
 		}
 		else if( dif == 2 )
 		{
-			Game.planetHealth = 20;
+			planetHealth = 20;
 		}
 		else  //  dif == 3
 		{
-			Game.planetHealth = 10;
+			planetHealth = 10;
 		}
-		
+		maxPlanetHealth = planetHealth;
 		
 		// Create user's tank and cannon
 		tank = new Tank[2];
@@ -297,6 +293,46 @@ public class Game extends JComponent implements KeyListener, Runnable
 		offg.drawImage(background, 0, 0, this);
 		
 		
+		// Draw planet health
+		yPos = 350;
+		xPos = 20;
+		width = 25;
+		height = 200;
+		tankHealth = tank[0].getHealth();
+		
+		offg.setColor(Color.BLUE); //good health
+		offg.fillRect(xPos, yPos, width, height); //by default draw the entire length of health bar
+		offg.setColor(Color.RED); //missing health
+		if(planetHealth < 0) {
+			//you have died
+			offg.fillRect(xPos, yPos, width, height);
+			if(!GODMODE) endGame(false);
+		}			
+		else {
+			offg.fillRect(xPos, yPos, width, height - height * planetHealth/maxPlanetHealth);
+		}
+		
+		//  Draw health bar for tank
+		yPos = (int) tank[0].getY() + 45;
+		xPos = (int) tank[0].getX() - 42;
+		width = 100;
+		height = 10;
+		tankHealth = tank[0].getHealth();
+		//System.out.println("X: " + xPos + ", Y: " + yPos + ", tankHealth: " + tank[0].getHealth());
+		
+		offg.setColor(Color.BLUE); //good health
+		offg.fillRect(xPos, yPos, width, height); //by default draw the entire length of health bar
+		offg.setColor(Color.RED); //missing health
+		if(tankHealth < 0) {
+			//you have died
+			offg.fillRect(xPos, yPos, width, height);
+			if(!GODMODE) endGame(false);
+		}			
+		else {
+			offg.fillRect(xPos + width * tankHealth/maxTankHealth, yPos, width - width * tankHealth/maxTankHealth, height);
+		}
+		
+		
 		// Draw meteors
 		for (Meteor e : meteors)
 		{
@@ -355,25 +391,6 @@ public class Game extends JComponent implements KeyListener, Runnable
 		offg.drawImage(tank[0].getImage(), (int) tank[0].getX() - tank[0].getImage().getWidth() / 2,
 										   (int) tank[0].getY() - tank[0].getImage().getHeight() / 2, this);
 		
-		//  Draw health bar for tank
-		offg.setColor(Color.BLUE); //good health
-		int yPos = (int) tank[0].getY() + 45;
-		int xPos = (int) tank[0].getX() - 42;
-		int width = 100;
-		int height = 10;
-		int tankHealth = tank[0].getHealth();
-		//System.out.println("X: " + xPos + ", Y: " + yPos + ", tankHealth: " + tank[0].getHealth());
-		
-		offg.fillRect(xPos, yPos, width, height); //by default draw the entire length of health bar
-		offg.setColor(Color.RED); //missing health
-		if(tankHealth < 0) {
-			//you have died
-			offg.fillRect(xPos, yPos, width, height);
-			endGame(false);
-		}			
-		else {
-			offg.fillRect(xPos + width * tankHealth/maxTankHealth, yPos, width - width * tankHealth/maxTankHealth, height);
-		}
 		
 		// Handle shaking during meteor impact.
 		int xOffset = (int) ((shaking > 0)? ((Math.random() < .5) ? -1:1) * shaking * Math.random():0);
@@ -571,7 +588,7 @@ public class Game extends JComponent implements KeyListener, Runnable
 		{
 			if( meteors.get( index ).getY() >= this.getHeight() )
 			{
-				Game.planetHealth -= 3;
+				planetHealth -= 3;
 				meteors.get( index ).setHealth( 0 );
 			}
 		}
