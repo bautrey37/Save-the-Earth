@@ -369,6 +369,7 @@ public class Game extends JComponent implements KeyListener, Runnable
 		if(tankHealth < 0) {
 			//you have died
 			offg.fillRect(xPos, yPos, width, height);
+			endGame(false);
 		}			
 		else {
 			offg.fillRect(xPos + width * tankHealth/maxTankHealth, yPos, width - width * tankHealth/maxTankHealth, height);
@@ -613,6 +614,19 @@ public class Game extends JComponent implements KeyListener, Runnable
 		
 	}  //  End of processHits() method.
 	
+	
+	/**
+	 * Stops game running thread.  Then displays the corresponding screen for lose or win.
+	 * @param i - true for win, false for lose
+	 */
+	private void endGame(boolean i) {
+		stop();
+		CardLayout cl = (CardLayout) container.getLayout();
+		if(i)
+			cl.show(container, "win");
+		else
+			cl.show(container, "lose");
+	}
 	
 	
 	/**

@@ -119,7 +119,7 @@ public class TitleMenu extends JPanel implements ActionListener {
 		//try to get image from file
 		try {
 			logo = ImageIO.read(new File("res/Save-the-Earth.png"));
-			background = ImageIO.read(new File("res/STE-Title.jpg")); //this image looks silly as title image
+			background = ImageIO.read(new File("res/STE-Title.jpg")); 
 		} catch(Exception e) {
 			e.printStackTrace();
 		}

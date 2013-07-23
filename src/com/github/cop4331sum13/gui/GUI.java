@@ -76,6 +76,8 @@ public class GUI {
 		panelContainer.add(game, "game");
 		panelContainer.add(control, "controls");
 		panelContainer.add(pause, "pause");
+		panelContainer.add(gameLost, "lose");
+		panelContainer.add(gameCompleted, "win");
 		
 		cl.show(panelContainer, "title");  //title screen is first to show when launching
 		
