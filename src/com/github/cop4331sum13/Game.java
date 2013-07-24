@@ -149,15 +149,15 @@ public class Game extends JComponent implements KeyListener, Runnable
 		//  Set the planet health based on difficulty level.
 		if( dif == 1 )
 		{
-			planetHealth = 30;
+			planetHealth = 50;
 		}
 		else if( dif == 2 )
 		{
-			planetHealth = 20;
+			planetHealth = 30;
 		}
 		else  //  dif == 3
 		{
-			planetHealth = 10;
+			planetHealth = 15;
 		}
 		maxPlanetHealth = planetHealth;
 		
@@ -300,7 +300,7 @@ public class Game extends JComponent implements KeyListener, Runnable
 		height = 200;
 		tankHealth = tank[0].getHealth();
 		
-		offg.setColor(Color.BLUE); //good health
+		offg.setColor(Color.GREEN); //good health
 		offg.fillRect(xPos, yPos, width, height); //by default draw the entire length of health bar
 		offg.setColor(Color.RED); //missing health
 		if(planetHealth < 0) {
@@ -320,7 +320,7 @@ public class Game extends JComponent implements KeyListener, Runnable
 		tankHealth = tank[0].getHealth();
 		//System.out.println("X: " + xPos + ", Y: " + yPos + ", tankHealth: " + tank[0].getHealth());
 		
-		offg.setColor(Color.BLUE); //good health
+		offg.setColor(Color.GREEN); //good health
 		offg.fillRect(xPos, yPos, width, height); //by default draw the entire length of health bar
 		offg.setColor(Color.RED); //missing health
 		if(tankHealth < 0) {

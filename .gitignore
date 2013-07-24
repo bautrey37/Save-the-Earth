@@ -1,1 +1,6 @@
 /bin
+
+.DS_STORE
+*.jar
+*.war
+*.ear

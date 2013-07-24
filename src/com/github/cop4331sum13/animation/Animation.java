@@ -1,8 +1,13 @@
 package com.github.cop4331sum13.animation;
 
-public class Animation {
+import com.github.cop4331sum13.entities.Entity;
 
-	public Animation() {
-		
+public abstract class Animation extends Entity {
+
+	public Animation(double xPos, double yPos, double xVel, double yVel) {
+		super(xPos, yPos, xVel, yVel);
+
 	}
+
+
 }

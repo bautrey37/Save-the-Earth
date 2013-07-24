@@ -15,6 +15,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -118,6 +119,7 @@ public class TitleMenu extends JPanel implements ActionListener {
 		
 		//try to get image from file
 		try {
+			//URL image = TitleMenu.class.getResource("/res/Save-the-Earth.png");
 			logo = ImageIO.read(new File("res/Save-the-Earth.png"));
 			background = ImageIO.read(new File("res/STE-Title.jpg")); 
 		} catch(Exception e) {
