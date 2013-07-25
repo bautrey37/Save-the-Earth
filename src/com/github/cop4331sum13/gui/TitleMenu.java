@@ -11,8 +11,11 @@ import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.MouseInfo;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.net.URL;
@@ -32,7 +35,7 @@ import com.github.cop4331sum13.Game;
  *
  */
 
-public class TitleMenu extends JPanel implements ActionListener {
+public class TitleMenu extends JPanel implements ActionListener, MouseListener {
 	
 	private static final long serialVersionUID = 1L;
 	
@@ -199,5 +202,35 @@ public class TitleMenu extends JPanel implements ActionListener {
 		button.setFocusPainted(false); //gets rid of small border inside button
 		button.setFont(font);
 		button.setPreferredSize(new Dimension(width, height)); //sets size
+	}
+
+	@Override
+	public void mouseClicked(MouseEvent e) {
+		int mouseX = MouseInfo.getPointerInfo().getLocation().x - GUI.window.getX();
+		int mouseY = MouseInfo.getPointerInfo().getLocation().y - GUI.window.getY();
+		
+		// x = 170 to 630
+		// y = 64 to 340
+		
+		if (170 <= mouseX && mouseX <= 630 && 64 <= mouseY && mouseY <= 340){
+			CardLayout cl = (CardLayout)container.getLayout();
+			cl.show(container, "story");
+		}
+	}
+
+	@Override
+	public void mouseEntered(MouseEvent arg0) {
+	}
+
+	@Override
+	public void mouseExited(MouseEvent arg0) {
+	}
+
+	@Override
+	public void mousePressed(MouseEvent arg0) {
+	}
+
+	@Override
+	public void mouseReleased(MouseEvent arg0) {
 	}
 }
