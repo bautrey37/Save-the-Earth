@@ -4,6 +4,7 @@ import java.awt.CardLayout;
 import java.awt.Font;
 import java.awt.FontFormatException;
 import java.awt.GraphicsEnvironment;
+import java.awt.event.MouseListener;
 import java.io.File;
 import java.io.IOException;
 
@@ -25,7 +26,7 @@ public class GUI {
 	 * and the window information is needed by other classes, so this object may be static.
 	 */
 	public static JFrame window;
-	private JPanel panelContainer, credits, upgrades, control, pause, synopsis, gameLost, gameCompleted;
+	private JPanel panelContainer, credits, upgrades, control, pause, backstory, gameLost, gameCompleted;
 	private JComponent game, title;
 	
 	private CardLayout cl;
@@ -62,11 +63,12 @@ public class GUI {
 		game = new Game(panelContainer);
 		control = new Controls(panelContainer);
 		pause = new Pause(panelContainer);
+		backstory = new BackStory(panelContainer);
+		title.addMouseListener((MouseListener) title);
 		
 		gameLost = new GameLost(panelContainer);
 		gameCompleted = new GameCompleted(panelContainer);
 		
-		synopsis = new Synopsis(panelContainer);
 		
 		cl = new CardLayout();
 		panelContainer.setLayout(cl);
@@ -76,6 +78,7 @@ public class GUI {
 		panelContainer.add(game, "game");
 		panelContainer.add(control, "controls");
 		panelContainer.add(pause, "pause");
+		panelContainer.add(backstory, "story");
 		panelContainer.add(gameLost, "lose");
 		panelContainer.add(gameCompleted, "win");
 		
