@@ -9,9 +9,11 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.IOException;
 import java.util.Vector;
 
 import javax.imageio.ImageIO;
+import javax.sound.sampled.*;
 import javax.swing.JComponent;
 import javax.swing.JPanel;
 
@@ -23,6 +25,7 @@ import com.github.cop4331sum13.gui.GUI;
  */
 public class Game extends JComponent implements KeyListener, Runnable
 {
+	Clip temp;
 	private boolean GODMODE = false;
 	
 	/**
@@ -143,6 +146,8 @@ public class Game extends JComponent implements KeyListener, Runnable
 	 */
 	public void init( int dif )
 	{
+		this.loadSounds();
+		
 		//  Set the global game difficulty per user selection.
 		Game.difficulty = dif;
 		
@@ -683,6 +688,8 @@ public class Game extends JComponent implements KeyListener, Runnable
 		{
 			shells.add( new TankShell(tank[0].getX(), tank[0].getY(), 0, 0, ((TankCannon)tank[1]).getAngle() ) );
 			needCooldown = true;
+			temp.start();
+			
 		}
 		
 		
@@ -734,4 +741,29 @@ public class Game extends JComponent implements KeyListener, Runnable
 	{}	
 	
 	
+	
+	public void loadSounds()
+	{
+
+		try
+		{
+			temp = AudioSystem.getClip();
+			AudioInputStream temp2 = AudioSystem.getAudioInputStream( new File("res/sound/cannon.wav") );
+			temp.open( temp2 );
+			//temp.start();
+		}
+		catch (LineUnavailableException e1)
+		{
+			e1.printStackTrace();
+		}
+		catch (UnsupportedAudioFileException e1)
+		{
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+	}
 }
