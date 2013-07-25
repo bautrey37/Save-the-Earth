@@ -18,6 +18,7 @@ import javax.sound.sampled.*;
 import javax.swing.JComponent;
 import javax.swing.JPanel;
 
+import com.github.cop4331sum13.animation.Explosion;
 import com.github.cop4331sum13.entities.*;
 import com.github.cop4331sum13.gui.GUI;
 
@@ -27,7 +28,8 @@ import com.github.cop4331sum13.gui.GUI;
 public class Game extends JComponent implements KeyListener, Runnable
 {
 	Clip temp;
-	private boolean GODMODE = true;
+	private Vector<Explosion> explosions;
+	private boolean GODMODE = false;
 	
 	/**
 	 * This value is necessary for managing separate threads properly. 
@@ -181,6 +183,10 @@ public class Game extends JComponent implements KeyListener, Runnable
 		aliens = new Vector<Alien>();
 		meteors = new Vector<Meteor>();
 		lasers = new Vector<AlienLaser>();
+		explosions = new Vector<Explosion>();
+		
+		//  Configure animations.
+		Explosion.setupSequence();
 		
 		start();
 		
@@ -405,6 +411,36 @@ public class Game extends JComponent implements KeyListener, Runnable
 										   (int) tank[0].getY() - tank[0].getImage().getHeight() / 2, this);
 		
 		
+		
+		
+		//  Draw explosions.
+		for( Explosion e : explosions )
+		{
+			if( e!= null )
+			{
+				if( e.getFrameNumber() < 14 )
+				{
+					offg.drawImage(e.getFrameImage( e.getFrameNumber() ),
+								   e.getX() - e.getFrameImage( e.getFrameNumber() ).getWidth() / 2,
+								   e.getY() - e.getFrameImage( e.getFrameNumber() ).getHeight() / 2, this);
+					e.increaseFrameNumber();
+				}
+			}
+		}
+		//  Remove old explosion objects.
+		for( int index = explosions.size() - 1; index >= 0; index-- )
+		{
+			if( explosions.get( index ).getFrameNumber() >= 14 )
+			{
+				explosions.remove( index );
+			}
+		}
+		
+		
+		
+		
+		
+		
 		// Handle shaking during meteor impact.
 		int xOffset = (int) ((shaking > 0)? ((Math.random() < .5) ? -1:1) * shaking * Math.random():0);
 		int yOffset = (int) ((shaking > 0)? ((Math.random() < .5) ? -1:1) * shaking * Math.random():0);
@@ -621,6 +657,7 @@ public class Game extends JComponent implements KeyListener, Runnable
 		{
 			if( aliens.get( index ).getHealth() <= 0 || aliens.get( index ).getY() >= this.getHeight() + 50 )
 			{
+				explosions.add( new Explosion( aliens.get( index ).getX(), aliens.get( index ).getY() ) );
 				aliens.remove( index );
 			}
 		}
@@ -629,6 +666,7 @@ public class Game extends JComponent implements KeyListener, Runnable
 		{
 			if( meteors.get( index ).getHealth() <= 0 || meteors.get( index ).getY() >= this.getHeight() + 100 )
 			{
+				explosions.add( new Explosion( meteors.get( index ).getX(), meteors.get( index ).getY() ) );
 				meteors.remove( index );
 			}
 		}
