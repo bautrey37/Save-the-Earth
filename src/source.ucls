@@ -73,16 +73,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="9" language="java" name="com.github.cop4331sum13.entities.Enemy" project="Save the Earth" 
-    file="/Save the Earth/src/com/github/cop4331sum13/entities/Enemy.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="117" width="104" x="522" y="1805"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
-      visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <class id="10" language="java" name="com.github.cop4331sum13.entities.Entity" project="Save the Earth" 
+  <class id="9" language="java" name="com.github.cop4331sum13.entities.Entity" project="Save the Earth" 
     file="/Save the Earth/src/com/github/cop4331sum13/entities/Entity.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="315" width="197" x="443" y="1306"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
@@ -91,7 +82,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="11" language="java" name="com.github.cop4331sum13.entities.Tank" project="Save the Earth" 
+  <class id="10" language="java" name="com.github.cop4331sum13.entities.Tank" project="Save the Earth" 
     file="/Save the Earth/src/com/github/cop4331sum13/entities/Tank.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="171" width="193" x="666" y="1805"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
@@ -100,7 +91,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="12" language="java" name="com.github.cop4331sum13.entities.TankBody" project="Save the Earth" 
+  <class id="11" language="java" name="com.github.cop4331sum13.entities.TankBody" project="Save the Earth" 
     file="/Save the Earth/src/com/github/cop4331sum13/entities/TankBody.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="81" width="218" x="936" y="2016"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
@@ -109,7 +100,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="13" language="java" name="com.github.cop4331sum13.entities.TankCannon" project="Save the Earth" 
+  <class id="12" language="java" name="com.github.cop4331sum13.entities.TankCannon" project="Save the Earth" 
     file="/Save the Earth/src/com/github/cop4331sum13/entities/TankCannon.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="135" width="230" x="666" y="2016"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
@@ -118,7 +109,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="14" language="java" name="com.github.cop4331sum13.entities.TankShell" project="Save the Earth" 
+  <class id="13" language="java" name="com.github.cop4331sum13.entities.TankShell" project="Save the Earth" 
     file="/Save the Earth/src/com/github/cop4331sum13/entities/TankShell.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="135" width="216" x="410" y="2016"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
@@ -127,7 +118,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <interface id="15" language="java" name="java.awt.event.ActionListener" project="Applet" 
+  <interface id="14" language="java" name="java.awt.event.ActionListener" project="Applet" 
     file="C:/Program Files/Java/jre7/lib/rt.jar" binary="true" corner="BOTTOM_RIGHT">    
     <position height="81" width="194" x="680" y="1306"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
@@ -136,7 +127,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </interface>  
-  <interface id="16" language="java" name="java.awt.event.KeyListener" project="Applet" 
+  <interface id="15" language="java" name="java.awt.event.KeyListener" project="Applet" 
     file="C:/Program Files/Java/jre7/lib/rt.jar" binary="true" corner="BOTTOM_RIGHT">    
     <position height="117" width="165" x="1135" y="1805"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
@@ -145,7 +136,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </interface>  
-  <class id="17" language="java" name="javax.swing.JPanel" project="Save the Earth" 
+  <class id="16" language="java" name="javax.swing.JPanel" project="Save the Earth" 
     file="C:/Program Files/Java/jre7/lib/rt.jar" binary="true" corner="BOTTOM_RIGHT">    
     <position height="53" width="87" x="780" y="696"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
@@ -154,7 +145,7 @@
       <operations public="false" package="false" protected="false" private="false" static="true"/>    
     </display>  
   </class>  
-  <interface id="18" language="java" name="java.lang.Runnable" project="Applet" 
+  <interface id="17" language="java" name="java.lang.Runnable" project="Applet" 
     file="C:/Program Files/Java/jre7/lib/rt.jar" binary="true" corner="BOTTOM_RIGHT">    
     <position height="81" width="103" x="976" y="1805"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
@@ -163,7 +154,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </interface>  
-  <class id="19" language="java" name="javax.swing.JComponent" project="Applet" 
+  <class id="18" language="java" name="javax.swing.JComponent" project="Applet" 
     file="C:/Program Files/Java/jre7/lib/rt.jar" binary="true" corner="BOTTOM_RIGHT">    
     <position height="53" width="96" x="859" y="603"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
@@ -172,7 +163,7 @@
       <operations public="false" package="false" protected="false" private="false" static="true"/>    
     </display>  
   </class>  
-  <class id="20" language="java" name="com.github.cop4331sum13.gui.GUI" project="Save the Earth" 
+  <class id="19" language="java" name="com.github.cop4331sum13.gui.GUI" project="Save the Earth" 
     file="/Save the Earth/src/com/github/cop4331sum13/gui/GUI.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="369" width="135" x="780" y="194"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
@@ -181,179 +172,171 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <dependency id="21">    
-    <end type="SOURCE" refId="20"/>    
-    <end type="TARGET" refId="19"/>  
-  </dependency>  
-  <dependency id="22">    
-    <end type="SOURCE" refId="3"/>    
-    <end type="TARGET" refId="7"/>  
-  </dependency>  
-  <association id="23">    
-    <end type="SOURCE" refId="8" navigable="false">      
-      <attribute id="24" name="gui"/>      
-      <multiplicity id="25" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="20" navigable="true"/>    
-    <display labels="false" multiplicity="false"/>  
-  </association>  
-  <generalization id="26">    
-    <end type="SOURCE" refId="1"/>    
-    <end type="TARGET" refId="17"/>  
-  </generalization>  
-  <generalization id="27">    
-    <end type="SOURCE" refId="14"/>    
-    <end type="TARGET" refId="11"/>  
-  </generalization>  
-  <realization id="28">    
-    <bendpoint x="1144" y="1306"/>    
-    <end type="SOURCE" refId="3"/>    
-    <end type="TARGET" refId="16"/>  
-  </realization>  
-  <generalization id="29">    
-    <end type="SOURCE" refId="5"/>    
-    <end type="TARGET" refId="17"/>  
-  </generalization>  
-  <generalization id="30">    
-    <end type="SOURCE" refId="17"/>    
-    <end type="TARGET" refId="19"/>  
-  </generalization>  
-  <realization id="31">    
+  <dependency id="20">    
+    <bendpoint x="945" y="1805"/>    
     <end type="SOURCE" refId="7"/>    
-    <end type="TARGET" refId="18"/>  
-  </realization>  
-  <dependency id="32">    
-    <bendpoint x="419" y="603"/>    
-    <bendpoint x="419" y="696"/>    
-    <end type="SOURCE" refId="20"/>    
-    <end type="TARGET" refId="4"/>  
+    <end type="TARGET" refId="11"/>  
   </dependency>  
-  <generalization id="33">    
+  <generalization id="21">    
     <bendpoint x="1241" y="789"/>    
     <bendpoint x="1241" y="696"/>    
     <end type="SOURCE" refId="7"/>    
-    <end type="TARGET" refId="19"/>  
+    <end type="TARGET" refId="18"/>  
   </generalization>  
-  <generalization id="34">    
-    <end type="SOURCE" refId="4"/>    
-    <end type="TARGET" refId="17"/>  
-  </generalization>  
-  <dependency id="35">    
-    <bendpoint x="985" y="603"/>    
-    <bendpoint x="985" y="696"/>    
-    <end type="SOURCE" refId="20"/>    
-    <end type="TARGET" refId="3"/>  
+  <dependency id="22">    
+    <end type="SOURCE" refId="7"/>    
+    <end type="TARGET" refId="10"/>  
   </dependency>  
-  <realization id="36">    
+  <generalization id="23">    
     <end type="SOURCE" refId="1"/>    
+    <end type="TARGET" refId="16"/>  
+  </generalization>  
+  <dependency id="24">    
+    <end type="SOURCE" refId="3"/>    
+    <end type="TARGET" refId="7"/>  
+  </dependency>  
+  <dependency id="25">    
+    <end type="SOURCE" refId="5"/>    
+    <end type="TARGET" refId="7"/>  
+  </dependency>  
+  <generalization id="26">    
+    <end type="SOURCE" refId="6"/>    
+    <end type="TARGET" refId="16"/>  
+  </generalization>  
+  <generalization id="27">    
+    <end type="SOURCE" refId="2"/>    
+    <end type="TARGET" refId="16"/>  
+  </generalization>  
+  <realization id="28">    
+    <end type="SOURCE" refId="7"/>    
     <end type="TARGET" refId="15"/>  
   </realization>  
-  <generalization id="37">    
+  <realization id="29">    
+    <bendpoint x="1144" y="1306"/>    
+    <end type="SOURCE" refId="3"/>    
+    <end type="TARGET" refId="15"/>  
+  </realization>  
+  <dependency id="30">    
+    <bendpoint x="739" y="603"/>    
+    <bendpoint x="739" y="696"/>    
+    <end type="SOURCE" refId="19"/>    
+    <end type="TARGET" refId="5"/>  
+  </dependency>  
+  <generalization id="31">    
+    <end type="SOURCE" refId="10"/>    
+    <end type="TARGET" refId="9"/>  
+  </generalization>  
+  <dependency id="32">    
+    <bendpoint x="622" y="603"/>    
+    <bendpoint x="622" y="696"/>    
+    <end type="SOURCE" refId="19"/>    
+    <end type="TARGET" refId="2"/>  
+  </dependency>  
+  <generalization id="33">    
+    <end type="SOURCE" refId="12"/>    
+    <end type="TARGET" refId="10"/>  
+  </generalization>  
+  <dependency id="34">    
+    <bendpoint x="945" y="789"/>    
+    <end type="SOURCE" refId="7"/>    
+    <end type="TARGET" refId="16"/>  
+  </dependency>  
+  <realization id="35">    
     <end type="SOURCE" refId="2"/>    
-    <end type="TARGET" refId="17"/>  
+    <end type="TARGET" refId="14"/>  
+  </realization>  
+  <dependency id="36">    
+    <bendpoint x="789" y="603"/>    
+    <end type="SOURCE" refId="19"/>    
+    <end type="TARGET" refId="16"/>  
+  </dependency>  
+  <generalization id="37">    
+    <end type="SOURCE" refId="13"/>    
+    <end type="TARGET" refId="10"/>  
   </generalization>  
   <dependency id="38">    
     <bendpoint x="1262" y="603"/>    
     <bendpoint x="1262" y="696"/>    
     <bendpoint x="1262" y="789"/>    
-    <end type="SOURCE" refId="20"/>    
+    <end type="SOURCE" refId="19"/>    
     <end type="TARGET" refId="7"/>  
   </dependency>  
-  <generalization id="39">    
-    <end type="SOURCE" refId="12"/>    
-    <end type="TARGET" refId="11"/>  
-  </generalization>  
-  <dependency id="40">    
-    <bendpoint x="622" y="603"/>    
-    <bendpoint x="622" y="696"/>    
-    <end type="SOURCE" refId="20"/>    
-    <end type="TARGET" refId="2"/>  
-  </dependency>  
-  <realization id="41">    
+  <realization id="39">    
     <end type="SOURCE" refId="5"/>    
-    <end type="TARGET" refId="15"/>  
+    <end type="TARGET" refId="14"/>  
   </realization>  
-  <dependency id="42">    
+  <association id="40">    
+    <end type="SOURCE" refId="8" navigable="false">      
+      <attribute id="41" name="gui"/>      
+      <multiplicity id="42" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="19" navigable="true"/>    
+    <display labels="false" multiplicity="false"/>  
+  </association>  
+  <generalization id="43">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="16"/>  
+  </generalization>  
+  <dependency id="44">    
+    <bendpoint x="985" y="603"/>    
+    <bendpoint x="985" y="696"/>    
+    <end type="SOURCE" refId="19"/>    
+    <end type="TARGET" refId="3"/>  
+  </dependency>  
+  <generalization id="45">    
+    <end type="SOURCE" refId="5"/>    
+    <end type="TARGET" refId="16"/>  
+  </generalization>  
+  <dependency id="46">    
     <bendpoint x="1283" y="603"/>    
     <bendpoint x="1283" y="696"/>    
-    <end type="SOURCE" refId="20"/>    
+    <end type="SOURCE" refId="19"/>    
     <end type="TARGET" refId="6"/>  
   </dependency>  
-  <dependency id="43">    
-    <bendpoint x="505" y="603"/>    
-    <bendpoint x="505" y="696"/>    
-    <end type="SOURCE" refId="20"/>    
-    <end type="TARGET" refId="1"/>  
-  </dependency>  
-  <realization id="44">    
-    <end type="SOURCE" refId="2"/>    
-    <end type="TARGET" refId="15"/>  
+  <realization id="47">    
+    <end type="SOURCE" refId="1"/>    
+    <end type="TARGET" refId="14"/>  
   </realization>  
-  <dependency id="45">    
-    <bendpoint x="739" y="603"/>    
-    <bendpoint x="739" y="696"/>    
-    <end type="SOURCE" refId="20"/>    
-    <end type="TARGET" refId="5"/>  
-  </dependency>  
-  <generalization id="46">    
-    <end type="SOURCE" refId="6"/>    
-    <end type="TARGET" refId="17"/>  
-  </generalization>  
-  <generalization id="47">    
-    <end type="SOURCE" refId="3"/>    
-    <end type="TARGET" refId="17"/>  
-  </generalization>  
   <dependency id="48">    
-    <end type="SOURCE" refId="7"/>    
-    <end type="TARGET" refId="11"/>  
+    <end type="SOURCE" refId="8"/>    
+    <end type="TARGET" refId="19"/>  
   </dependency>  
   <dependency id="49">    
-    <bendpoint x="945" y="789"/>    
-    <end type="SOURCE" refId="7"/>    
-    <end type="TARGET" refId="17"/>  
+    <end type="SOURCE" refId="19"/>    
+    <end type="TARGET" refId="18"/>  
   </dependency>  
   <dependency id="50">    
-    <end type="SOURCE" refId="5"/>    
-    <end type="TARGET" refId="7"/>  
+    <bendpoint x="419" y="603"/>    
+    <bendpoint x="419" y="696"/>    
+    <end type="SOURCE" refId="19"/>    
+    <end type="TARGET" refId="4"/>  
   </dependency>  
-  <generalization id="51">    
-    <end type="SOURCE" refId="9"/>    
-    <end type="TARGET" refId="10"/>  
-  </generalization>  
+  <dependency id="51">    
+    <bendpoint x="505" y="603"/>    
+    <bendpoint x="505" y="696"/>    
+    <end type="SOURCE" refId="19"/>    
+    <end type="TARGET" refId="1"/>  
+  </dependency>  
   <generalization id="52">    
-    <end type="SOURCE" refId="13"/>    
-    <end type="TARGET" refId="11"/>  
-  </generalization>  
-  <generalization id="53">    
     <end type="SOURCE" refId="11"/>    
     <end type="TARGET" refId="10"/>  
   </generalization>  
-  <dependency id="54">    
-    <end type="SOURCE" refId="7"/>    
-    <end type="TARGET" refId="9"/>  
-  </dependency>  
-  <dependency id="55">    
-    <bendpoint x="789" y="603"/>    
-    <end type="SOURCE" refId="20"/>    
-    <end type="TARGET" refId="17"/>  
-  </dependency>  
-  <dependency id="56">    
-    <bendpoint x="945" y="1805"/>    
-    <end type="SOURCE" refId="7"/>    
-    <end type="TARGET" refId="12"/>  
-  </dependency>  
-  <realization id="57">    
+  <realization id="53">    
     <end type="SOURCE" refId="3"/>    
-    <end type="TARGET" refId="15"/>  
+    <end type="TARGET" refId="14"/>  
   </realization>  
-  <dependency id="58">    
-    <end type="SOURCE" refId="8"/>    
-    <end type="TARGET" refId="20"/>  
-  </dependency>  
-  <realization id="59">    
+  <realization id="54">    
     <end type="SOURCE" refId="7"/>    
-    <end type="TARGET" refId="16"/>  
+    <end type="TARGET" refId="17"/>  
   </realization>  
+  <generalization id="55">    
+    <end type="SOURCE" refId="16"/>    
+    <end type="TARGET" refId="18"/>  
+  </generalization>  
+  <generalization id="56">    
+    <end type="SOURCE" refId="3"/>    
+    <end type="TARGET" refId="16"/>  
+  </generalization>  
   <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
     accessors="true" visibility="true">    
     <attributes public="true" package="true" protected="true" private="true" static="true"/>    
