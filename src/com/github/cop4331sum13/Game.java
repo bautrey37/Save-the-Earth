@@ -10,6 +10,7 @@ import java.awt.event.KeyListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.ConcurrentModificationException;
 import java.util.Vector;
 
 import javax.imageio.ImageIO;
@@ -26,7 +27,7 @@ import com.github.cop4331sum13.gui.GUI;
 public class Game extends JComponent implements KeyListener, Runnable
 {
 	Clip temp;
-	private boolean GODMODE = false;
+	private boolean GODMODE = true;
 	
 	/**
 	 * This value is necessary for managing separate threads properly. 
@@ -347,17 +348,24 @@ public class Game extends JComponent implements KeyListener, Runnable
 						                     (int)(e.getY() - e.getImage().getHeight() / 2), null);
 			}
 		}
-
 		
-		//  Draw all shells on screen.
-		for (TankShell e : shells)
+		
+		
+		//  "shells" must be synchronized before it is iterated.
+		synchronized (shells)
 		{
-			if (null != e)
+			//  Draw all shells on screen.
+			for (TankShell e : shells)
 			{
-				offg.drawImage(e.getImage(), (int)(e.getX() - e.getImage().getWidth() / 2),
-						                     (int)(e.getY() - e.getImage().getHeight() / 2), null);
+				if (null != e)
+				{
+					offg.drawImage(e.getImage(), (int)(e.getX() - e.getImage().getWidth() / 2),
+		     									 (int)(e.getY() - e.getImage().getHeight() / 2), null);
+				}
 			}
 		}
+		
+		
 		
 		
 		//  Draw all aliens onto the screen.
@@ -414,7 +422,7 @@ public class Game extends JComponent implements KeyListener, Runnable
 	 */
 	public synchronized void moveEntities()
 	{
-		// Set tank velocity to appropriate leve.
+		// Set tank velocity to appropriate level.
 		if (accelLeft)
 			tank[0].accelerateLeft();
 		if (accelRight)
@@ -427,10 +435,14 @@ public class Game extends JComponent implements KeyListener, Runnable
 		tank[0].move();
 		
 		
-		//  Move all shells on screen.
-		for( TankShell e : shells)
+		//  "shells" must be specifically synchronized before it is iterated.
+		synchronized (shells)
 		{
-			e.move();
+			//  Move all shells on screen.
+			for( TankShell e : shells)
+			{
+				e.move();
+			}
 		}
 		
 		
@@ -475,14 +487,18 @@ public class Game extends JComponent implements KeyListener, Runnable
 		}
 		
 		
-		//  Move all shells across the screen.
-		for( TankShell e : shells)
+		//  "shells" must be synchronized before it is iterated.
+		synchronized (shells)
 		{
-			if( e != null )
+			//  Move all shells across the screen.
+			for( TankShell e : shells)
 			{
-				//  Shell has moved for one frame.
-				e.decreaseLife();
-				e.move();
+				if( e != null )
+				{
+					//  Shell has moved for one frame.
+					e.decreaseLife();
+					e.move();
+				}
 			}
 		}
 		
