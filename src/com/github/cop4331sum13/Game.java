@@ -7,6 +7,8 @@ import java.awt.Image;
 import java.awt.MouseInfo;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -25,11 +27,19 @@ import com.github.cop4331sum13.gui.GUI;
 /**
  * This is the main class that runs the in-game level.  All necessary procedures are handled by this class only.
  */
-public class Game extends JComponent implements KeyListener, Runnable
+public class Game extends JComponent implements KeyListener, Runnable, MouseListener
 {
 	Clip temp;
 	private Vector<Explosion> explosions;
 	private boolean GODMODE = false;
+	
+	private boolean aimWithMouse;
+	private boolean aimWithKeyboard;
+	private boolean rotateLeft;
+	private boolean rotateRight;
+	
+	
+	
 	
 	/**
 	 * This value is necessary for managing separate threads properly. 
@@ -120,7 +130,7 @@ public class Game extends JComponent implements KeyListener, Runnable
 	{
 		//  Assign the "cards" to container to enable switching to pause and main menu.
 		this.container = container;
-		
+		this.addMouseListener(this);
 		//  Obtain background image for the play level.
 		try
 		{
@@ -188,6 +198,12 @@ public class Game extends JComponent implements KeyListener, Runnable
 		//  Configure animations.
 		Explosion.setupSequence();
 		
+		
+		//  Set default controls to mouse.
+		aimWithMouse = true;
+		aimWithKeyboard = false;
+		
+		
 		start();
 		
 		
@@ -203,6 +219,8 @@ public class Game extends JComponent implements KeyListener, Runnable
 		//  Set/reset values for starting new game and resuming from "pause".
 		accelLeft = false;
 		accelRight = false;
+		rotateLeft = false;
+		rotateRight = false;
 		running = true;
 		needCooldown = false;
 		
@@ -483,9 +501,21 @@ public class Game extends JComponent implements KeyListener, Runnable
 		
 		
 		//  Obtain current mouse position, then rotate cannon.
-		double mouseX = MouseInfo.getPointerInfo().getLocation().getX() - GUI.window.getX();
-		double mouseY = MouseInfo.getPointerInfo().getLocation().getY() - GUI.window.getY();
-		((TankCannon)tank[1]).updateAngleMouse( (int) mouseX, (int) mouseY, (int) tank[0].getX(), (int) tank[0].getY() );
+		if( aimWithMouse == true )
+		{
+			double mouseX = MouseInfo.getPointerInfo().getLocation().getX() - GUI.window.getX();
+			double mouseY = MouseInfo.getPointerInfo().getLocation().getY() - GUI.window.getY();
+			((TankCannon)tank[1]).updateAngleMouse( (int) mouseX, (int) mouseY, (int) tank[0].getX(), (int) tank[0].getY() );
+		}
+		if( aimWithKeyboard == true )
+		{
+			if( rotateLeft )
+				((TankCannon)tank[1]).updateAngleKeyboard( 1 );
+			if( rotateRight )
+				((TankCannon)tank[1]).updateAngleKeyboard( 0 );
+		}
+		
+		
 		
 		
 		//  Meteors across the screen.
@@ -711,8 +741,25 @@ public class Game extends JComponent implements KeyListener, Runnable
 	@Override
 	public void keyPressed(KeyEvent e)
 	{
+		
 		//  Obtain info for which key was pressed.
 		int key = e.getKeyCode();
+		
+		
+		//  Toggle aiming system.
+		if (key == KeyEvent.VK_T)
+		{
+			if( aimWithMouse == true )
+			{
+				aimWithMouse = false;
+				aimWithKeyboard = true;
+			}
+			else
+			{
+				aimWithMouse = true;
+				aimWithKeyboard = false;
+			}
+		}
 		
 		
 		//  If user pressed escape key, pause the game and switch to the pause screen.
@@ -723,26 +770,41 @@ public class Game extends JComponent implements KeyListener, Runnable
 		}
 		
 		
-		//  If user pressed "A" or left arrow, set for moving tank to the left.
-		if (key == KeyEvent.VK_A || key == KeyEvent.VK_LEFT)
+		//  If user pressed "A", set for moving tank to the left.
+		if (key == KeyEvent.VK_A)
 		{
 			accelLeft = true;
 		}
 		
 		
-		//  If user pressed "D" or right arrow, set for moving tank to the right.
-		if (key == KeyEvent.VK_D || key == KeyEvent.VK_RIGHT)
+		//  If user pressed "D", set for moving tank to the right.
+		if (key == KeyEvent.VK_D)
 		{
 			accelRight = true;
 		}
 		
 		
+		
+		
+		if (aimWithKeyboard == true && key == KeyEvent.VK_LEFT)
+		{
+			rotateLeft = true;
+		}
+		
+		if (aimWithKeyboard == true && key == KeyEvent.VK_RIGHT)
+		{
+			rotateRight = true;
+		}
+		
+		
+		
+		
 		//  If user pressed space bar, create a new tank shell and prevent key from automatically repeating.
-		if (key == KeyEvent.VK_SPACE && !needCooldown)
+		if ( aimWithKeyboard == true && (key == KeyEvent.VK_SPACE || key == KeyEvent.VK_UP) && !needCooldown )
 		{
 			shells.add( new TankShell(tank[0].getX(), tank[0].getY(), 0, 0, ((TankCannon)tank[1]).getAngle() ) );
 			needCooldown = true;
-			temp.start();
+			//temp.start();
 			
 		}
 		
@@ -761,28 +823,37 @@ public class Game extends JComponent implements KeyListener, Runnable
 		int key = e.getKeyCode();
 		
 		
-		//  If user released "A" or left arrow, set for stopping tank acceleration to the left.
-		if (key == KeyEvent.VK_A || key == KeyEvent.VK_LEFT)
+		//  If user released "A", set for stopping tank acceleration to the left.
+		if (key == KeyEvent.VK_A)
 		{
 			accelLeft = false;
 		}
 		
 		
-		//  If user released "D" or right arrow, set for stopping tank acceleration to the right.
-		if (key == KeyEvent.VK_D || key == KeyEvent.VK_RIGHT)
+		//  If user released "D", set for stopping tank acceleration to the right.
+		if (key == KeyEvent.VK_D)
 		{
 			accelRight = false;
 		}
 		
+		if (aimWithKeyboard == true && key == KeyEvent.VK_LEFT)
+		{
+			rotateLeft = false;
+		}
+		
+		if (aimWithKeyboard == true && key == KeyEvent.VK_RIGHT)
+		{
+			rotateRight = false;
+		}
 		
 		//  If user released space bar, allow user to fire another shell when space bar is pressed again.
-		if (key == KeyEvent.VK_SPACE)
+		if (key == KeyEvent.VK_SPACE || key == KeyEvent.VK_UP)
 		{
 			needCooldown = false;
 		}
 		
 		
-	}  //  End of keyReleased() method.
+	}
 	
 	
 	
@@ -820,4 +891,23 @@ public class Game extends JComponent implements KeyListener, Runnable
 			e1.printStackTrace();
 		}
 	}
+	
+	@Override
+	public void mousePressed(MouseEvent arg0)
+	{
+		if( aimWithMouse == true )
+			shells.add( new TankShell(tank[0].getX(), tank[0].getY(), 0, 0, ((TankCannon)tank[1]).getAngle() ) );
+	}
+	
+	@Override
+	public void mouseClicked(MouseEvent arg0) {}
+	
+	@Override
+	public void mouseEntered(MouseEvent arg0) {}
+	
+	@Override
+	public void mouseExited(MouseEvent arg0) {}
+	
+	@Override
+	public void mouseReleased(MouseEvent arg0) {}
 }

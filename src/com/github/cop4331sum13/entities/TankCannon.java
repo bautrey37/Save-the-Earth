@@ -122,4 +122,25 @@ public class TankCannon extends Tank
 	
 	
 	
+	/**
+	 * 
+	 */
+	public void updateAngleKeyboard( int d )
+	{
+		if( d == 1 )
+		{
+			angle += .1;
+			if( angle > Math.PI * 1.5 )
+				angle = Math.PI * 1.5;
+		}
+		else // d == 0
+		{
+			angle -= .1;
+			if( angle < Math.PI / 2.0 )
+				angle = Math.PI / 2.0;
+		}
+	}
+	
+	
 }  //  End of TankCannon class.
+
