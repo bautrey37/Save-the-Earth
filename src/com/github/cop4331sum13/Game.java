@@ -23,13 +23,13 @@ import javax.swing.JPanel;
 import com.github.cop4331sum13.animation.Explosion;
 import com.github.cop4331sum13.entities.*;
 import com.github.cop4331sum13.gui.GUI;
+import com.github.cop4331sum13.sound.SoundManager;
 
 /**
  * This is the main class that runs the in-game level.  All necessary procedures are handled by this class only.
  */
 public class Game extends JComponent implements KeyListener, Runnable, MouseListener
 {
-	Clip temp;
 	private Vector<Explosion> explosions;
 	private boolean GODMODE = false;
 	
@@ -159,7 +159,8 @@ public class Game extends JComponent implements KeyListener, Runnable, MouseList
 	 */
 	public void init( int dif )
 	{
-		this.loadSounds();
+		SoundManager.configureSounds();
+		
 		
 		//  Set the global game difficulty per user selection.
 		Game.difficulty = dif;
@@ -436,6 +437,11 @@ public class Game extends JComponent implements KeyListener, Runnable, MouseList
 		{
 			if( e!= null )
 			{
+				if( e.getFrameNumber() == 0 )
+				{
+					//  Start playing sound at first frame of each explosion.
+					SoundManager.playExplosion();
+				}
 				if( e.getFrameNumber() < 14 )
 				{
 					offg.drawImage(e.getFrameImage( e.getFrameNumber() ),
@@ -504,7 +510,7 @@ public class Game extends JComponent implements KeyListener, Runnable, MouseList
 		if( aimWithMouse == true )
 		{
 			double mouseX = MouseInfo.getPointerInfo().getLocation().getX() - GUI.window.getX();
-			double mouseY = MouseInfo.getPointerInfo().getLocation().getY() - GUI.window.getY();
+			double mouseY = MouseInfo.getPointerInfo().getLocation().getY() - GUI.window.getY() - 25;
 			((TankCannon)tank[1]).updateAngleMouse( (int) mouseX, (int) mouseY, (int) tank[0].getX(), (int) tank[0].getY() );
 		}
 		if( aimWithKeyboard == true )
@@ -804,7 +810,7 @@ public class Game extends JComponent implements KeyListener, Runnable, MouseList
 		{
 			shells.add( new TankShell(tank[0].getX(), tank[0].getY(), 0, 0, ((TankCannon)tank[1]).getAngle() ) );
 			needCooldown = true;
-			//temp.start();
+			SoundManager.playTankFire();
 			
 		}
 		
@@ -867,36 +873,14 @@ public class Game extends JComponent implements KeyListener, Runnable, MouseList
 	
 	
 	
-	public void loadSounds()
-	{
-
-		try
-		{
-			temp = AudioSystem.getClip();
-			AudioInputStream temp2 = AudioSystem.getAudioInputStream( new File("res/sound/cannon.wav") );
-			temp.open( temp2 );
-			//temp.start();
-		}
-		catch (LineUnavailableException e1)
-		{
-			e1.printStackTrace();
-		}
-		catch (UnsupportedAudioFileException e1)
-		{
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
-		catch (IOException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
-	}
-	
 	@Override
 	public void mousePressed(MouseEvent arg0)
 	{
 		if( aimWithMouse == true )
+		{
 			shells.add( new TankShell(tank[0].getX(), tank[0].getY(), 0, 0, ((TankCannon)tank[1]).getAngle() ) );
+			SoundManager.playTankFire();
+		}
 	}
 	
 	@Override
