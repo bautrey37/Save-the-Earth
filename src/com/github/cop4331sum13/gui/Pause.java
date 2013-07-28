@@ -61,7 +61,6 @@ public class Pause extends JPanel implements ActionListener, KeyListener {
 
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource() == title) {
-			Game.timer.cancel();
 			CardLayout lm = (CardLayout)container.getLayout();
 			lm.show(container, "title");
 		}

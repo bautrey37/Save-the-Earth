@@ -238,16 +238,9 @@ public class Game extends JComponent implements KeyListener, Runnable, MouseList
 		// Initialize game time
 		interval = 180; // (seconds)
 		timer = new Timer();
-		timer.scheduleAtFixedRate(new TimerTask() {
-			public void run() {
-					--interval;
-			    }
-		}, (long)1000, (long)1000);
 		
 		
 		start();
-		
-		
 	}
 	
 	
@@ -264,6 +257,14 @@ public class Game extends JComponent implements KeyListener, Runnable, MouseList
 		rotateRight = false;
 		running = true;
 		needCooldown = false;
+		
+		// start/restart timer
+		timer = new Timer();
+		timer.scheduleAtFixedRate(new TimerTask() {
+			public void run() {
+					--interval;
+			    }
+		}, (long)1000, (long)1000);
 		
 		this.requestFocusInWindow();
 		
@@ -838,6 +839,7 @@ public class Game extends JComponent implements KeyListener, Runnable, MouseList
 		//  If user pressed escape key, pause the game and switch to the pause screen.
 		if (key == KeyEvent.VK_ESCAPE) {
 			stop();
+			timer.cancel();
 			CardLayout cl = (CardLayout) container.getLayout();
 			cl.show(container, "pause");
 		}
