@@ -13,96 +13,101 @@ import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 
 /**
- * This class handles reading in and playing the sound effects for the game that
- * the user is playing.
+ * This class handles reading in and playing the sound effects for the game.
  * 
  * @author Thomas J. O'Neill
  */
 public class SoundManager
 {
 	/**
-	 * Holds the sound clip for when the cannon fires.
+	 * Manages the sound stream to play.
 	 */
-	private static Clip tankFire;
+	private static Clip soundClip;
 	
-	/**
-	 * Holds the sound clip for when an explosion occurs.
-	 */
-	private static Clip explosion;
 	
 	
 	/**
 	 * Initializes all sound variables with the sound files to use during the game.
 	 * 
-	 * (NOTE:  May not be necessary if file is to be read in everytime the sound is played.)
+	 * (NOTE:  May not be necessary if file is to be read in every time the sound is played.)
 	 */
 	public static void configureSounds()
 	{
+		//  Place holder method.  Use if it can be found such that a sound file can be
+		//  read in once and only once, but they played back as many times as needed.
+	}
+	
+	
+	
+	/**
+	 * This method takes in the name of the sound clip that is desired to be play,
+	 * imports the file itself, and then plays that sound clip through the user's 
+	 * speakers, if available.  Method does not override volume levels and, instead,
+	 * uses the current volume level set by the OS of the user's computer.
+	 * 
+	 * @param fileName - name of sound clip to read in and play.
+	 */
+	private static void playSoundClip( String fileName )
+	{
+		//  Obtain sound file.
 		try {
-			tankFire = AudioSystem.getClip();
-			AudioInputStream tankFireTemp;
-			tankFireTemp = AudioSystem.getAudioInputStream( new File("res/sound/cannon.wav") );
-			tankFire.open( tankFireTemp );
+			//  Initialize clip object.
+			soundClip = AudioSystem.getClip();
+			
+			//  Create and initialize streaming object with sound file.
+			String inFile = "res/sound/" + fileName + ".wav";
+			AudioInputStream soundClipTemp = AudioSystem.getAudioInputStream( new File( inFile ) );
+			
+			//  Add sound file to the player.
+			soundClip.open( soundClipTemp );
 		}
 		catch (UnsupportedAudioFileException | IOException | LineUnavailableException e)
 		{
 			e.printStackTrace();
 		}
 		
+		//  Play sound file.
+		soundClip.start();
+		
+		
 	}
 	
 	
 	
 	/**
-	 * Read in and play the sound for firing the tank cannon.
+	 * Play the sound for firing the tank cannon.
 	 */
 	public static void playTankFire()
 	{
-		//  Obtain sound file.
-		try {
-			//  Initialize clip object.
-			tankFire = AudioSystem.getClip();
-			
-			//  Create and initialize streaming object with sound file.
-			AudioInputStream tankFireTemp = AudioSystem.getAudioInputStream( new File("res/sound/cannon.wav") );
-			
-			//  Add sound file to the player.
-			tankFire.open( tankFireTemp );
-		}
-		catch (UnsupportedAudioFileException | IOException | LineUnavailableException e)
-		{
-			e.printStackTrace();
-		}
+		playSoundClip( "cannon" );
 		
-		//  Play sound file.
-		tankFire.start();
+		
 	}
 	
 	
 	
 	/**
-	 * Read in and play the sound for explosions on screen.
+	 * Play the sound for explosions on screen.
 	 */
 	public static void playExplosion()
 	{
-		//  Obtain sound file.
-		try {
-			//  Initialize clip object.
-			explosion = AudioSystem.getClip();
-			
-			//  Create and initialize streaming object with sound file.
-			AudioInputStream explosionTemp = AudioSystem.getAudioInputStream( new File("res/sound/explosion.wav") );
-			
-			//  Add sound file to the player.
-			explosion.open( explosionTemp );
-		}
-		catch (UnsupportedAudioFileException | IOException | LineUnavailableException e)
-		{
-			e.printStackTrace();
-		}
+		playSoundClip( "explosion" );
 		
-		//  Play sound file.
-		explosion.start();
+		
 	}
+	
+	
+	
+	/**
+	 * Play the sound for firing the alien lasers.
+	 */
+	public static void playLaser()
+	{
+		playSoundClip( "laser" );
+		
+		
+	}
+	
+	
 	
 }

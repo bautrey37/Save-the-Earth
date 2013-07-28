@@ -111,8 +111,12 @@ public class LargeAlien extends Alien
 	 * This method fires two shots at the tanks current position.  These shots will be 
 	 * "fire and forget" shots, meaning that they are not homing and will simply move
 	 * on a straight path
+	 * 
+	 * @param lasers - the vector list managing all the lasers that have been spawned thus far.
+	 * 
+	 * @return true if a new pair of lasers were added, false if no lasers were added.
 	 */
-	public void fireLasers( Vector<AlienLaser> lasers )
+	public boolean fireLasers( Vector<AlienLaser> lasers )
 	{
 		
 		
@@ -120,7 +124,7 @@ public class LargeAlien extends Alien
 		
 		if( !(System.currentTimeMillis() - systemTimeForFire > timeToWaitForFire ) )
 		{
-			return;
+			return false;
 		}
 		else
 		{
@@ -129,6 +133,8 @@ public class LargeAlien extends Alien
 		}
 		lasers.add( new AlienLaser( this.xPosition + 50, this.yPosition + 15, 0, 0, this.angleToTank) );
 		lasers.add( new AlienLaser( this.xPosition - 50, this.yPosition + 15, 0, 0, this.angleToTank) );
+		
+		return true;
 	}
 	
 	

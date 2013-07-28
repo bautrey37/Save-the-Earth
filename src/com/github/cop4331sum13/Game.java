@@ -159,9 +159,6 @@ public class Game extends JComponent implements KeyListener, Runnable, MouseList
 	 */
 	public void init( int dif )
 	{
-		SoundManager.configureSounds();
-		
-		
 		//  Set the global game difficulty per user selection.
 		Game.difficulty = dif;
 		
@@ -548,7 +545,11 @@ public class Game extends JComponent implements KeyListener, Runnable, MouseList
 				((LargeAlien)e).updateAngleToTank( (int)tank[0].getX(), (int)tank[0].getY() );
 				((LargeAlien)e).autoAccelerate();
 				e.move();
-				((LargeAlien)e).fireLasers( lasers );
+				Boolean hasFired = ((LargeAlien)e).fireLasers( lasers );
+				if( hasFired )
+				{
+					SoundManager.playLaser();
+				}
 			}
 			//  If SmallAlien, update acceleration towards tank.
 			if (e != null && e instanceof SmallAlien)
