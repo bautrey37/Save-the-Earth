@@ -377,7 +377,7 @@ public class Game extends JComponent implements KeyListener, Runnable, MouseList
 		
 		
 		// Check for win
-		if (interval <= 0){
+		if (interval < 0){
 			if (!GODMODE) endGame(true);
 		}
 		
@@ -799,6 +799,7 @@ public class Game extends JComponent implements KeyListener, Runnable, MouseList
 	 */
 	private void endGame(boolean i) {
 		stop();
+		timer.cancel();
 		CardLayout cl = (CardLayout) container.getLayout();
 		if(i)
 			cl.show(container, "win");
