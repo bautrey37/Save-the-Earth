@@ -2,6 +2,7 @@ package com.github.cop4331sum13;
 
 import java.awt.CardLayout;
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.MouseInfo;
@@ -13,11 +14,14 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.util.ConcurrentModificationException;
+import java.util.Timer;
+import java.util.TimerTask;
 import java.util.Vector;
 
 import javax.imageio.ImageIO;
 import javax.sound.sampled.*;
 import javax.swing.JComponent;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import com.github.cop4331sum13.animation.Explosion;
@@ -52,6 +56,11 @@ public class Game extends JComponent implements KeyListener, Runnable, MouseList
 	private JPanel container;
 	
 	/**
+	 * Font for game time
+	 */
+	private static Font font = new Font("Xolonium", Font.PLAIN, 25);
+	
+	/**
 	 * Contains the background image used when playing the levels.
 	 */
 	private BufferedImage background;
@@ -84,6 +93,24 @@ public class Game extends JComponent implements KeyListener, Runnable, MouseList
 	 * Controls whether or not the game screen shakes.
 	 */
 	private int shaking;
+	
+	/**
+	 * Used to adjust the chance of enemies spawning per game tick
+	 * It is stored as a number out of 1000 (for example, spawnRate = 10 means 10/1000 or 1% chance) 
+	 */
+	private double spawnRate;
+	
+	/**
+	 * Used to control when enemies can spawn if there are none on the screen
+	 */
+	private int spawnCoolDown;
+	private int spawnCoolDownConst; // varies by difficulty
+	
+	/**
+	 * Holds the current game time
+	 */
+	public static Timer timer;
+	private static int interval;
 	
 	/**
 	 * Defines the values used in determining enemy count and enemy type in levels 1 - 10. This variable is static so
@@ -131,6 +158,7 @@ public class Game extends JComponent implements KeyListener, Runnable, MouseList
 		//  Assign the "cards" to container to enable switching to pause and main menu.
 		this.container = container;
 		this.addMouseListener(this);
+		
 		//  Obtain background image for the play level.
 		try
 		{
@@ -162,18 +190,24 @@ public class Game extends JComponent implements KeyListener, Runnable, MouseList
 		//  Set the global game difficulty per user selection.
 		Game.difficulty = dif;
 		
-		//  Set the planet health based on difficulty level.
+		//  Set the planet health and spawn rate based on difficulty level.
 		if( dif == 1 )
 		{
 			planetHealth = 50;
+			spawnRate = 3;
+			spawnCoolDownConst = 100;
 		}
 		else if( dif == 2 )
 		{
 			planetHealth = 30;
+			spawnRate = 7;
+			spawnCoolDownConst = 85;
 		}
 		else  //  dif == 3
 		{
 			planetHealth = 15;
+			spawnRate = 11;
+			spawnCoolDownConst = 70;
 		}
 		maxPlanetHealth = planetHealth;
 		
@@ -201,11 +235,20 @@ public class Game extends JComponent implements KeyListener, Runnable, MouseList
 		aimWithMouse = true;
 		aimWithKeyboard = false;
 		
+		// Initialize game time
+		interval = 180; // (seconds)
+		timer = new Timer();
+		timer.scheduleAtFixedRate(new TimerTask() {
+			public void run() {
+					--interval;
+			    }
+		}, (long)1000, (long)1000);
+		
 		
 		start();
 		
 		
-	} 
+	}
 	
 	
 	
@@ -252,16 +295,18 @@ public class Game extends JComponent implements KeyListener, Runnable, MouseList
 	@Override
 	public void run()
 	{
-		//  Used to determine which type of enemy to spawn into the game next.
-		double chance = 0;
 		
 		//  This method handles the game, calling all the necessary functions to keep things moving on screen.
 		while (running)
 		{
-			// Make an enemy
-			if ((chance = 1000 * Math.random()) > 980) {
-				// Meteors
-				if (chance > 990)
+			// Spawn enemies
+			if (1000 * Math.random() > (1000 - spawnRate - 1) || 
+					(aliens.size() == 0 && meteors.size() == 0 && spawnCoolDown <= 0)) {
+				
+				spawnCoolDown = spawnCoolDownConst;
+				
+				// Roll again for Meteors (.3 chance of spawning one)
+				if (Math.random() < 0.3)
 					meteors.add(new Meteor((int)(Math.random() * 800.0), 0, 0 ,0 ));
 				
 				// Aliens
@@ -285,6 +330,12 @@ public class Game extends JComponent implements KeyListener, Runnable, MouseList
 			
 			//  Check for hits between tank, planet, and enemies.
 			this.processHits();
+			
+			// Increment spawn rate
+			this.spawnRate += .001;
+			
+			// Decrement the spawn cool down
+			this.spawnCoolDown -= 1;
 			
 			//  Enable a sleep timer.  This forces the game to run at approximately 30 frames per second.
 			try
@@ -323,6 +374,12 @@ public class Game extends JComponent implements KeyListener, Runnable, MouseList
 		
 		// Reset screen by re-drawing background image in preparation for this frame.
 		offg.drawImage(background, 0, 0, this);
+		
+		
+		// Check for win
+		if (interval <= 0){
+			if (!GODMODE) endGame(true);
+		}
 		
 		
 		// Draw planet health
@@ -462,13 +519,17 @@ public class Game extends JComponent implements KeyListener, Runnable, MouseList
 		}
 		
 		
-		
-		
+		// Draw game time on screen
+		offg.setFont(font);
+		offg.setColor(Color.GREEN);
+		int tempSec = interval%60;
+		offg.drawString(interval/60 + ":" + ((tempSec < 10) ? "0" + tempSec:tempSec), getWidth() - 76, 20);
 		
 		
 		// Handle shaking during meteor impact.
 		int xOffset = (int) ((shaking > 0)? ((Math.random() < .5) ? -1:1) * shaking * Math.random():0);
 		int yOffset = (int) ((shaking > 0)? ((Math.random() < .5) ? -1:1) * shaking * Math.random():0);
+		
 		
 		
 		// Make off screen image visible

@@ -53,9 +53,7 @@ public class TitleMenu extends JPanel implements ActionListener, MouseListener {
 	public TitleMenu(JPanel container) {
 		//container contains the CardLayout.  Used to switch to other panels.
 		this.container = container;
-		
-		//sets default difficulty level to easy.
-		this.difficulty = 1;
+
 		
 		//Buttons
 		newGame = new JButton("Begin Mission");
@@ -122,6 +120,10 @@ public class TitleMenu extends JPanel implements ActionListener, MouseListener {
 		this.setLayout(new BorderLayout());
 		this.setBackground(Color.LIGHT_GRAY);
 		this.add(buttons, BorderLayout.SOUTH);
+		
+		//sets default difficulty level to easy.
+		this.difficulty = 1;
+		setActiveButton(easy);
 		
 		//try to get image from file
 		try {

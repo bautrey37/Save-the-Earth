@@ -19,6 +19,7 @@ public class GameCompleted extends JPanel implements MouseListener {
 	
 	public GameCompleted(JPanel container){
 		this.container = container;
+		this.addMouseListener(this);
 		
 		try {
 			background = ImageIO.read(new File("res/Congratulations.jpg"));
