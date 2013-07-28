@@ -266,6 +266,10 @@ public class Game extends JComponent implements KeyListener, Runnable, MouseList
 				
 				// Aliens
 				aliens.add( Alien.spawnAlien( (int)(Math.random() * 800.0), 0, 0 ,0 ) );
+				if( aliens.get( aliens.size() - 1 ) instanceof SmallAlien)
+				{
+					SoundManager.playKamikaze();
+				}
 			}
 			
 			

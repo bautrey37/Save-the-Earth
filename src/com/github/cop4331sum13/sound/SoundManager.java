@@ -110,4 +110,16 @@ public class SoundManager
 	
 	
 	
+	/**
+	 * Play the sound for kamikaze strike from small aliens.
+	 */
+	public static void playKamikaze()
+	{
+		playSoundClip( "kamikaze" );
+		
+		
+	}
+	
+	
+	
 }
