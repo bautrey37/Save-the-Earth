@@ -23,6 +23,8 @@ public class SoundManager
 	 * Manages the sound stream to play.
 	 */
 	private static Clip soundClip;
+	private static Clip levelSoundtrack, titleSoundtrack;
+	private static int pausePosition;
 	
 	
 	
@@ -78,6 +80,68 @@ public class SoundManager
 	}
 	
 	
+	private static void playLevelSoundtrack( String fileName )
+	{
+		//  Obtain sound file.
+		try {
+			//  Initialize clip object.
+			levelSoundtrack = AudioSystem.getClip();
+			
+			//  Create and initialize streaming object with sound file.
+			String inFile = "res/sound/background/" + fileName + ".wav";
+			AudioInputStream soundClipTemp = AudioSystem.getAudioInputStream( new File( inFile ) );
+			
+			//  Add sound file to the player.
+			levelSoundtrack.open( soundClipTemp );
+		}
+		catch (UnsupportedAudioFileException | IOException | LineUnavailableException e)
+		{
+			e.printStackTrace();
+		}
+		catch (IllegalStateException e)
+		{
+			//System.err.println("IllegalStateException caught");
+			//e.printStackTrace();
+		}
+		
+		//  Play sound file.
+		levelSoundtrack.start();
+		
+		
+	}
+	
+	
+	private static void playTitleSoundtrack( String fileName )
+	{
+		//  Obtain sound file.
+		try {
+			//  Initialize clip object.
+			titleSoundtrack = AudioSystem.getClip();
+			
+			//  Create and initialize streaming object with sound file.
+			String inFile = "res/sound/background/" + fileName + ".wav";
+			AudioInputStream soundClipTemp = AudioSystem.getAudioInputStream( new File( inFile ) );
+			
+			//  Add sound file to the player.
+			titleSoundtrack.open( soundClipTemp );
+		}
+		catch (UnsupportedAudioFileException | IOException | LineUnavailableException e)
+		{
+			e.printStackTrace();
+		}
+		catch (IllegalStateException e)
+		{
+			//System.err.println("IllegalStateException caught");
+			//e.printStackTrace();
+		}
+		
+		//  Play sound file.
+		titleSoundtrack.start();
+		
+		
+	}
+	
+	
 	
 	/**
 	 * Play the sound for firing the tank cannon.
@@ -126,5 +190,37 @@ public class SoundManager
 	}
 	
 	
+	public static void playLevelSoundtrack()
+	{
+		playLevelSoundtrack( "Five Armies" );
+	}
+	
+	
+	public static void pauseLevelSoundtrack()
+	{
+		pausePosition = levelSoundtrack.getFramePosition();
+		levelSoundtrack.stop();
+	}
+	
+	public static void resumeLevelSoundtrack()
+	{
+		playLevelSoundtrack( "Five Armies" );
+		levelSoundtrack.setFramePosition( pausePosition );
+	}
+	
+	public static void stopLevelSoundtrack()
+	{
+		levelSoundtrack.stop();
+	}
+	
+	public static void playTitleSoundtrack()
+	{
+		playTitleSoundtrack( "Movement Proposition" );
+		
+	}
+	public static void stopTitleSoundtrack()
+	{
+		titleSoundtrack.stop();
+	}
 	
 }

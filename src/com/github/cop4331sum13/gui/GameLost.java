@@ -10,6 +10,8 @@ import java.io.File;
 import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 
+import com.github.cop4331sum13.sound.SoundManager;
+
 public class GameLost extends JPanel implements MouseListener {
 
 	private static final long serialVersionUID = 1L;
@@ -37,6 +39,8 @@ public class GameLost extends JPanel implements MouseListener {
 	public void mouseClicked(MouseEvent arg0) {
 		CardLayout cl = (CardLayout)container.getLayout();
 		cl.show(container, "title");
+		
+		SoundManager.playTitleSoundtrack();
 	}
 
 	@Override

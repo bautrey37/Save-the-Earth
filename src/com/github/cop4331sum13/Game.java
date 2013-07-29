@@ -33,7 +33,7 @@ import com.github.cop4331sum13.sound.SoundManager;
 public class Game extends JComponent implements KeyListener, Runnable, MouseListener
 {
 	private Vector<Explosion> explosions;
-	private boolean GODMODE = true;
+	private boolean GODMODE = false;
 	
 	private boolean aimWithMouse;
 	private boolean aimWithKeyboard;
@@ -188,6 +188,9 @@ public class Game extends JComponent implements KeyListener, Runnable, MouseList
 	 */
 	public void init( int dif )
 	{
+		SoundManager.stopTitleSoundtrack();
+		
+		
 		//  Set the global game difficulty per user selection.
 		Game.difficulty = dif;
 		
@@ -254,6 +257,9 @@ public class Game extends JComponent implements KeyListener, Runnable, MouseList
 			e.printStackTrace();
 		}
 		
+		
+		
+		SoundManager.playLevelSoundtrack();
 		
 		
 		
@@ -827,6 +833,7 @@ public class Game extends JComponent implements KeyListener, Runnable, MouseList
 	 * @param i - true for win, false for lose
 	 */
 	private void endGame(boolean i) {
+		SoundManager.stopLevelSoundtrack();
 		stop();
 		timer.cancel();
 		CardLayout cl = (CardLayout) container.getLayout();
@@ -879,6 +886,7 @@ public class Game extends JComponent implements KeyListener, Runnable, MouseList
 			}
 			CardLayout cl = (CardLayout) container.getLayout();
 			cl.show(container, "pause");
+			SoundManager.pauseLevelSoundtrack();
 		}
 		
 		

@@ -20,6 +20,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import com.github.cop4331sum13.Game;
+import com.github.cop4331sum13.sound.SoundManager;
 
 public class Pause extends JPanel implements ActionListener, KeyListener {
 
@@ -66,6 +67,8 @@ public class Pause extends JPanel implements ActionListener, KeyListener {
 		if(e.getSource() == title) {
 			CardLayout lm = (CardLayout)container.getLayout();
 			lm.show(container, "title");
+			
+			SoundManager.playTitleSoundtrack();
 		}
 		
 		if(e.getSource() == resume) {
@@ -79,6 +82,7 @@ public class Pause extends JPanel implements ActionListener, KeyListener {
 					break;
 				}
 			}
+			SoundManager.resumeLevelSoundtrack();
 			
 		}
 	}

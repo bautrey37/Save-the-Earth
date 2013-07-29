@@ -13,6 +13,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import com.github.cop4331sum13.Game;
+import com.github.cop4331sum13.sound.SoundManager;
 
 public class GUI {
 	
@@ -80,7 +81,12 @@ public class GUI {
 		panelContainer.add(gameLost, "lose");
 		panelContainer.add(gameCompleted, "win");
 		
+		
+		
 		cl.show(panelContainer, "title");  //title screen is first to show when launching
+		SoundManager.playTitleSoundtrack();
+		
+		
 		
 		window.setContentPane(panelContainer);
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
