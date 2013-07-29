@@ -116,7 +116,7 @@ public class LargeAlien extends Alien
 	 * 
 	 * @return true if a new pair of lasers were added, false if no lasers were added.
 	 */
-	public boolean fireLasers( Vector<AlienLaser> lasers )
+	public boolean fireLasers( Vector<AlienLaser> lasers, int tankX, int tankY )
 	{
 		
 		
@@ -131,8 +131,11 @@ public class LargeAlien extends Alien
 			systemTimeForFire = System.currentTimeMillis();
 			timeToWaitForFire = Math.random() * 2000.0 + 1000.0;
 		}
+		this.updateAngleToTank( tankX - 30, tankY);
 		lasers.add( new AlienLaser( this.xPosition + 50, this.yPosition + 15, 0, 0, this.angleToTank) );
+		this.updateAngleToTank( tankX + 30, tankY);
 		lasers.add( new AlienLaser( this.xPosition - 50, this.yPosition + 15, 0, 0, this.angleToTank) );
+		this.updateAngleToTank( tankX, tankY);
 		
 		return true;
 	}

@@ -36,15 +36,17 @@ public abstract class Tank extends Entity
 	 */
 	public void accelerateRight()
 	{
+		//  Keep tank from screen wrapping.
+		if( xPosition + 55 >= WIDTH )
+		{
+			xVelocity = 0;
+			return;
+		}
+		
+		
 		//  Increase the tank's velocity to the right
 		this.xVelocity += 0.7;
 		
-		//  Keep tank from screen wrapping.
-		if( this.xPosition + this.xVelocity - WIDTH + 55 >= 0 )
-		{
-			this.xVelocity = 0;
-			return;
-		}
 		
 		//  Ensure tank does not go faster than permitted speed limit.
 		if( this.xVelocity > tankSpeedLimit )
@@ -62,15 +64,17 @@ public abstract class Tank extends Entity
 	 */
 	public void accelerateLeft()
 	{
+		//  Keep tank from screen wrapping.
+		if( xPosition - 35 <= 0 )
+		{
+			xVelocity = 0;
+			return;
+		}
+		
+		
 		//  Increase the tank's velocity to the right
 		this.xVelocity -= 0.7;
 		
-		//  Keep tank from screen wrapping.
-		if( this.xPosition + this.xVelocity - 35 <= 0 )
-		{
-			this.xVelocity = 0;
-			return;
-		}
 		
 		//  Ensure tank does not go faster than permitted speed limit.
 		if( this.xVelocity < 0.0 - tankSpeedLimit )

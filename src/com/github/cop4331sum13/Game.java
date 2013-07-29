@@ -33,7 +33,7 @@ import com.github.cop4331sum13.sound.SoundManager;
 public class Game extends JComponent implements KeyListener, Runnable, MouseListener
 {
 	private Vector<Explosion> explosions;
-	private boolean GODMODE = false;
+	private boolean GODMODE = true;
 	
 	private boolean aimWithMouse;
 	private boolean aimWithKeyboard;
@@ -230,8 +230,8 @@ public class Game extends JComponent implements KeyListener, Runnable, MouseList
 		
 		
 		//  Set default controls to mouse.
-		aimWithMouse = false;
-		aimWithKeyboard = true;
+		aimWithMouse = true;
+		aimWithKeyboard = false;
 		
 		// Initialize game time
 		interval = 180; // (seconds)
@@ -586,8 +586,8 @@ public class Game extends JComponent implements KeyListener, Runnable, MouseList
 		
 		//  Meteors across the screen.
 		for (Meteor e : meteors) {
-			if (e != null){
-				shaking += e.autoAccelerate();
+			if (e != null)
+			{
 				e.move();
 			}
 		}
@@ -608,7 +608,7 @@ public class Game extends JComponent implements KeyListener, Runnable, MouseList
 				((LargeAlien)e).updateAngleToTank( (int)tank[0].getX(), (int)tank[0].getY() );
 				((LargeAlien)e).autoAccelerate();
 				e.move();
-				Boolean hasFired = ((LargeAlien)e).fireLasers( lasers );
+				Boolean hasFired = ((LargeAlien)e).fireLasers( lasers, (int)tank[0].getX(), (int)tank[0].getY() );
 				if( hasFired )
 				{
 					SoundManager.playLaser();
@@ -743,7 +743,7 @@ public class Game extends JComponent implements KeyListener, Runnable, MouseList
 		//  This for loop checks if meteors have landed on the planet.
 		for( int index = meteors.size() - 1; index >= 0; index-- )
 		{
-			if( meteors.get( index ).getY() >= this.getHeight() )
+			if( meteors.get( index ).getY() >= this.getHeight() - meteors.get( index ).getImage().getHeight() * 0.4)
 			{
 				planetHealth -= 3;
 				meteors.get( index ).setHealth( 0 );
@@ -755,7 +755,7 @@ public class Game extends JComponent implements KeyListener, Runnable, MouseList
 		//  This for loop handles deletion of dead aliens.
 		for( int index = aliens.size() - 1; index >= 0; index-- )
 		{
-			if( aliens.get( index ).getHealth() <= 0 || aliens.get( index ).getY() >= this.getHeight() + 50 )
+			if( aliens.get( index ).getHealth() <= 0 || aliens.get( index ).getY() >= this.getHeight() + 5 )
 			{
 				explosions.add( new Explosion( aliens.get( index ).getX(), aliens.get( index ).getY() ) );
 				aliens.remove( index );
@@ -768,6 +768,7 @@ public class Game extends JComponent implements KeyListener, Runnable, MouseList
 			{
 				explosions.add( new Explosion( meteors.get( index ).getX(), meteors.get( index ).getY() ) );
 				meteors.remove( index );
+				shaking += 20;
 			}
 		}
 		//  This method handles deletion of old/used shells.
@@ -815,7 +816,6 @@ public class Game extends JComponent implements KeyListener, Runnable, MouseList
 		
 		//  Obtain info for which key was pressed.
 		int key = e.getKeyCode();
-		
 		
 		//  Toggle aiming system.
 		if (key == KeyEvent.VK_T)

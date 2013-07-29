@@ -98,7 +98,6 @@ public class Pause extends JPanel implements ActionListener, KeyListener {
 	
 	@Override
 	protected void paintComponent(Graphics g) {
-		System.out.println("paint was called");
 		super.paintComponent(g);
 		g.drawImage(img, 0, 0, null);
 	}

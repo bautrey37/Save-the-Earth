@@ -45,15 +45,5 @@ public class Meteor extends Entity {
 		
 	}
 	
-
-	public int autoAccelerate() {
-		if (!grounded) {
-			if (yPosition > GUI.gameHeight - 60){
-				grounded = true;
-				return 20; 
-			}
-		}
-		return 0;
-	}
-
+	
 }
