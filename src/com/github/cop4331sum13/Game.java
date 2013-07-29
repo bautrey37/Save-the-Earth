@@ -245,8 +245,8 @@ public class Game extends JComponent implements KeyListener, Runnable, MouseList
 		//  Obtain background image for the play level.
 		try
 		{
-			mouseMode = ImageIO.read( new File( "res/Mouse.jpg" ) );
-			keyboardMode = ImageIO.read( new File( "res/Keyboard.jpg" ) );
+			mouseMode = ImageIO.read( new File( "res/Mouse.png" ) );
+			keyboardMode = ImageIO.read( new File( "res/Keyboard.png" ) );
 			
 		}
 		catch (Exception e)
@@ -391,6 +391,18 @@ public class Game extends JComponent implements KeyListener, Runnable, MouseList
 		
 		// Reset screen by re-drawing background image in preparation for this frame.
 		offg.drawImage(background, 0, 0, this);
+		
+		
+		//  Display current aiming mode.
+		if( aimWithMouse )
+		offg.drawImage( mouseMode, this.getWidth() - mouseMode.getWidth() - 5,
+								   this.getHeight() - mouseMode.getHeight() - 5, this );
+		
+		if( aimWithKeyboard )
+		offg.drawImage( keyboardMode, this.getWidth() - keyboardMode.getWidth() - 5,
+									  this.getHeight() - keyboardMode.getHeight() - 5, this );
+			
+		
 		
 		
 		// Check for win
@@ -546,20 +558,6 @@ public class Game extends JComponent implements KeyListener, Runnable, MouseList
 		// Handle shaking during meteor impact.
 		int xOffset = (int) ((shaking > 0)? ((Math.random() < .5) ? -1:1) * shaking * Math.random():0);
 		int yOffset = (int) ((shaking > 0)? ((Math.random() < .5) ? -1:1) * shaking * Math.random():0);
-		
-		
-		
-		
-		if( aimWithMouse )
-		offg.drawImage( mouseMode, this.getWidth() - mouseMode.getWidth() + 5,
-								   this.getHeight() - mouseMode.getHeight() + 5, this );
-		
-		if( aimWithKeyboard )
-		offg.drawImage( keyboardMode, this.getWidth() - keyboardMode.getWidth() + 5,
-				   this.getHeight() - keyboardMode.getHeight() + 5, this );
-		
-		
-		
 		
 		
 		// Make off screen image visible
@@ -779,6 +777,7 @@ public class Game extends JComponent implements KeyListener, Runnable, MouseList
 			{
 				planetHealth -= 3;
 				meteors.get( index ).setHealth( 0 );
+				shaking += 20;
 			}
 		}
 		
@@ -800,7 +799,6 @@ public class Game extends JComponent implements KeyListener, Runnable, MouseList
 			{
 				explosions.add( new Explosion( meteors.get( index ).getX(), meteors.get( index ).getY() ) );
 				meteors.remove( index );
-				shaking += 20;
 			}
 		}
 		//  This method handles deletion of old/used shells.
