@@ -2,7 +2,6 @@ package com.github.cop4331sum13.gui;
 
 import java.awt.CardLayout;
 import java.awt.Graphics;
-import java.awt.event.ActionEvent;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;

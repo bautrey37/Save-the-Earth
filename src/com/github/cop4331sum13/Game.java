@@ -12,16 +12,12 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
-import java.io.IOException;
-import java.util.ConcurrentModificationException;
 import java.util.Timer;
 import java.util.TimerTask;
 import java.util.Vector;
 
 import javax.imageio.ImageIO;
-import javax.sound.sampled.*;
 import javax.swing.JComponent;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import com.github.cop4331sum13.animation.Explosion;

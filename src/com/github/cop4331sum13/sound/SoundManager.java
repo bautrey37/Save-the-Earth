@@ -65,6 +65,11 @@ public class SoundManager
 		{
 			e.printStackTrace();
 		}
+		catch (IllegalStateException e)
+		{
+			System.err.println("IllegalStateException caught");
+			e.printStackTrace();
+		}
 		
 		//  Play sound file.
 		soundClip.start();

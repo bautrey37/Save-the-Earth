@@ -26,7 +26,7 @@ public class GUI {
 	 * and the window information is needed by other classes, so this object may be static.
 	 */
 	public static JFrame window;
-	private JPanel panelContainer, credits, upgrades, control, pause, backstory, gameLost, gameCompleted;
+	private JPanel panelContainer, credits, control, pause, backstory, gameLost, gameCompleted;
 	private JComponent game, title;
 	
 	private CardLayout cl;
@@ -59,7 +59,6 @@ public class GUI {
 		panelContainer = new JPanel(); //contains the panels below as cards
 		title = new TitleMenu(panelContainer);
 		credits = new Credits(panelContainer);
-		upgrades = new Upgrade(panelContainer);
 		game = new Game(panelContainer);
 		control = new Controls(panelContainer);
 		pause = new Pause(panelContainer);
@@ -74,7 +73,6 @@ public class GUI {
 		panelContainer.setLayout(cl);
 		panelContainer.add(title, "title"); //these are the cards
 		panelContainer.add(credits, "credits");
-		panelContainer.add(upgrades, "upgrades");
 		panelContainer.add(game, "game");
 		panelContainer.add(control, "controls");
 		panelContainer.add(pause, "pause");
