@@ -68,6 +68,17 @@ public class TankShell extends Tank
 	
 	
 	/**
+	 * 
+	 */
+	public void move()
+	{
+		xPosition = xPosition + xVelocity;
+		yPosition = yPosition + yVelocity;
+	}
+	
+	
+	
+	/**
 	 * Returns the power level of this tank shell.  Used in determining how much "health" to take
 	 * from specific enemies.
 	 * 

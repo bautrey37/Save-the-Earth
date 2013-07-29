@@ -42,8 +42,8 @@ public abstract class Entity
 	protected double yVelocity;
 	
 	//  Keep track of game window size.
-	private static final int WIDTH = 800;
-	private static final int HEIGHT = 600;
+	protected static final int WIDTH = 800;
+	protected static final int HEIGHT = 600;
 	
 	
 	protected int health;
