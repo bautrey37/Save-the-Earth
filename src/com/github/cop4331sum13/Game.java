@@ -2,6 +2,7 @@ package com.github.cop4331sum13;
 
 import java.awt.CardLayout;
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Image;
@@ -23,6 +24,7 @@ import javax.swing.JPanel;
 import com.github.cop4331sum13.animation.Explosion;
 import com.github.cop4331sum13.entities.*;
 import com.github.cop4331sum13.gui.GUI;
+import com.github.cop4331sum13.gui.Pause;
 import com.github.cop4331sum13.sound.SoundManager;
 
 /**
@@ -38,7 +40,7 @@ public class Game extends JComponent implements KeyListener, Runnable, MouseList
 	private boolean rotateLeft;
 	private boolean rotateRight;
 	
-	
+	private Image offScreen = null;
 	
 	
 	/**
@@ -228,8 +230,8 @@ public class Game extends JComponent implements KeyListener, Runnable, MouseList
 		
 		
 		//  Set default controls to mouse.
-		aimWithMouse = true;
-		aimWithKeyboard = false;
+		aimWithMouse = false;
+		aimWithKeyboard = true;
 		
 		// Initialize game time
 		interval = 180; // (seconds)
@@ -361,7 +363,6 @@ public class Game extends JComponent implements KeyListener, Runnable, MouseList
 		
 		//  Declare variable for buffering image.
 		Graphics offg;
-		Image offScreen = null;
 		
 		
 		// Initialize off screen image
@@ -836,6 +837,16 @@ public class Game extends JComponent implements KeyListener, Runnable, MouseList
 		if (key == KeyEvent.VK_ESCAPE) {
 			stop();
 			timer.cancel();
+		
+			for( Component comp : container.getComponents() )
+			{
+				//  If the component is of instance type "Game", call the runGame() method on this component.
+				if( comp instanceof Pause )
+				{
+					((Pause)comp).drawImage(offScreen);
+					break;
+				}
+			}
 			CardLayout cl = (CardLayout) container.getLayout();
 			cl.show(container, "pause");
 		}
