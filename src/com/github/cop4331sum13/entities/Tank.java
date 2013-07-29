@@ -30,6 +30,7 @@ public abstract class Tank extends Entity
 	}  //  End of Tank constructor.
 	
 	
+	
 	/**
 	 * This method increases the x velocity to the right of the window.
 	 */
@@ -38,6 +39,12 @@ public abstract class Tank extends Entity
 		//  Increase the tank's velocity to the right
 		this.xVelocity += 0.7;
 		
+		//  Keep tank from screen wrapping.
+		if( this.xPosition + this.xVelocity - WIDTH + 55 >= 0 )
+		{
+			this.xVelocity = 0;
+			return;
+		}
 		
 		//  Ensure tank does not go faster than permitted speed limit.
 		if( this.xVelocity > tankSpeedLimit )
@@ -58,6 +65,12 @@ public abstract class Tank extends Entity
 		//  Increase the tank's velocity to the right
 		this.xVelocity -= 0.7;
 		
+		//  Keep tank from screen wrapping.
+		if( this.xPosition + this.xVelocity - 35 <= 0 )
+		{
+			this.xVelocity = 0;
+			return;
+		}
 		
 		//  Ensure tank does not go faster than permitted speed limit.
 		if( this.xVelocity < 0.0 - tankSpeedLimit )
