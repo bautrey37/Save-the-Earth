@@ -40,6 +40,9 @@ public class Game extends JComponent implements KeyListener, Runnable, MouseList
 	private boolean rotateLeft;
 	private boolean rotateRight;
 	
+	private BufferedImage mouseMode;
+	private BufferedImage keyboardMode;
+	
 	private Image offScreen = null;
 	
 	
@@ -236,6 +239,22 @@ public class Game extends JComponent implements KeyListener, Runnable, MouseList
 		// Initialize game time
 		interval = 180; // (seconds)
 		timer = new Timer();
+		
+		
+		
+		//  Obtain background image for the play level.
+		try
+		{
+			mouseMode = ImageIO.read( new File( "res/Mouse.jpg" ) );
+			keyboardMode = ImageIO.read( new File( "res/Keyboard.jpg" ) );
+			
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();
+		}
+		
+		
 		
 		
 		start();
@@ -527,6 +546,19 @@ public class Game extends JComponent implements KeyListener, Runnable, MouseList
 		// Handle shaking during meteor impact.
 		int xOffset = (int) ((shaking > 0)? ((Math.random() < .5) ? -1:1) * shaking * Math.random():0);
 		int yOffset = (int) ((shaking > 0)? ((Math.random() < .5) ? -1:1) * shaking * Math.random():0);
+		
+		
+		
+		
+		if( aimWithMouse )
+		offg.drawImage( mouseMode, this.getWidth() - mouseMode.getWidth() + 5,
+								   this.getHeight() - mouseMode.getHeight() + 5, this );
+		
+		if( aimWithKeyboard )
+		offg.drawImage( keyboardMode, this.getWidth() - keyboardMode.getWidth() + 5,
+				   this.getHeight() - keyboardMode.getHeight() + 5, this );
+		
+		
 		
 		
 		
@@ -952,11 +984,13 @@ public class Game extends JComponent implements KeyListener, Runnable, MouseList
 	@Override
 	public void mousePressed(MouseEvent arg0)
 	{
-		if( aimWithMouse == true )
+		if( aimWithMouse == true && arg0.getButton() == MouseEvent.BUTTON1 )
 		{
 			shells.add( new TankShell(tank[0].getX(), tank[0].getY(), 0, 0, ((TankCannon)tank[1]).getAngle() ) );
 			SoundManager.playTankFire();
 		}
+		
+		
 	}
 	
 	@Override
