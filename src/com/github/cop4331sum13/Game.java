@@ -347,7 +347,7 @@ public class Game extends JComponent implements KeyListener, Runnable, MouseList
 				{
 					double enemyType = Math.random();
 					
-					if (enemyType < 0.18)  // meteors
+					if (enemyType < 0.1)  // meteors
 					{
 						meteors.add(new Meteor((int)(Math.random() * 800.0), 0, 0 ,0 ));
 					}
