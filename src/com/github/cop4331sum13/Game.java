@@ -205,7 +205,7 @@ public class Game extends JComponent implements KeyListener, Runnable, MouseList
 		{
 			planetHealth = 50;
 			spawnChance = 50;
-			spawnCoolDownConst = 35;
+			spawnCoolDownConst = 50;
 			waveCount = 3;
 		}
 		else if( dif == 2 )
