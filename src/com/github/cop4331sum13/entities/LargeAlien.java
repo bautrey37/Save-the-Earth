@@ -58,7 +58,7 @@ public class LargeAlien extends Alien
 		}
 		else  //  Game.difficulty == 3
 		{
-			this.health = 4;
+			this.health = 3;
 		}
 		
 		

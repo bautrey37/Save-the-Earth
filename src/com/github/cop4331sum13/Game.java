@@ -220,7 +220,7 @@ public class Game extends JComponent implements KeyListener, Runnable, MouseList
 			planetHealth = 20;
 			spawnChance = 55;
 			spawnCoolDownConst = 35;
-			waveCount = 4;
+			waveCount = 3;
 		}
 		maxPlanetHealth = planetHealth;
 		
