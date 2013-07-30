@@ -11,13 +11,14 @@ import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.Image;
 import java.awt.MouseInfo;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.awt.image.BufferedImage;
 import java.io.File;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -46,7 +47,8 @@ public class TitleMenu extends JPanel implements ActionListener, MouseListener {
 	private Font difFont = new Font("Xolonium", Font.PLAIN, 20);
 	
 	//private Graphics g;
-	private BufferedImage logo, background;
+	private Image logo, background;
+	private URL url;
 	
 	public TitleMenu(JPanel container) {
 		//container contains the CardLayout.  Used to switch to other panels.
@@ -125,12 +127,16 @@ public class TitleMenu extends JPanel implements ActionListener, MouseListener {
 		
 		//try to get image from file
 		try {
-			//URL image = TitleMenu.class.getResource("/res/Save-the-Earth.png");
-			logo = ImageIO.read(new File("res/Save-the-Earth.png"));
-			background = ImageIO.read(new File("res/STE-Title.jpg")); 
+			/*url = getClass().getResource("Save-the-Earth.png");
+			logo = Toolkit.getDefaultToolkit().getImage(url);
+			url = getClass().getResource("STE-Title.jpg");
+			background = Toolkit.getDefaultToolkit().getImage(url);*/
+			logo = ImageIO.read(new File("res/Save-the-Earth.png")); 
+			background = ImageIO.read(new File("res/STE-Title.jpg"));
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
+		
 		
 	}	
 	
