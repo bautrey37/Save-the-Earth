@@ -97,15 +97,20 @@ public class Game extends JComponent implements KeyListener, Runnable, MouseList
 	
 	/**
 	 * Used to adjust the chance of enemies spawning per game tick
-	 * It is stored as a number out of 1000 (for example, spawnRate = 10 means 10/1000 or 1% chance) 
+	 * It is stored as a number out of 1000 (for example, spawnChance = 10 means 10/1000 or 1% chance) 
 	 */
-	private double spawnRate;
+	private double spawnChance;
 	
 	/**
 	 * Used to control when enemies can spawn if there are none on the screen
 	 */
 	private int spawnCoolDown;
 	private int spawnCoolDownConst; // varies by difficulty
+	
+	/**
+	 * Maximum amount of enemies that can spawn per wave
+	 */
+	private int waveCount;  // varies by difficulty
 	
 	/**
 	 * Holds the current game time
@@ -198,20 +203,23 @@ public class Game extends JComponent implements KeyListener, Runnable, MouseList
 		if( dif == 1 )
 		{
 			planetHealth = 50;
-			spawnRate = 3;
-			spawnCoolDownConst = 100;
+			spawnChance = 30;
+			spawnCoolDownConst = 50;
+			waveCount = 3;
 		}
 		else if( dif == 2 )
 		{
 			planetHealth = 30;
-			spawnRate = 7;
-			spawnCoolDownConst = 85;
+			spawnChance = 40;
+			spawnCoolDownConst = 40;
+			waveCount = 3;
 		}
 		else  //  dif == 3
 		{
 			planetHealth = 15;
-			spawnRate = 11;
-			spawnCoolDownConst = 70;
+			spawnChance = 40;
+			spawnCoolDownConst = 40;
+			waveCount = 3;
 		}
 		maxPlanetHealth = planetHealth;
 		
@@ -324,20 +332,31 @@ public class Game extends JComponent implements KeyListener, Runnable, MouseList
 		while (running)
 		{
 			// Spawn enemies
-			if (1000 * Math.random() > (1000 - spawnRate - 1) || 
-					(aliens.size() == 0 && meteors.size() == 0 && spawnCoolDown <= 0)) {
+			if (((1000 * Math.random() > 1000 - spawnChance - 1) || 
+					(aliens.size() == 0 && meteors.size() == 0)) && spawnCoolDown <= 0) {
+				
 				
 				spawnCoolDown = spawnCoolDownConst;
 				
-				// Roll again for Meteors (.3 chance of spawning one)
-				if (Math.random() < 0.3)
-					meteors.add(new Meteor((int)(Math.random() * 800.0), 0, 0 ,0 ));
 				
-				// Aliens
-				aliens.add( Alien.spawnAlien( (int)(Math.random() * 800.0), 0, 0 ,0 ) );
-				if( aliens.get( aliens.size() - 1 ) instanceof SmallAlien)
+				// Make up to waveCount enemies where waveCount depends on difficulty
+				for (int i = 0; i < waveCount; ++i)
 				{
-					SoundManager.playKamikaze();
+					double enemyType = Math.random();
+					
+					if (enemyType < 0.2)  // meteors
+					{
+						meteors.add(new Meteor((int)(Math.random() * 800.0), 0, 0 ,0 ));
+					}
+					else if (enemyType < 0.4)  // small aliens
+					{
+						aliens.add(new SmallAlien((int)(Math.random() * 800.0), 0, 0 ,0 ));
+						SoundManager.playKamikaze();
+					}
+					else if (enemyType < 0.7)  // big aliens
+					{
+						aliens.add(new LargeAlien((int)(Math.random() * 800.0), 0, 0 ,0 ));
+					}
 				}
 			}
 			
@@ -356,7 +375,7 @@ public class Game extends JComponent implements KeyListener, Runnable, MouseList
 			this.processHits();
 			
 			// Increment spawn rate
-			this.spawnRate += .001;
+			this.spawnChance += .005;
 			
 			// Decrement the spawn cool down
 			this.spawnCoolDown -= 1;
@@ -412,7 +431,7 @@ public class Game extends JComponent implements KeyListener, Runnable, MouseList
 		
 		
 		// Check for win
-		if (interval < 0){
+		if (interval <= 0){
 			if (!GODMODE) endGame(true);
 		}
 		

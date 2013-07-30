@@ -20,24 +20,6 @@ public abstract class Alien extends Entity
 	
 	
 	
-	public static Alien spawnAlien(double xPos, double yPos, double xVel, double yVel){
-		int chance = (int)(100*Math.random());
-		
-		if (chance < 55){
-			
-			//System.out.println("large");
-			
-			return new LargeAlien(xPos, yPos, xVel, yVel);
-		}
-		else{
-			
-			//System.out.println("small");
-			
-			return new SmallAlien(xPos, yPos, xVel, yVel);
-		}
-	}
-	
-	
 	/**
 	 * 
 	 */
