@@ -34,6 +34,7 @@ public class Game extends JComponent implements KeyListener, Runnable, MouseList
 {
 	private Vector<Explosion> explosions;
 	private boolean GODMODE = false;
+	private static final int GAME_LENGTH = 180;
 	
 	private boolean aimWithMouse;
 	private boolean aimWithKeyboard;
@@ -203,23 +204,23 @@ public class Game extends JComponent implements KeyListener, Runnable, MouseList
 		if( dif == 1 )
 		{
 			planetHealth = 50;
-			spawnChance = 30;
-			spawnCoolDownConst = 50;
+			spawnChance = 50;
+			spawnCoolDownConst = 35;
 			waveCount = 3;
 		}
 		else if( dif == 2 )
 		{
 			planetHealth = 30;
-			spawnChance = 40;
-			spawnCoolDownConst = 40;
+			spawnChance = 55;
+			spawnCoolDownConst = 35;
 			waveCount = 3;
 		}
 		else  //  dif == 3
 		{
-			planetHealth = 15;
-			spawnChance = 40;
-			spawnCoolDownConst = 40;
-			waveCount = 3;
+			planetHealth = 20;
+			spawnChance = 55;
+			spawnCoolDownConst = 35;
+			waveCount = 4;
 		}
 		maxPlanetHealth = planetHealth;
 		
@@ -248,7 +249,7 @@ public class Game extends JComponent implements KeyListener, Runnable, MouseList
 		aimWithKeyboard = false;
 		
 		// Initialize game time
-		interval = 180; // (seconds)
+		interval = GAME_LENGTH;  // in seconds
 		timer = new Timer();
 		
 		
@@ -331,9 +332,11 @@ public class Game extends JComponent implements KeyListener, Runnable, MouseList
 		//  This method handles the game, calling all the necessary functions to keep things moving on screen.
 		while (running)
 		{
+			
 			// Spawn enemies
 			if (((1000 * Math.random() > 1000 - spawnChance - 1) || 
-					(aliens.size() == 0 && meteors.size() == 0)) && spawnCoolDown <= 0) {
+					(aliens.size() == 0 && meteors.size() == 0)) && spawnCoolDown <= 0
+					&& interval < GAME_LENGTH - 1) {
 				
 				
 				spawnCoolDown = spawnCoolDownConst;
@@ -344,7 +347,7 @@ public class Game extends JComponent implements KeyListener, Runnable, MouseList
 				{
 					double enemyType = Math.random();
 					
-					if (enemyType < 0.2)  // meteors
+					if (enemyType < 0.18)  // meteors
 					{
 						meteors.add(new Meteor((int)(Math.random() * 800.0), 0, 0 ,0 ));
 					}
