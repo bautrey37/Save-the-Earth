@@ -17,13 +17,13 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.io.File;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.imageio.ImageIO;
 import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
@@ -127,12 +127,12 @@ public class TitleMenu extends JPanel implements ActionListener, MouseListener {
 		
 		//try to get image from file
 		try {
-			/*url = getClass().getResource("Save-the-Earth.png");
-			logo = Toolkit.getDefaultToolkit().getImage(url);
-			url = getClass().getResource("STE-Title.jpg");
-			background = Toolkit.getDefaultToolkit().getImage(url);*/
-			logo = ImageIO.read(new File("res/Save-the-Earth.png")); 
-			background = ImageIO.read(new File("res/STE-Title.jpg"));
+			logo = ImageIO.read(this.getClass().getClassLoader().getResource("Save-the-Earth.png"));
+			background = ImageIO.read(this.getClass().getClassLoader().getResource("STE-Title.jpg"));
+			//logo = new ImageIcon(this.getClass().getClassLoader().getResource("Save-the-Earth.png")).getImage();
+			//background = new ImageIcon(this.getClass().getClassLoader().getResource("STE-Title.jpg")).getImage();
+			//logo = ImageIO.read(new File("res/Save-the-Earth.png")); 
+			//background = ImageIO.read(new File("res/STE-Title.jpg"));
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
@@ -150,7 +150,6 @@ public class TitleMenu extends JPanel implements ActionListener, MouseListener {
 		g.drawImage(background, 0, 0, null);
 		//calculated logo in scale and center of screen based of the height, 350
 		g.drawImage(logo, 64, 0, 672, 350, null);
-		
 	}
 
 	public void actionPerformed(ActionEvent e) {
