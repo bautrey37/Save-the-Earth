@@ -30,6 +30,7 @@ import com.github.cop4331sum13.entities.Tank;
 import com.github.cop4331sum13.entities.TankBody;
 import com.github.cop4331sum13.entities.TankCannon;
 import com.github.cop4331sum13.entities.TankShell;
+import com.github.cop4331sum13.gui.EndGame;
 import com.github.cop4331sum13.gui.GUI;
 import com.github.cop4331sum13.gui.Pause;
 import com.github.cop4331sum13.sound.SoundManager;
@@ -41,7 +42,7 @@ public class Game extends JComponent implements KeyListener, Runnable, MouseList
 {
 	private Vector<Explosion> explosions;
 	private boolean GODMODE = false;
-	private static final int GAME_LENGTH = 180;
+	private static final int GAME_LENGTH = 20;
 	
 	private boolean aimWithMouse;
 	private boolean aimWithKeyboard;
@@ -822,17 +823,25 @@ public class Game extends JComponent implements KeyListener, Runnable, MouseList
 	 * @param i - true for win, false for lose
 	 */
 	private void endGame(boolean i) {
-		
 		stop();
 		timer.cancel();
 		CardLayout cl = (CardLayout) container.getLayout();
-		if(i)
-			cl.show(container, "win");
-		else
+		
+		if(!i)
 		{
 			SoundManager.stopLevelSoundtrack();
-			cl.show(container, "lose");
 		}
+		
+		for(Component comp : container.getComponents())
+		{
+			if( comp instanceof EndGame )
+			{
+				((EndGame)comp).setWinScreen(i);
+				break;
+			}
+		}
+		
+		cl.show(container, "end");
 	}
 	
 	

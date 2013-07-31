@@ -29,7 +29,7 @@ public class GUI {
 	 * and the window information is needed by other classes, so this object may be static.
 	 */
 	public static JFrame window;
-	private JPanel panelContainer, credits, control, pause, backstory, gameLost, gameCompleted;
+	private JPanel panelContainer, credits, control, pause, backstory, endGame;
 	private JComponent game, title;
 	
 	private CardLayout cl;
@@ -66,24 +66,23 @@ public class GUI {
 		control = new Controls(panelContainer);
 		pause = new Pause(panelContainer);
 		backstory = new BackStory(panelContainer);
-		title.addMouseListener((MouseListener) title);
-		
-		gameLost = new GameLost(panelContainer);
-		gameCompleted = new GameCompleted(panelContainer);
+		endGame = new EndGame(panelContainer);
 		
 		cl = new CardLayout();
 		panelContainer.setLayout(cl);
-		panelContainer.add(title, "title"); //these are the cards
+		//these are the cards
+		panelContainer.add(title, "title"); 
 		panelContainer.add(credits, "credits");
 		panelContainer.add(game, "game");
 		panelContainer.add(control, "controls");
 		panelContainer.add(pause, "pause");
 		panelContainer.add(backstory, "story");
-		panelContainer.add(gameLost, "lose");
-		panelContainer.add(gameCompleted, "win");
+		panelContainer.add(endGame, "end");
 		
 		cl.show(panelContainer, "title");  //title screen is first to show when launching
 		SoundManager.playTitleSoundtrack();
+		
+		title.addMouseListener((MouseListener) title);
 		
 		window.setContentPane(panelContainer);
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

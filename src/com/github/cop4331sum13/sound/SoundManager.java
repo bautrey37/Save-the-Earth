@@ -26,7 +26,6 @@ public class SoundManager
 	private static int pausePosition;
 	
 	
-	
 	/**
 	 * Initializes all sound variables with the sound files to use during the game.
 	 * 
@@ -37,7 +36,6 @@ public class SoundManager
 		//  Place holder method.  Use if it can be found such that a sound file can be
 		//  read in once and only once, but they played back as many times as needed.
 	}
-	
 	
 	
 	/**
@@ -73,9 +71,7 @@ public class SoundManager
 		}
 		
 		//  Play sound file.
-		soundClip.start();
-		
-		
+		soundClip.start();	
 	}
 	
 	
@@ -104,9 +100,7 @@ public class SoundManager
 		}
 		
 		//  Play sound file.
-		levelSoundtrack.start();
-		
-		
+		levelSoundtrack.start();		
 	}
 	
 	
@@ -135,11 +129,8 @@ public class SoundManager
 		}
 		
 		//  Play sound file.
-		titleSoundtrack.start();
-		
-		
+		titleSoundtrack.start();	
 	}
-	
 	
 	
 	/**
@@ -148,10 +139,7 @@ public class SoundManager
 	public static void playTankFire()
 	{
 		playSoundClip( "cannon" );
-		
-		
 	}
-	
 	
 	
 	/**
@@ -160,10 +148,7 @@ public class SoundManager
 	public static void playExplosion()
 	{
 		playSoundClip( "explosion" );
-		
-		
 	}
-	
 	
 	
 	/**
@@ -172,10 +157,7 @@ public class SoundManager
 	public static void playLaser()
 	{
 		playSoundClip( "laser" );
-		
-		
 	}
-	
 	
 	
 	/**
@@ -184,8 +166,6 @@ public class SoundManager
 	public static void playKamikaze()
 	{
 		playSoundClip( "kamikaze" );
-		
-		
 	}
 	
 	
@@ -215,7 +195,7 @@ public class SoundManager
 	public static void playTitleSoundtrack()
 	{
 		playTitleSoundtrack( "Movement Proposition" );
-		
+		titleSoundtrack.loop(Clip.LOOP_CONTINUOUSLY);
 	}
 	public static void stopTitleSoundtrack()
 	{

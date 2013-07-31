@@ -77,6 +77,8 @@ public class Pause extends JPanel implements ActionListener, KeyListener {
 			CardLayout lm = (CardLayout)container.getLayout();
 			lm.show(container, "game");
 			
+			SoundManager.resumeLevelSoundtrack();
+			
 			for(Component comp : container.getComponents()) {
 				//  If the component is of instance type "Game", call the runGame() method on this component.
 				if(comp instanceof Game)  {
@@ -84,8 +86,6 @@ public class Pause extends JPanel implements ActionListener, KeyListener {
 					break;
 				}
 			}
-			SoundManager.resumeLevelSoundtrack();
-			
 		}
 	}
 	

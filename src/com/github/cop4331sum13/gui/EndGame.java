@@ -2,9 +2,9 @@ package com.github.cop4331sum13.gui;
 
 import java.awt.CardLayout;
 import java.awt.Graphics;
+import java.awt.Image;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.awt.image.BufferedImage;
 
 import javax.imageio.ImageIO;
 import javax.swing.JPanel;
@@ -12,22 +12,33 @@ import javax.swing.JPanel;
 import com.github.cop4331sum13.sound.SoundManager;
 
 /**
- * Displays the victory screen.
+ * Displays the victory  or defeat screen.
  */
-public class GameCompleted extends JPanel implements MouseListener {
+public class EndGame extends JPanel implements MouseListener {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel container;
-	private BufferedImage background;
+	private Image win, lose, background;
 	
-	public GameCompleted(JPanel container){
+	public EndGame(JPanel container) {
 		this.container = container;
 		this.addMouseListener(this);
 		
 		try {
-			background = ImageIO.read(this.getClass().getClassLoader().getResource("Congratulations.jpg"));
+			win = ImageIO.read(this.getClass().getClassLoader().getResource("Congratulations.jpg"));
+			lose = ImageIO.read(this.getClass().getClassLoader().getResource("GameOver.jpg"));
 		} catch(Exception e) {
 			e.printStackTrace();
+		}
+	}
+	
+	public void setWinScreen(boolean i) {
+		this.requestFocusInWindow();
+		if(i) {
+			this.background = win;
+		}
+		else{
+			this.background = lose;
 		}
 	}
 	
@@ -41,7 +52,7 @@ public class GameCompleted extends JPanel implements MouseListener {
 	public void mouseClicked(MouseEvent arg0) {
 		CardLayout cl = (CardLayout)container.getLayout();
 		cl.show(container, "title");
-		
+		SoundManager.stopLevelSoundtrack();
 		SoundManager.playTitleSoundtrack();
 	}
 
