@@ -40,7 +40,7 @@ import com.github.cop4331sum13.sound.SoundManager;
 public class Game extends JComponent implements KeyListener, Runnable, MouseListener
 {
 	private Vector<Explosion> explosions;
-	private boolean GODMODE = true;
+	private boolean GODMODE = false;
 	private static final int GAME_LENGTH = 180;
 	
 	private boolean aimWithMouse;
