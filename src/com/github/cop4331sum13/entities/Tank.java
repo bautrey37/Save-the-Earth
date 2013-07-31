@@ -27,7 +27,7 @@ public abstract class Tank extends Entity
 		super( xPos, yPos, xVel, yVel );
 		
 		
-	}  //  End of Tank constructor.
+	}
 	
 	
 	
@@ -114,7 +114,6 @@ public abstract class Tank extends Entity
 		
 		
 	}
-	
 	
 	
 	

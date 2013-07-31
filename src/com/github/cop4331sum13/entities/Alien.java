@@ -4,8 +4,10 @@
 package com.github.cop4331sum13.entities;
 
 /**
- * @author Thomas
- *
+ * This class functions as the base for both small and large aliens that appear mid game
+ * and try to attack the user's tank.
+ * 
+ * @author Thomas J. O'Neill
  */
 public abstract class Alien extends Entity
 {	
@@ -23,7 +25,8 @@ public abstract class Alien extends Entity
 	/**
 	 * 
 	 */
-	public Alien(double xPos, double yPos, double xVel, double yVel){
+	public Alien(double xPos, double yPos, double xVel, double yVel)
+	{
 		super( xPos, yPos, xVel, yVel );
 		
 		
@@ -52,6 +55,10 @@ public abstract class Alien extends Entity
 		
 		
 		//  Take the temporary angle variable and get the true angle of inclination (0 - 360 degrees).
+		//  9 cases must be tested for based on unit circle:
+		//      - 4 points of intersection on the x and y axis
+		//	    - 4 measures of 90 degrees to cover 360 degree rotation
+		//      - 1 point where the origin is
 		if(tempY == 0 && tempX == 0)
 			this.angleToTank = 0;
 		if( tempY > 0 && tempX > 0)
@@ -68,14 +75,12 @@ public abstract class Alien extends Entity
 			this.angleToTank = Math.PI;
 		if(tempY < 0 && tempX > 0)
 			this.angleToTank = angleTemp + Math.PI*.5;
-		
-		
 		if(tempY == 0 && tempX > 0)
 			this.angleToTank = Math.PI / 2.0;
 		
 		
 		
-	}  //  End of updateAngleToTank() method.
+	}
 	
 	
-}  //  End of Alien class.
+}

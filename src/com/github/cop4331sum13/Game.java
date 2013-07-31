@@ -862,14 +862,17 @@ public class Game extends JComponent implements KeyListener, Runnable, MouseList
 	 * @param i - true for win, false for lose
 	 */
 	private void endGame(boolean i) {
-		SoundManager.stopLevelSoundtrack();
+		
 		stop();
 		timer.cancel();
 		CardLayout cl = (CardLayout) container.getLayout();
 		if(i)
 			cl.show(container, "win");
 		else
+		{
+			SoundManager.stopLevelSoundtrack();
 			cl.show(container, "lose");
+		}
 	}
 	
 	
