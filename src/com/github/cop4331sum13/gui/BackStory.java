@@ -9,6 +9,9 @@ import java.awt.image.BufferedImage;
 import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 
+/**
+ * Displays the series of backstory images.
+ */
 public class BackStory extends JPanel implements MouseListener{
 	private static final long serialVersionUID = 1L;
 	private JPanel container;
@@ -20,7 +23,6 @@ public class BackStory extends JPanel implements MouseListener{
 	
 	public BackStory(JPanel container) {
 		this.container = container;
-		//this.setBackground(Color.WHITE);
 		this.addMouseListener(this);
 		currentImage = 0;
 		
@@ -62,18 +64,14 @@ public class BackStory extends JPanel implements MouseListener{
 	}
 
 	@Override
-	public void mouseEntered(MouseEvent arg0) {
-	}
+	public void mouseEntered(MouseEvent arg0) {}
 
 	@Override
-	public void mouseExited(MouseEvent arg0) {
-	}
+	public void mouseExited(MouseEvent arg0) {}
 
 	@Override
-	public void mousePressed(MouseEvent arg0) {
-	}
+	public void mousePressed(MouseEvent arg0) {}
 
 	@Override
-	public void mouseReleased(MouseEvent arg0) {
-	}
+	public void mouseReleased(MouseEvent arg0) {}
 }

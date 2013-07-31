@@ -1,5 +1,8 @@
 package com.github.cop4331sum13.animation;
 
-public class PlanetDieAnimation {
+/**
+ * To be added feature
+ */
+public class PlanetDieAnimation extends Animation {
 
 }

@@ -17,6 +17,9 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+/**
+ * Displays the Control Menu.
+ */
 public class Controls extends JPanel implements ActionListener {
 
 	private static final long serialVersionUID = 1L;
@@ -27,7 +30,6 @@ public class Controls extends JPanel implements ActionListener {
 	private Font head = new Font("Xolonium", Font.PLAIN, 50);
 	private Font text = new Font("Xolonium", Font.PLAIN, 30);
 	
-	//private Graphics g;
 	private BufferedImage background;
 	
 	public Controls(JPanel container) {

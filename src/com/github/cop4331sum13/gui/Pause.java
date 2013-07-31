@@ -22,6 +22,9 @@ import javax.swing.JPanel;
 import com.github.cop4331sum13.Game;
 import com.github.cop4331sum13.sound.SoundManager;
 
+/**
+ * Displays the pause screen.  Sets the background image to whatever is currently displayed in-game, to appear transparent. 
+ */
 public class Pause extends JPanel implements ActionListener, KeyListener {
 
 	private static final long serialVersionUID = 1L;
@@ -59,7 +62,6 @@ public class Pause extends JPanel implements ActionListener, KeyListener {
 		this.add(title, c);
 		
 		this.setBackground(new Color(50,50,50,100)); //partially transparent, will display over the game
-		//this.setOpaque(true);
 		this.addKeyListener(this);
 	}
 
@@ -112,10 +114,8 @@ public class Pause extends JPanel implements ActionListener, KeyListener {
 	}
 
 	@Override
-	public void keyReleased(KeyEvent arg0) {
-	}
+	public void keyReleased(KeyEvent arg0) {}
 
 	@Override
-	public void keyTyped(KeyEvent arg0) {
-	}
+	public void keyTyped(KeyEvent arg0) {}
 }

@@ -17,6 +17,9 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+/**
+ * Displays the Credits Menu.
+ */
 public class Credits extends JPanel implements ActionListener {
 
 	private static final long serialVersionUID = 1L;
@@ -26,7 +29,6 @@ public class Credits extends JPanel implements ActionListener {
 	private Font font = new Font("Xolonium", Font.PLAIN, 35);
 	private Font retFont = new Font("Xolonium", Font.PLAIN, 30);
 	
-	//private Graphics g;
 	private BufferedImage background;
 	
 	public Credits(JPanel container) {
@@ -37,8 +39,6 @@ public class Credits extends JPanel implements ActionListener {
 		ret.setFont(retFont);
 		ret.setPreferredSize(new Dimension(200,50));
 		ret.addActionListener(this);
-		
-		//Labels
 		
 		name1 = new JLabel(" ");
 		name1.setFont(font);
@@ -56,7 +56,6 @@ public class Credits extends JPanel implements ActionListener {
 		name7.setFont(font);
 		name8 = new JLabel(" ");
 		name8.setFont(font);
-		
 		
 		//Groups into GridBagLayout
 		this.setLayout(new GridBagLayout());

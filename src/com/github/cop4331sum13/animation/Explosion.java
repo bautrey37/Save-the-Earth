@@ -37,8 +37,6 @@ public class Explosion
 	 */
 	private int frameNum;
 	
-	
-	
 	/**
 	 * Constructs a new explosion object.
 	 * 
@@ -54,7 +52,6 @@ public class Explosion
 	}
 	
 	
-	
 	/**
 	 * Return the x coordinate of this object in the plane.
 	 * 
@@ -64,7 +61,6 @@ public class Explosion
 	{
 		return this.xPosition;
 	}
-	
 	
 	
 	/**
@@ -78,7 +74,6 @@ public class Explosion
 	}
 	
 	
-	
 	/**
 	 * Obtains the current frame that this explosion object is currently displaying.
 	 * 
@@ -90,7 +85,6 @@ public class Explosion
 	}
 	
 	
-	
 	/**
 	 * Increments the frame number.  Used right after a frame is drawn.
 	 */
@@ -98,7 +92,6 @@ public class Explosion
 	{
 		this.frameNum += 1;
 	}
-	
 	
 	
 	/**
@@ -113,7 +106,6 @@ public class Explosion
 	}
 	
 	
-	
 	/**
 	 * This method initializes the image array with all the images that make up
 	 * the explosion animation.  This method MUST be called once prior to running the game.
@@ -122,7 +114,6 @@ public class Explosion
 	{
 		//  Initialize array.
 		sequence = new BufferedImage[ 14 ];
-		
 		
 		//  Read in all 14 images for each of the 14 frames of explosion animations.
 		for( int index = 1; index <= 14; index++ )
@@ -137,10 +128,5 @@ public class Explosion
 				e.printStackTrace();
 			}
 		}
-		
-		
 	}
-	
-	
-	
 }

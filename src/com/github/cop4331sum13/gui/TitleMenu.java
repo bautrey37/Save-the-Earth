@@ -28,10 +28,8 @@ import javax.swing.JPanel;
 import com.github.cop4331sum13.Game;
 
 /**
- * TBA
- *
+ * Displays the TitleMenu
  */
-
 public class TitleMenu extends JPanel implements ActionListener, MouseListener {
 	
 	private static final long serialVersionUID = 1L;
@@ -44,14 +42,11 @@ public class TitleMenu extends JPanel implements ActionListener, MouseListener {
 	private Font font = new Font("Xolonium", Font.PLAIN, 25);
 	private Font difFont = new Font("Xolonium", Font.PLAIN, 20);
 	
-	//private Graphics g;
 	private Image logo, background;
-	//private URL url;
 	
 	public TitleMenu(JPanel container) {
 		//container contains the CardLayout.  Used to switch to other panels.
 		this.container = container;
-
 		
 		//Buttons
 		newGame = new JButton("Begin Mission");
@@ -127,14 +122,12 @@ public class TitleMenu extends JPanel implements ActionListener, MouseListener {
 		try {
 			logo = ImageIO.read(this.getClass().getClassLoader().getResource("Save-the-Earth.png"));
 			background = ImageIO.read(this.getClass().getClassLoader().getResource("STE-Title.jpg"));
+			//alternative method of accessing resources below
 			//logo = new ImageIcon(this.getClass().getClassLoader().getResource("Save-the-Earth.png")).getImage();
 			//background = new ImageIcon(this.getClass().getClassLoader().getResource("STE-Title.jpg")).getImage();
-			//logo = ImageIO.read(new File("res/Save-the-Earth.png")); 
-			//background = ImageIO.read(new File("res/STE-Title.jpg"));
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
-		
 		
 	}	
 	
@@ -216,8 +209,7 @@ public class TitleMenu extends JPanel implements ActionListener, MouseListener {
 		int mouseY = MouseInfo.getPointerInfo().getLocation().y - GUI.window.getY();
 		
 		// x = 170 to 630
-		// y = 64 to 340
-		
+		// y = 64 to 340		
 		if (170 <= mouseX && mouseX <= 630 && 64 <= mouseY && mouseY <= 340){
 			CardLayout cl = (CardLayout)container.getLayout();
 			cl.show(container, "story");
@@ -225,18 +217,14 @@ public class TitleMenu extends JPanel implements ActionListener, MouseListener {
 	}
 
 	@Override
-	public void mouseEntered(MouseEvent arg0) {
-	}
+	public void mouseEntered(MouseEvent arg0) {}
 
 	@Override
-	public void mouseExited(MouseEvent arg0) {
-	}
+	public void mouseExited(MouseEvent arg0) {}
 
 	@Override
-	public void mousePressed(MouseEvent arg0) {
-	}
+	public void mousePressed(MouseEvent arg0) {}
 
 	@Override
-	public void mouseReleased(MouseEvent arg0) {
-	}
+	public void mouseReleased(MouseEvent arg0) {}
 }

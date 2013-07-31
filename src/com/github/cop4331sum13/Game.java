@@ -40,7 +40,7 @@ import com.github.cop4331sum13.sound.SoundManager;
 public class Game extends JComponent implements KeyListener, Runnable, MouseListener
 {
 	private Vector<Explosion> explosions;
-	private boolean GODMODE = false;
+	private boolean GODMODE = true;
 	private static final int GAME_LENGTH = 180;
 	
 	private boolean aimWithMouse;
@@ -82,8 +82,9 @@ public class Game extends JComponent implements KeyListener, Runnable, MouseList
 	
 	/**
 	 * Determines when to keep playing the level and when to cut the level off.
+	 * Volatile make it thread safe.
 	 */
-	private volatile boolean running; // volatile makes it thread safe
+	private volatile boolean running;
 	
 	/**
 	 * States the difficulty level that the user will be playing at and is declared as static as it should never exist
@@ -91,6 +92,9 @@ public class Game extends JComponent implements KeyListener, Runnable, MouseList
 	 */
 	public static int difficulty;
 	
+	/**
+	 * Used to draw positions for health bars
+	 */
 	private int maxPlanetHealth, planetHealth, maxTankHealth, tankHealth, xPos, yPos, width, height;
 	
 	/**
@@ -111,14 +115,16 @@ public class Game extends JComponent implements KeyListener, Runnable, MouseList
 	
 	/**
 	 * Used to control when enemies can spawn if there are none on the screen
+	 * Varies by difficulty
 	 */
 	private int spawnCoolDown;
-	private int spawnCoolDownConst; // varies by difficulty
+	private int spawnCoolDownConst; 
 	
 	/**
 	 * Maximum amount of enemies that can spawn per wave
+	 * Varies by difficulty
 	 */
-	private int waveCount;  // varies by difficulty
+	private int waveCount;
 	
 	/**
 	 * Holds the current game time
@@ -126,11 +132,6 @@ public class Game extends JComponent implements KeyListener, Runnable, MouseList
 	public static Timer timer;
 	private static int interval;
 	
-	/**
-	 * Defines the values used in determining enemy count and enemy type in levels 1 - 10. This variable is static so
-	 * that it can be defined only once and used throughout the entire program's running time.
-	 */
-	//private static int[] levelInfo;
 
 	/**
 	 * Manages the objects for displaying the user's tank.
@@ -182,12 +183,6 @@ public class Game extends JComponent implements KeyListener, Runnable, MouseList
 		{
 			e.printStackTrace();
 		}
-
-		/*
-		 * Add in code that configures level 1 - 10 variables, possibly by reading a file. Formatting will be decided at
-		 * a later time.
-		 */
-		//levelInfo = new int[10];
 		
 		this.addKeyListener(this);
 	}
@@ -202,7 +197,6 @@ public class Game extends JComponent implements KeyListener, Runnable, MouseList
 	public void init( int dif )
 	{
 		SoundManager.stopTitleSoundtrack();
-		
 		
 		//  Set the global game difficulty per user selection.
 		Game.difficulty = dif;
@@ -250,7 +244,6 @@ public class Game extends JComponent implements KeyListener, Runnable, MouseList
 		//  Configure animations.
 		Explosion.setupSequence();
 		
-		
 		//  Set default controls to mouse.
 		aimWithMouse = true;
 		aimWithKeyboard = false;
@@ -258,8 +251,6 @@ public class Game extends JComponent implements KeyListener, Runnable, MouseList
 		// Initialize game time
 		interval = GAME_LENGTH;  // in seconds
 		timer = new Timer();
-		
-		
 		
 		//  Obtain background image for the play level.
 		try
@@ -273,15 +264,10 @@ public class Game extends JComponent implements KeyListener, Runnable, MouseList
 			e.printStackTrace();
 		}
 		
-		
-		
 		SoundManager.playLevelSoundtrack();
-		
-		
 		
 		start();
 	}
-	
 	
 	
 	/**
@@ -301,8 +287,8 @@ public class Game extends JComponent implements KeyListener, Runnable, MouseList
 		timer = new Timer();
 		timer.scheduleAtFixedRate(new TimerTask() {
 			public void run() {
-					--interval;
-			    }
+				--interval;
+			}
 		}, (long)1000, (long)1000);
 		
 		this.requestFocusInWindow();
@@ -310,11 +296,8 @@ public class Game extends JComponent implements KeyListener, Runnable, MouseList
 		//  Create a new thread to enable concurrent running of multiple methods.
 		game = new Thread(this);
 		game.setPriority(Thread.MAX_PRIORITY);
-		game.start();
-		
-		
+		game.start();		
 	} 
-	
 	
 	
 	/**
@@ -324,9 +307,7 @@ public class Game extends JComponent implements KeyListener, Runnable, MouseList
 	{
 		//  Setting running to false stops all processing for the level.
 		running = false;
-		
 	} 
-	
 	
 	
 	/**
@@ -397,10 +378,8 @@ public class Game extends JComponent implements KeyListener, Runnable, MouseList
 				Thread.sleep(delay);
 			}
 			catch (InterruptedException e) {
-			}
-				
+			}		
 		}
-		
 	}
 	
 	
@@ -437,8 +416,6 @@ public class Game extends JComponent implements KeyListener, Runnable, MouseList
 		offg.drawImage( keyboardMode, this.getWidth() - keyboardMode.getWidth() - 5,
 									  this.getHeight() - keyboardMode.getHeight() - 5, this );
 			
-		
-		
 		
 		// Check for win
 		if (interval <= 0){
@@ -497,7 +474,6 @@ public class Game extends JComponent implements KeyListener, Runnable, MouseList
 		}
 		
 		
-		
 		//  "shells" must be synchronized before it is iterated.
 		synchronized (shells)
 		{
@@ -511,9 +487,7 @@ public class Game extends JComponent implements KeyListener, Runnable, MouseList
 				}
 			}
 		}
-		
-		
-		
+				
 		
 		//  Draw all aliens onto the screen.
 		for (Alien e : aliens)
@@ -550,7 +524,6 @@ public class Game extends JComponent implements KeyListener, Runnable, MouseList
 		//  Draw tank body.
 		offg.drawImage(tank[0].getImage(), (int) tank[0].getX() - tank[0].getImage().getWidth() / 2,
 										   (int) tank[0].getY() - tank[0].getImage().getHeight() / 2, this);
-		
 		
 		
 		
@@ -596,9 +569,7 @@ public class Game extends JComponent implements KeyListener, Runnable, MouseList
 		
 		
 		// Make off screen image visible
-		g.drawImage(offScreen, xOffset, yOffset, this);
-		
-		
+		g.drawImage(offScreen, xOffset, yOffset, this);		
 	}
 
 	
@@ -630,7 +601,6 @@ public class Game extends JComponent implements KeyListener, Runnable, MouseList
 			}
 		}
 		
-		
 		//  Obtain current mouse position, then rotate cannon.
 		if( aimWithMouse == true )
 		{
@@ -645,9 +615,6 @@ public class Game extends JComponent implements KeyListener, Runnable, MouseList
 			if( rotateRight )
 				((TankCannon)tank[1]).updateAngleKeyboard( 0 );
 		}
-		
-		
-		
 		
 		//  Meteors across the screen.
 		for (Meteor e : meteors) {
@@ -712,12 +679,9 @@ public class Game extends JComponent implements KeyListener, Runnable, MouseList
 				e.decreaseLife();
 				e.move();
 			}
-		}
-		
-		
-	}  //  End of moveEntities() method.
-	
-	
+		}		
+	}
+
 	
 	/**
 	 * Process all collisions that occur during the game.  This includes strikes against all entities and
@@ -757,8 +721,6 @@ public class Game extends JComponent implements KeyListener, Runnable, MouseList
 					}
 				}
 			}
-			
-			
 		}  //  Finished checking for user hits on enemy entities.
 		
 		
@@ -852,9 +814,7 @@ public class Game extends JComponent implements KeyListener, Runnable, MouseList
 				lasers.remove( index );
 			}
 		}
-		
-		
-	}  //  End of processHits() method.
+	}  
 	
 	
 	/**
@@ -901,7 +861,6 @@ public class Game extends JComponent implements KeyListener, Runnable, MouseList
 			}
 		}
 		
-		
 		//  If user pressed escape key, pause the game and switch to the pause screen.
 		if (key == KeyEvent.VK_ESCAPE) {
 			stop();
@@ -921,22 +880,17 @@ public class Game extends JComponent implements KeyListener, Runnable, MouseList
 			SoundManager.pauseLevelSoundtrack();
 		}
 		
-		
 		//  If user pressed "A", set for moving tank to the left.
 		if (key == KeyEvent.VK_A)
 		{
 			accelLeft = true;
 		}
 		
-		
 		//  If user pressed "D", set for moving tank to the right.
 		if (key == KeyEvent.VK_D)
 		{
 			accelRight = true;
 		}
-		
-		
-		
 		
 		if (aimWithKeyboard == true && key == KeyEvent.VK_LEFT)
 		{
@@ -947,21 +901,15 @@ public class Game extends JComponent implements KeyListener, Runnable, MouseList
 		{
 			rotateRight = true;
 		}
-		
-		
-		
-		
+				
 		//  If user pressed space bar, create a new tank shell and prevent key from automatically repeating.
 		if ( aimWithKeyboard == true && (key == KeyEvent.VK_SPACE || key == KeyEvent.VK_UP) && !needCooldown )
 		{
 			shells.add( new TankShell(tank[0].getX(), tank[0].getY(), 0, 0, ((TankCannon)tank[1]).getAngle() ) );
 			needCooldown = true;
-			SoundManager.playTankFire();
-			
-		}
-		
-		
-	}  //  End of keyPressed() method.
+			SoundManager.playTankFire();	
+		}		
+	}
 	
 	
 	
@@ -980,7 +928,6 @@ public class Game extends JComponent implements KeyListener, Runnable, MouseList
 		{
 			accelLeft = false;
 		}
-		
 		
 		//  If user released "D", set for stopping tank acceleration to the right.
 		if (key == KeyEvent.VK_D)
@@ -1003,10 +950,7 @@ public class Game extends JComponent implements KeyListener, Runnable, MouseList
 		{
 			needCooldown = false;
 		}
-		
-		
 	}
-	
 	
 	
 	/**
@@ -1014,9 +958,7 @@ public class Game extends JComponent implements KeyListener, Runnable, MouseList
 	 * is empty as it is not necessary for the game to function.
 	 */
 	@Override
-	public void keyTyped(KeyEvent e)
-	{}	
-	
+	public void keyTyped(KeyEvent e) {}	
 	
 	
 	@Override
@@ -1026,9 +968,7 @@ public class Game extends JComponent implements KeyListener, Runnable, MouseList
 		{
 			shells.add( new TankShell(tank[0].getX(), tank[0].getY(), 0, 0, ((TankCannon)tank[1]).getAngle() ) );
 			SoundManager.playTankFire();
-		}
-		
-		
+		}		
 	}
 	
 	@Override

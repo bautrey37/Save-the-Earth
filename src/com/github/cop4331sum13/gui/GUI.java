@@ -14,6 +14,9 @@ import javax.swing.JPanel;
 import com.github.cop4331sum13.Game;
 import com.github.cop4331sum13.sound.SoundManager;
 
+/**
+ * Sets up gui properties, including initializes all the menu's to be displayed.
+ */
 public class GUI {
 	
 	//window properties
@@ -68,7 +71,6 @@ public class GUI {
 		gameLost = new GameLost(panelContainer);
 		gameCompleted = new GameCompleted(panelContainer);
 		
-		
 		cl = new CardLayout();
 		panelContainer.setLayout(cl);
 		panelContainer.add(title, "title"); //these are the cards
@@ -80,12 +82,8 @@ public class GUI {
 		panelContainer.add(gameLost, "lose");
 		panelContainer.add(gameCompleted, "win");
 		
-		
-		
 		cl.show(panelContainer, "title");  //title screen is first to show when launching
 		SoundManager.playTitleSoundtrack();
-		
-		
 		
 		window.setContentPane(panelContainer);
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -102,6 +100,5 @@ public class GUI {
 	public int getHeight() {
 		return gameHeight;
 	}
-	
 	
 }
