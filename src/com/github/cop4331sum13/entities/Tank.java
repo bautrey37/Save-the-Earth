@@ -32,18 +32,40 @@ public abstract class Tank extends Entity
 	
 	
 	/**
+	 * This version of the move() method of ancestor class entity ensures that tank does
+	 * not wrap around the screen when the edge is reached.
+	 */
+	@Override
+	public void move()
+	{
+		//  If tank is too close to left edge of screen, stop it.
+		if( xPosition + xVelocity <= 35 )
+		{
+			xPosition = 35;
+			xVelocity = 0;
+		}
+		//  If tank is too close to right edge of screen, stop it.
+		else if( xPosition + xVelocity >= WIDTH - 55 )
+		{
+			xPosition = WIDTH - 55;
+			xVelocity = 0;
+		}
+		//  Move as normal.
+		else
+		{
+			xPosition = xPosition + xVelocity;
+		}
+		
+		
+	}
+	
+	
+	
+	/**
 	 * This method increases the x velocity to the right of the window.
 	 */
 	public void accelerateRight()
 	{
-		//  Keep tank from screen wrapping.
-		if( xPosition + 55 >= WIDTH )
-		{
-			xVelocity = 0;
-			return;
-		}
-		
-		
 		//  Increase the tank's velocity to the right
 		this.xVelocity += 0.7;
 		
@@ -55,7 +77,7 @@ public abstract class Tank extends Entity
 		}
 		
 		
-	}  //  End of accelerateRight() method.
+	}
 	
 	
 	
@@ -64,14 +86,6 @@ public abstract class Tank extends Entity
 	 */
 	public void accelerateLeft()
 	{
-		//  Keep tank from screen wrapping.
-		if( xPosition - 35 <= 0 )
-		{
-			xVelocity = 0;
-			return;
-		}
-		
-		
 		//  Increase the tank's velocity to the right
 		this.xVelocity -= 0.7;
 		
@@ -83,7 +97,7 @@ public abstract class Tank extends Entity
 		}
 		
 		
-	}  //  End of accelerateRight() method.
+	}
 	
 	
 	
@@ -99,7 +113,7 @@ public abstract class Tank extends Entity
 		tankSpeedLimit = tankSL;
 		
 		
-	}  //  End of setTankSpeedLimit() method.
+	}
 	
 	
 	
@@ -140,8 +154,8 @@ public abstract class Tank extends Entity
 		}
 		
 		
-	}  //  End of lowerTankSpeed() method.
+	}
 	
 	
 	
-}  //  End of Tank class.
+}
