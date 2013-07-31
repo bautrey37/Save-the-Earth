@@ -42,7 +42,7 @@ public class Game extends JComponent implements KeyListener, Runnable, MouseList
 {
 	private Vector<Explosion> explosions;
 	private boolean GODMODE = false;
-	private static final int GAME_LENGTH = 20;
+	private static final int GAME_LENGTH = 180;
 	
 	private boolean aimWithMouse;
 	private boolean aimWithKeyboard;

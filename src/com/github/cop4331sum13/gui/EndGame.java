@@ -18,28 +18,31 @@ public class EndGame extends JPanel implements MouseListener {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel container;
-	private Image win, lose, background;
+	private Image background;
 	
 	public EndGame(JPanel container) {
 		this.container = container;
 		this.addMouseListener(this);
-		
-		try {
-			win = ImageIO.read(this.getClass().getClassLoader().getResource("Congratulations.jpg"));
-			lose = ImageIO.read(this.getClass().getClassLoader().getResource("GameOver.jpg"));
-		} catch(Exception e) {
-			e.printStackTrace();
-		}
 	}
 	
 	public void setWinScreen(boolean i) {
 		this.requestFocusInWindow();
+		//backgrounds are loaded in according to winnin condition to issue right screen is displayed
 		if(i) {
-			this.background = win;
+			try {
+				background = ImageIO.read(this.getClass().getClassLoader().getResource("Congratulations.jpg"));
+			} catch(Exception e) {
+				e.printStackTrace();
+			}
 		}
 		else{
-			this.background = lose;
+			try {
+				background = ImageIO.read(this.getClass().getClassLoader().getResource("GameOver.jpg"));
+			} catch(Exception e) {
+				e.printStackTrace();
+			}
 		}
+		paintComponent(this.getGraphics());
 	}
 	
 	@Override
