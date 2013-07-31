@@ -5,7 +5,6 @@ import java.awt.Graphics;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
-import java.io.File;
 
 import javax.imageio.ImageIO;
 import javax.swing.JPanel;
@@ -23,7 +22,7 @@ public class GameLost extends JPanel implements MouseListener {
 		this.addMouseListener(this);
 		
 		try {
-			background = ImageIO.read(new File("res/GameOver.jpg"));
+			background = ImageIO.read(this.getClass().getClassLoader().getResource("GameOver.jpg"));
 		} catch(Exception e) {
 			e.printStackTrace();
 		}

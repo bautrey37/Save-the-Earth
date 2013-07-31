@@ -4,7 +4,6 @@
 package com.github.cop4331sum13.animation;
 
 import java.awt.image.BufferedImage;
-import java.io.File;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
@@ -130,7 +129,8 @@ public class Explosion
 		{
 			try
 			{
-				sequence[ index - 1 ] = ImageIO.read( new File( "res/explosion/" + index + ".png" ) );
+				String infile = "explosion/" + index + ".png";
+				sequence[ index - 1 ] = ImageIO.read(Explosion.class.getClassLoader().getResource(infile));
 			}
 			catch (IOException e)
 			{

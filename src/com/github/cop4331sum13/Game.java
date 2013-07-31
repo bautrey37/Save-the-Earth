@@ -12,7 +12,6 @@ import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
-import java.io.File;
 import java.util.Timer;
 import java.util.TimerTask;
 import java.util.Vector;
@@ -22,7 +21,15 @@ import javax.swing.JComponent;
 import javax.swing.JPanel;
 
 import com.github.cop4331sum13.animation.Explosion;
-import com.github.cop4331sum13.entities.*;
+import com.github.cop4331sum13.entities.Alien;
+import com.github.cop4331sum13.entities.AlienLaser;
+import com.github.cop4331sum13.entities.LargeAlien;
+import com.github.cop4331sum13.entities.Meteor;
+import com.github.cop4331sum13.entities.SmallAlien;
+import com.github.cop4331sum13.entities.Tank;
+import com.github.cop4331sum13.entities.TankBody;
+import com.github.cop4331sum13.entities.TankCannon;
+import com.github.cop4331sum13.entities.TankShell;
 import com.github.cop4331sum13.gui.GUI;
 import com.github.cop4331sum13.gui.Pause;
 import com.github.cop4331sum13.sound.SoundManager;
@@ -169,7 +176,7 @@ public class Game extends JComponent implements KeyListener, Runnable, MouseList
 		//  Obtain background image for the play level.
 		try
 		{
-			background = ImageIO.read(new File("res/STE-Background-1.jpg"));
+			background = ImageIO.read(this.getClass().getClassLoader().getResource("STE-Background-1.jpg"));
 		}
 		catch (Exception e)
 		{
@@ -257,8 +264,8 @@ public class Game extends JComponent implements KeyListener, Runnable, MouseList
 		//  Obtain background image for the play level.
 		try
 		{
-			mouseMode = ImageIO.read( new File( "res/Mouse.png" ) );
-			keyboardMode = ImageIO.read( new File( "res/Keyboard.png" ) );
+			mouseMode = ImageIO.read(this.getClass().getClassLoader().getResource("Mouse.png"));
+			keyboardMode = ImageIO.read(this.getClass().getClassLoader().getResource("Keyboard.png"));
 			
 		}
 		catch (Exception e)

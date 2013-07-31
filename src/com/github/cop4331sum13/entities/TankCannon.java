@@ -1,7 +1,6 @@
 package com.github.cop4331sum13.entities;
 
 import java.awt.image.BufferedImage;
-import java.io.File;
 
 import javax.imageio.ImageIO;
 
@@ -47,7 +46,7 @@ public class TankCannon extends Tank
 		{
 			try
 			{
-				cannon[i - 90] = ImageIO.read( new File("res/cannon/" + ((Integer)i).toString() + ".png" ) );
+				cannon[i - 90] = ImageIO.read(this.getClass().getClassLoader().getResource("cannon/" + ((Integer)i).toString() + ".png" ) );
 			}
 			catch( Exception e )
 			{

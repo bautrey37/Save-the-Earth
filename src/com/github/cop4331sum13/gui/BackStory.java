@@ -5,7 +5,6 @@ import java.awt.Graphics;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
-import java.io.File;
 
 import javax.imageio.ImageIO;
 import javax.swing.JPanel;
@@ -14,7 +13,7 @@ public class BackStory extends JPanel implements MouseListener{
 	private static final long serialVersionUID = 1L;
 	private JPanel container;
 	
-	private String[] images = {"res/BackStory/BackStory1.jpg","res/BackStory/BackStory2.jpg","res/BackStory/BackStory3.jpg","res/BackStory/BackStory4.jpg","res/BackStory/BackStory5.jpg"};
+	private String[] images = {"BackStory/BackStory1.jpg","BackStory/BackStory2.jpg","BackStory/BackStory3.jpg","BackStory/BackStory4.jpg","BackStory/BackStory5.jpg"};
 	private int currentImage;
 	
 	private BufferedImage background[];
@@ -30,7 +29,7 @@ public class BackStory extends JPanel implements MouseListener{
 		//try to get image from file
 		try {
 			for(int i = 0; i < 5; i++)
-				background[i] = ImageIO.read(new File(images[i])); 
+				background[i] = ImageIO.read(this.getClass().getClassLoader().getResource(images[i])); 
 		} catch(Exception e) {
 			e.printStackTrace();
 		}

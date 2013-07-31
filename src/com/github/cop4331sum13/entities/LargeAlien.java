@@ -3,7 +3,6 @@
  */
 package com.github.cop4331sum13.entities;
 
-import java.io.File;
 import java.util.Vector;
 
 import javax.imageio.ImageIO;
@@ -39,7 +38,7 @@ public class LargeAlien extends Alien
 		//  Obtain image file for this tank shell.
 		try
 		{
-			image = ImageIO.read( new File( "res/Large-Alien-Ship.png" ) );
+			image = ImageIO.read(this.getClass().getClassLoader().getResource("Large-Alien-Ship.png"));
 		}
 		catch (Exception e)
 		{

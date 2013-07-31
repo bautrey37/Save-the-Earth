@@ -11,7 +11,6 @@ import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
-import java.io.File;
 
 import javax.imageio.ImageIO;
 import javax.swing.JButton;
@@ -88,7 +87,7 @@ public class Credits extends JPanel implements ActionListener {
 		
 		//try to get image from file
 		try {
-			background = ImageIO.read(new File("res/STE-Credits.jpg")); 
+			background = ImageIO.read(this.getClass().getClassLoader().getResource("STE-Credits.jpg")); 
 		} catch(Exception e) {
 			e.printStackTrace();
 		}

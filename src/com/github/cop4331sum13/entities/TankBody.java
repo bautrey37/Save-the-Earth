@@ -1,7 +1,5 @@
 package com.github.cop4331sum13.entities;
 
-import java.io.File;
-
 import javax.imageio.ImageIO;
 
 import com.github.cop4331sum13.Game;
@@ -33,7 +31,7 @@ public class TankBody extends Tank
 		//  Obtain image file for this tank body.
 		try
 		{
-			image = ImageIO.read( new File( "res/Tank-Body.png" ) );
+			image = ImageIO.read(this.getClass().getClassLoader().getResource("Tank-Body.png"));
 		}
 		catch (Exception e)
 		{

@@ -5,7 +5,6 @@ import java.awt.Font;
 import java.awt.FontFormatException;
 import java.awt.GraphicsEnvironment;
 import java.awt.event.MouseListener;
-import java.io.File;
 import java.io.IOException;
 
 import javax.swing.JComponent;
@@ -39,7 +38,7 @@ public class GUI {
 		
 		try {
 			//creates a new custom font from file
-			xoloniumFont = Font.createFont(Font.TRUETYPE_FONT, new File("res/Xolonium-Regular.otf"));
+			xoloniumFont = Font.createFont(Font.TRUETYPE_FONT, this.getClass().getClassLoader().getResourceAsStream("Xolonium-Regular.otf"));
 			GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
 			//registers font within java, can be used anywhere now
 			ge.registerFont(xoloniumFont);

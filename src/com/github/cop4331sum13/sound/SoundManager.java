@@ -3,7 +3,6 @@
  */
 package com.github.cop4331sum13.sound;
 
-import java.io.File;
 import java.io.IOException;
 
 import javax.sound.sampled.AudioInputStream;
@@ -57,8 +56,8 @@ public class SoundManager
 			soundClip = AudioSystem.getClip();
 			
 			//  Create and initialize streaming object with sound file.
-			String inFile = "res/sound/" + fileName + ".wav";
-			AudioInputStream soundClipTemp = AudioSystem.getAudioInputStream( new File( inFile ) );
+			String inFile = "sound/" + fileName + ".wav";
+			AudioInputStream soundClipTemp = AudioSystem.getAudioInputStream(SoundManager.class.getClassLoader().getResource(inFile));
 			
 			//  Add sound file to the player.
 			soundClip.open( soundClipTemp );
@@ -88,8 +87,8 @@ public class SoundManager
 			levelSoundtrack = AudioSystem.getClip();
 			
 			//  Create and initialize streaming object with sound file.
-			String inFile = "res/sound/background/" + fileName + ".wav";
-			AudioInputStream soundClipTemp = AudioSystem.getAudioInputStream( new File( inFile ) );
+			String inFile = "sound/background/" + fileName + ".wav";
+			AudioInputStream soundClipTemp = AudioSystem.getAudioInputStream(SoundManager.class.getClassLoader().getResource(inFile));
 			
 			//  Add sound file to the player.
 			levelSoundtrack.open( soundClipTemp );
@@ -119,8 +118,8 @@ public class SoundManager
 			titleSoundtrack = AudioSystem.getClip();
 			
 			//  Create and initialize streaming object with sound file.
-			String inFile = "res/sound/background/" + fileName + ".wav";
-			AudioInputStream soundClipTemp = AudioSystem.getAudioInputStream( new File( inFile ) );
+			String inFile = "sound/background/" + fileName + ".wav";
+			AudioInputStream soundClipTemp = AudioSystem.getAudioInputStream(SoundManager.class.getClassLoader().getResource(inFile));
 			
 			//  Add sound file to the player.
 			titleSoundtrack.open( soundClipTemp );

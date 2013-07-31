@@ -1,7 +1,5 @@
 package com.github.cop4331sum13.entities;
 
-import java.io.File;
-
 import javax.imageio.ImageIO;
 
 import com.github.cop4331sum13.Game;
@@ -30,7 +28,7 @@ public class SmallAlien extends Alien {
 		grounded = false;
 
 		try {
-			image = ImageIO.read(new File("res/Small-Alien-Ship.png"));
+			image = ImageIO.read(this.getClass().getClassLoader().getResource("Small-Alien-Ship.png"));
 		}
 		catch (Exception e) {
 			e.printStackTrace();

@@ -1,7 +1,5 @@
 package com.github.cop4331sum13.entities;
 
-import java.io.File;
-
 import javax.imageio.ImageIO;
 /*
  * Please note:  All tank shells should be managed by one (1) Vector list in the runner class (Game).
@@ -50,7 +48,7 @@ public class TankShell extends Tank
 		//  Obtain image file for this tank shell.
 		try
 		{
-			image = ImageIO.read( new File( "res/Tank-Shell.png" ) );
+			image = ImageIO.read(this.getClass().getClassLoader().getResource("Tank-Shell.png"));
 		}
 		catch (Exception e)
 		{

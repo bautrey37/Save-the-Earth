@@ -17,13 +17,11 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.imageio.ImageIO;
 import javax.swing.BorderFactory;
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
@@ -48,7 +46,7 @@ public class TitleMenu extends JPanel implements ActionListener, MouseListener {
 	
 	//private Graphics g;
 	private Image logo, background;
-	private URL url;
+	//private URL url;
 	
 	public TitleMenu(JPanel container) {
 		//container contains the CardLayout.  Used to switch to other panels.
