@@ -19,6 +19,8 @@ import javax.swing.JPanel;
 
 /**
  * Displays the Control Menu.
+ * 
+ * @author Earth's Defenders
  */
 public class Controls extends JPanel implements ActionListener {
 
@@ -32,9 +34,14 @@ public class Controls extends JPanel implements ActionListener {
 	
 	private BufferedImage background;
 	
+	/**
+	 * Sets up Control screen.
+	 * @param container
+	 */
 	public Controls(JPanel container) {
 		this.container = container;
 		
+		//set up return button
 		ret = new JButton("Return");
 		ret.setFont(text);
 		ret.setPreferredSize(new Dimension(200,50));
@@ -43,6 +50,7 @@ public class Controls extends JPanel implements ActionListener {
 		title = new JLabel(" ");
 		title.setFont(head);
 		
+		//sets spacing for return button
 		con1 = new JLabel(" ");
 		con1.setFont(text);
 		con2 = new JLabel(" ");
@@ -58,6 +66,7 @@ public class Controls extends JPanel implements ActionListener {
 		con7 = new JLabel(" ");
 		con7.setFont(text);
 		
+		// aligns the layout
 		this.setLayout(new GridBagLayout());
 		GridBagConstraints c = new GridBagConstraints();
 		c.fill = GridBagConstraints.VERTICAL;
@@ -104,6 +113,10 @@ public class Controls extends JPanel implements ActionListener {
 		
 	}
 	
+	/**
+	 * When button is pressed, switch to the title screen
+	 * @param e - button action event
+	 */
 	public void actionPerformed(ActionEvent e) {
 		CardLayout cl = (CardLayout)container.getLayout();
 		cl.show(container, "title");

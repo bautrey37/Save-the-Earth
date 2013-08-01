@@ -12,8 +12,6 @@ import java.awt.Image;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -23,9 +21,12 @@ import com.github.cop4331sum13.Game;
 import com.github.cop4331sum13.sound.SoundManager;
 
 /**
- * Displays the pause screen.  Sets the background image to whatever is currently displayed in-game, to appear transparent. 
+ * Displays the pause screen.  Sets the background image to whatever is currently
+ * displayed in-game, to appear transparent.
+ * 
+ * @author Earth's Defenders
  */
-public class Pause extends JPanel implements ActionListener, KeyListener {
+public class Pause extends JPanel implements ActionListener {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel container;
@@ -36,6 +37,10 @@ public class Pause extends JPanel implements ActionListener, KeyListener {
 	private Font font = new Font("Xolonium", Font.PLAIN, 30);
 	private Font Pfont = new Font("Xolonium", Font.PLAIN, 80);
 	
+	/**
+	 * Sets up Pause screen
+	 * @param container - used to switch between other classes
+	 */
 	public Pause(JPanel container) {
 		this.container = container;
 		
@@ -62,9 +67,11 @@ public class Pause extends JPanel implements ActionListener, KeyListener {
 		this.add(title, c);
 		
 		this.setBackground(new Color(50,50,50,100)); //partially transparent, will display over the game
-		this.addKeyListener(this);
 	}
 
+	/**
+	 * Takes care of actions when the buttons are pressed.
+	 */
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource() == title) {
 			CardLayout lm = (CardLayout)container.getLayout();
@@ -89,6 +96,13 @@ public class Pause extends JPanel implements ActionListener, KeyListener {
 		}
 	}
 	
+	/**
+	 * Sets button properties according to the parameters
+	 * @param button
+	 * @param font
+	 * @param width
+	 * @param height
+	 */
 	private void setJButtonSettings(JButton button, Font font, int width, int height) {
 		button.addActionListener(this); //allows it to be interactive
 		button.setFocusPainted(false); //gets rid of small border inside button
@@ -96,26 +110,20 @@ public class Pause extends JPanel implements ActionListener, KeyListener {
 		button.setPreferredSize(new Dimension(width, height)); //sets size
 	}
 	
-	
+	/**
+	 * Updates the background image according to the current game screen
+	 * @param img - image from the game
+	 */
 	public void drawImage(Image img) {
 		this.img = img;
 	}
 	
-	
+	/**
+	 * Draws image to screen.
+	 */
 	@Override
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		g.drawImage(img, 0, 0, null);
 	}
-
-	@Override
-	public void keyPressed(KeyEvent arg0) {
-		System.out.println("Key Pressed");
-	}
-
-	@Override
-	public void keyReleased(KeyEvent arg0) {}
-
-	@Override
-	public void keyTyped(KeyEvent arg0) {}
 }

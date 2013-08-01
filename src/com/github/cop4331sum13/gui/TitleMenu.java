@@ -28,7 +28,9 @@ import javax.swing.JPanel;
 import com.github.cop4331sum13.Game;
 
 /**
- * Displays the TitleMenu
+ * Displays the TitleMenu.
+ * 
+ * @author Earth's Defenders
  */
 public class TitleMenu extends JPanel implements ActionListener, MouseListener {
 	
@@ -44,6 +46,10 @@ public class TitleMenu extends JPanel implements ActionListener, MouseListener {
 	
 	private Image logo, background;
 	
+	/**
+	 * Sets up the TitleMenu
+	 * @param container - used to switch between other screens
+	 */
 	public TitleMenu(JPanel container) {
 		//container contains the CardLayout.  Used to switch to other panels.
 		this.container = container;
@@ -132,7 +138,8 @@ public class TitleMenu extends JPanel implements ActionListener, MouseListener {
 	}	
 	
 	/**
-	 * This overrides the paintComponent method in JPanel.  It is implicitly called in this class.
+	 * This overrides the paintComponent method in JPanel.  
+	 * It is implicitly called in this class.
 	 * @param g - Graphics object
 	 */
 	@Override
@@ -143,6 +150,10 @@ public class TitleMenu extends JPanel implements ActionListener, MouseListener {
 		g.drawImage(logo, 64, 0, 672, 350, null);
 	}
 
+	/**
+	 * Adds functionality to the titlemenu buttons
+	 * @param e - action event from button
+	 */
 	public void actionPerformed(ActionEvent e) {
 		//actions for frame
 		if(e.getSource() == newGame) {
@@ -187,6 +198,10 @@ public class TitleMenu extends JPanel implements ActionListener, MouseListener {
 		}
 	}
 		
+	/**
+	 * Draws border for the currently active difficulty button.
+	 * @param button - button pressed
+	 */
 	private void setActiveButton(JButton button) {
 		//clear all borders
 		for(JButton b: difButtons) {
@@ -196,6 +211,13 @@ public class TitleMenu extends JPanel implements ActionListener, MouseListener {
 		button.setBorder(BorderFactory.createLineBorder(Color.BLACK, 4));
 	}
 	
+	/**
+	 * Sets button settings according to parameters.  Saves on code space
+	 * @param button
+	 * @param font
+	 * @param width
+	 * @param height
+	 */
 	private void setJButtonSettings(JButton button, Font font, int width, int height) {
 		button.addActionListener(this); //allows it to be interactive
 		button.setFocusPainted(false); //gets rid of small border inside button
@@ -203,6 +225,9 @@ public class TitleMenu extends JPanel implements ActionListener, MouseListener {
 		button.setPreferredSize(new Dimension(width, height)); //sets size
 	}
 
+	/**
+	 * When clicking on game logo, switch to the backstory.
+	 */
 	@Override
 	public void mouseClicked(MouseEvent e) {
 		int mouseX = MouseInfo.getPointerInfo().getLocation().x - GUI.window.getX();

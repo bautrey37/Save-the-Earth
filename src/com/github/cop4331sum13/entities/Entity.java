@@ -1,7 +1,3 @@
-/**
- * This is the parent/super class for all entities of the game, including the tank with tank aspects, shells fired,
- * and all enemies that will appear throughout the game.  This class contains the common aspects of all entities.
- */
 package com.github.cop4331sum13.entities;
 
 import java.awt.image.BufferedImage;
@@ -11,8 +7,7 @@ import java.awt.image.BufferedImage;
  * This is the parent/super class for all entities of the game, including the tank with tank aspects, shells fired,
  * and all enemies that will appear throughout the game.  This class contains the common aspects of all entities.
  * 
- * @author Thomas J. O'Neill
- *
+ * @author Earth's Defenders
  */
 public abstract class Entity
 {
@@ -45,7 +40,9 @@ public abstract class Entity
 	protected static final int WIDTH = 800;
 	protected static final int HEIGHT = 600;
 	
-	
+	/**
+	 * Represents the current health of this entity object.
+	 */
 	protected int health;
 	
 	
@@ -73,10 +70,6 @@ public abstract class Entity
 	 */
 	public void move()
 	{
-		//  NOTE:  This method does NOT need to be overridden.  Variations of an "acceleration" method will be added
-		//				to all relevant child classes.
-		
-		
 		//  Update position of Entity based on current location and speed variables.
 		//  For x coordinate, ensure screen wrapping.  Do this by adding WIDTH to maintain position value, then
 		//		that value modulus WIDTH again to get current position within screen.
@@ -89,7 +82,7 @@ public abstract class Entity
 		yPosition = yPosition + yVelocity;
 		
 		
-	}  //  End of move() method.
+	}
 	
 	
 	
@@ -103,7 +96,7 @@ public abstract class Entity
 		return xPosition;
 		
 		
-	}  //  End of getX() method.
+	}
 	
 	
 	
@@ -117,7 +110,7 @@ public abstract class Entity
 		return yPosition;
 		
 		
-	}  //  End of getY() method.
+	}
 	
 	
 	
@@ -131,7 +124,7 @@ public abstract class Entity
 		this.xPosition = xPos;
 		
 		
-	}  //  End of setX() method.
+	}
 	
 	
 	
@@ -152,7 +145,7 @@ public abstract class Entity
 	/**
 	 * Retrieves the image for this Entity when necessary.
 	 * 
-	 * @param
+	 * @return image file representing this entity.
 	 */
 	public BufferedImage getImage()
 	{
@@ -162,15 +155,25 @@ public abstract class Entity
 	}  //  End of getImage() method.
 	
 	
-	
+	/**
+	 * Returns the current health of this entity object.
+	 * 
+	 * @return int representation of health.
+	 */
 	public int getHealth()
 	{
 		return health;
 	}
 	
+	
+	/**
+	 * Sets the health of this object to a provided value.
+	 * 
+	 * @param health - value to set entity health to.
+	 */
 	public void setHealth( int health )
 	{
 		this.health = health;
 	}
 	
-}  //  End of Entity class.
+}

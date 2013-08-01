@@ -15,7 +15,9 @@ import com.github.cop4331sum13.Game;
 import com.github.cop4331sum13.sound.SoundManager;
 
 /**
- * Sets up gui properties, including initializes all the menu's to be displayed.
+ * Sets up GUI properties, including initializes all the menu's to be displayed.
+ * 
+ * @author Earth's Defenders
  */
 public class GUI {
 	
@@ -36,6 +38,9 @@ public class GUI {
 	
 	public Font xoloniumFont;
 	
+	/**
+	 * Creates the main window for all the sub menus and game to be displayed in.
+	 */
 	public GUI() {
 		window = new JFrame(gamename);
 		
@@ -45,21 +50,18 @@ public class GUI {
 			GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
 			//registers font within java, can be used anywhere now
 			ge.registerFont(xoloniumFont);
-			
-			/* // print out all available font names
-			String []fontNames = ge.getAvailableFontFamilyNames();
-			for(String str: fontNames) {
-				System.out.println(str);
-			}*/
 		} catch (IOException e) {
-			System.err.println("Cannot find file");
 			e.printStackTrace();
 		} catch (FontFormatException e) {
-			System.err.println("Font formmating error happened");
 			e.printStackTrace();
 		}
 		
-		panelContainer = new JPanel(); //contains the panels below as cards
+		//contains all the menu cards
+		panelContainer = new JPanel(); 
+		cl = new CardLayout();
+		panelContainer.setLayout(cl);
+		
+		//contains the panels below as cards
 		title = new TitleMenu(panelContainer);
 		credits = new Credits(panelContainer);
 		game = new Game(panelContainer);
@@ -68,8 +70,6 @@ public class GUI {
 		backstory = new BackStory(panelContainer);
 		endGame = new EndGame(panelContainer);
 		
-		cl = new CardLayout();
-		panelContainer.setLayout(cl);
 		//these are the cards
 		panelContainer.add(title, "title"); 
 		panelContainer.add(credits, "credits");
@@ -92,12 +92,5 @@ public class GUI {
 		window.setVisible(true);
 	}
 	
-	public int getWidth() {
-		return gameWidth;
-	}
-	
-	public int getHeight() {
-		return gameHeight;
-	}
 	
 }

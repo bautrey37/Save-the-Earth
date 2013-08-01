@@ -1,15 +1,11 @@
 package com.github.cop4331sum13.entities;
 
 import javax.imageio.ImageIO;
-/*
- * Please note:  All tank shells should be managed by one (1) Vector list in the runner class (Game).
- */
-
 
 /**
  * This class creates an individual tank shell.
  * 
- * @author Thomas J. O'Neill
+ * @author Earth's Defenders
  */
 public class TankShell extends Tank
 {
@@ -18,6 +14,9 @@ public class TankShell extends Tank
 	 */
 	private static int shellStrength;
 	
+	/**
+	 * Represents the life span of this shell.
+	 */
 	private int shellLife;
 	
 	
@@ -61,13 +60,14 @@ public class TankShell extends Tank
 		this.shellLife = 25;
 		
 		
-	}  //  End of TankShell constructor.
+	}
 	
 	
 	
 	/**
-	 * 
+	 * Overrides the ancestor method to ensure tank shell does not screen wrap.
 	 */
+	@Override
 	public void move()
 	{
 		xPosition = xPosition + xVelocity;
@@ -87,7 +87,7 @@ public class TankShell extends Tank
 		return shellStrength;
 		
 		
-	}  //  End of getShellStrength() method.
+	}
 	
 	
 	
@@ -104,18 +104,27 @@ public class TankShell extends Tank
 		shellStrength = sStrength;
 		
 		
-	}  //  End of setShellStrength() method.
+	}
 	
 	
-	
+	/**
+	 * Decrements the shell life of this shell.
+	 */
 	public void decreaseLife()
 	{
 		shellLife -= 1;
 	}
 	
+	
+	/**
+	 * Returns the current life of this tank shell
+	 * 
+	 * @return int representation of this shell's current life.
+	 */
 	public int getLife()
 	{
 		return shellLife;
 	}
 	
-}  //  End of TankShell class.
+	
+}

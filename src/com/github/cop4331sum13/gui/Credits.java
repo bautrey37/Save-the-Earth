@@ -19,6 +19,8 @@ import javax.swing.JPanel;
 
 /**
  * Displays the Credits Menu.
+ * 
+ * @author Earth's Defenders
  */
 public class Credits extends JPanel implements ActionListener {
 
@@ -31,6 +33,10 @@ public class Credits extends JPanel implements ActionListener {
 	
 	private BufferedImage background;
 	
+	/**
+	 * Sets up the Credit screen
+	 * @param container - used to switch between the GUI screens. 
+	 */
 	public Credits(JPanel container) {
 		this.container = container;
 		
@@ -40,6 +46,7 @@ public class Credits extends JPanel implements ActionListener {
 		ret.setPreferredSize(new Dimension(200,50));
 		ret.addActionListener(this);
 		
+		// spacing
 		name1 = new JLabel(" ");
 		name1.setFont(font);
 		name2 = new JLabel(" ");
@@ -103,6 +110,10 @@ public class Credits extends JPanel implements ActionListener {
 		
 	}
 	
+	/**
+	 * When return button is clicked, go to TitleMenu
+	 * @param e - button event
+	 */
 	public void actionPerformed(ActionEvent e) {
 		CardLayout cl = (CardLayout)container.getLayout();
 		cl.show(container, "title");

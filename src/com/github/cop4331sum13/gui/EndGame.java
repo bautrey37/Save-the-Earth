@@ -12,7 +12,9 @@ import javax.swing.JPanel;
 import com.github.cop4331sum13.sound.SoundManager;
 
 /**
- * Displays the victory  or defeat screen.
+ * Displays the victory or defeat screen.
+ * 
+ * @author Earth's Defenders
  */
 public class EndGame extends JPanel implements MouseListener {
 
@@ -27,7 +29,7 @@ public class EndGame extends JPanel implements MouseListener {
 	
 	public void setWinScreen(boolean i) {
 		this.requestFocusInWindow();
-		//backgrounds are loaded in according to winnin condition to issue right screen is displayed
+		//backgrounds are loaded in according to winning condition to issue right screen is displayed
 		if(i) {
 			try {
 				background = ImageIO.read(this.getClass().getClassLoader().getResource("Congratulations.jpg"));
@@ -45,12 +47,20 @@ public class EndGame extends JPanel implements MouseListener {
 		paintComponent(this.getGraphics());
 	}
 	
+	/**
+	 * Draws image onto the screen.
+	 * @param g - graphics object 
+	 */
 	@Override
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		g.drawImage(background, 0, 0, null);
 	}
 
+	/**
+	 * When mouse clicks on screen, end the level soundtrack and play title soundtrack.
+	 * @param arg0 - mouse event
+	 */
 	@Override
 	public void mouseClicked(MouseEvent arg0) {
 		CardLayout cl = (CardLayout)container.getLayout();

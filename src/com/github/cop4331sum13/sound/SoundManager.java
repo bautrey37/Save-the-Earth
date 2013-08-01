@@ -1,6 +1,3 @@
-/**
- * 
- */
 package com.github.cop4331sum13.sound;
 
 import java.io.IOException;
@@ -14,28 +11,19 @@ import javax.sound.sampled.UnsupportedAudioFileException;
 /**
  * This class handles reading in and playing the sound effects for the game.
  * 
- * @author Thomas J. O'Neill
+ * @author Earth's Defenders
  */
 public class SoundManager
 {
 	/**
 	 * Manages the sound stream to play.
 	 */
-	private static Clip soundClip;
-	private static Clip levelSoundtrack, titleSoundtrack;
-	private static int pausePosition;
-	
+	private static Clip soundClip, levelSoundtrack, titleSoundtrack;
 	
 	/**
-	 * Initializes all sound variables with the sound files to use during the game.
-	 * 
-	 * (NOTE:  May not be necessary if file is to be read in every time the sound is played.)
+	 * Keeps track of song position when user pauses the game.
 	 */
-	public static void configureSounds()
-	{
-		//  Place holder method.  Use if it can be found such that a sound file can be
-		//  read in once and only once, but they played back as many times as needed.
-	}
+	private static int pausePosition;
 	
 	
 	/**
@@ -66,8 +54,7 @@ public class SoundManager
 		}
 		catch (IllegalStateException e)
 		{
-			//System.err.println("IllegalStateException caught");
-			//e.printStackTrace();
+			e.printStackTrace();
 		}
 		
 		//  Play sound file.
@@ -75,6 +62,12 @@ public class SoundManager
 	}
 	
 	
+	
+	/**
+	 * Plays the sound track for when the user is in-game.
+	 * 
+	 * @param fileName - name of level sound file.
+	 */
 	private static void playLevelSoundtrack( String fileName )
 	{
 		//  Obtain sound file.
@@ -95,8 +88,7 @@ public class SoundManager
 		}
 		catch (IllegalStateException e)
 		{
-			//System.err.println("IllegalStateException caught");
-			//e.printStackTrace();
+			e.printStackTrace();
 		}
 		
 		//  Play sound file.
@@ -104,6 +96,12 @@ public class SoundManager
 	}
 	
 	
+	
+	/**
+	 * Plays the sound track for when the user is on the main menu/controls/credits screens.
+	 * 
+	 * @param fileName - name of title sound file.
+	 */
 	private static void playTitleSoundtrack( String fileName )
 	{
 		//  Obtain sound file.
@@ -124,8 +122,7 @@ public class SoundManager
 		}
 		catch (IllegalStateException e)
 		{
-			//System.err.println("IllegalStateException caught");
-			//e.printStackTrace();
+			e.printStackTrace();
 		}
 		
 		//  Play sound file.
@@ -169,37 +166,62 @@ public class SoundManager
 	}
 	
 	
+	/**
+	 * Play the sound track for the in-game level.
+	 */
 	public static void playLevelSoundtrack()
 	{
 		playLevelSoundtrack( "Five Armies" );
 	}
 	
 	
+	/**
+	 * Pause the sound track for the in-game level and record the position that was left from.
+	 */
 	public static void pauseLevelSoundtrack()
 	{
 		pausePosition = levelSoundtrack.getFramePosition();
 		levelSoundtrack.stop();
 	}
 	
+	
+	/**
+	 * Resume the sound track for the in-game level when the user
+	 * clicks "resume" on the pause menu.
+	 */
 	public static void resumeLevelSoundtrack()
 	{
 		playLevelSoundtrack( "Five Armies" );
 		levelSoundtrack.setFramePosition( pausePosition );
 	}
 	
+	
+	/**
+	 * Completely stops playing the sound track for the in-game level.
+	 */
 	public static void stopLevelSoundtrack()
 	{
 		levelSoundtrack.stop();
 	}
 	
+	
+	/**
+	 * Plays the sound track for the main menu and sets that sound track to loop.
+	 */
 	public static void playTitleSoundtrack()
 	{
 		playTitleSoundtrack( "Movement Proposition" );
-		titleSoundtrack.loop(Clip.LOOP_CONTINUOUSLY);
+		titleSoundtrack.loop( Clip.LOOP_CONTINUOUSLY );
 	}
+	
+	
+	/**
+	 * Completely stops playing the sound track for the title screens.
+	 */
 	public static void stopTitleSoundtrack()
 	{
 		titleSoundtrack.stop();
 	}
+	
 	
 }

@@ -11,6 +11,8 @@ import javax.swing.JPanel;
 
 /**
  * Displays the series of backstory images.
+ * 
+ * @author Earth's Defenders
  */
 public class BackStory extends JPanel implements MouseListener{
 	private static final long serialVersionUID = 1L;
@@ -21,6 +23,10 @@ public class BackStory extends JPanel implements MouseListener{
 	
 	private BufferedImage background[];
 	
+	/**
+	 * 
+	 * @param container - used to switch between GUI screens
+	 */
 	public BackStory(JPanel container) {
 		this.container = container;
 		this.addMouseListener(this);
@@ -57,6 +63,10 @@ public class BackStory extends JPanel implements MouseListener{
 		
 	}
 
+	/**
+	 * Switches to next background image and paints on screen.
+	 * @param arg0 - detects when a click has been performed on screen.
+	 */
 	@Override
 	public void mouseClicked(MouseEvent arg0) {
 		++currentImage;

@@ -8,7 +8,7 @@ import com.github.cop4331sum13.Game;
 /**
  * This class creates and manages the body of the Tank that the user controls.
  * 
- * @author Thomas J. O'Neill
+ * @author Earth's Defenders
  */
 public class TankBody extends Tank
 {

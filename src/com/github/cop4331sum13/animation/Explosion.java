@@ -1,6 +1,3 @@
-/**
- * 
- */
 package com.github.cop4331sum13.animation;
 
 import java.awt.image.BufferedImage;
@@ -13,7 +10,7 @@ import javax.imageio.ImageIO;
  * The explosion animation created by this class is used for dying aliens, meteors, and when
  * the tank is destroyed.
  * 
- * @author Thomas J. O'Neill
+ * @author Earth's Defenders
  */
 public class Explosion
 {

@@ -4,9 +4,18 @@ import javax.imageio.ImageIO;
 
 import com.github.cop4331sum13.Game;
 
+
+/**
+ * Manages a meteor that the user sees on the screen.
+ * 
+ * @author Earth's Defenders
+ */
 public class Meteor extends Entity {
 
 
+	/**
+	 * Constructs a new meteor object for displaying on the screen. 
+	 */
 	public Meteor(double xPos, double yPos, double xVel, double yVel) {
 		super(xPos, yPos, xVel, yVel);
 		xVelocity = ((Math.random() < .5) ? -1.0 : 1.0) * 2 * Math.random();

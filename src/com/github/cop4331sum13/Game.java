@@ -36,24 +36,48 @@ import com.github.cop4331sum13.gui.Pause;
 import com.github.cop4331sum13.sound.SoundManager;
 
 /**
- * This is the main class that runs the in-game level.  All necessary procedures are handled by this class only.
+ * This is the main class that runs the in-game level.  All necessary procedures
+ * are handled by this class only.
+ * 
+ * @author Earth's Defenders
  */
 public class Game extends JComponent implements KeyListener, Runnable, MouseListener
 {
-	private Vector<Explosion> explosions;
+	/**
+	 * Used for testing purposes only.  Not enabled or reachable in final distribution
+	 * of the program.
+	 */
 	private boolean GODMODE = false;
+	
+	/**
+	 * Manages all the explosions that appear on the screen.
+	 */
+	private Vector<Explosion> explosions;
+	
+	/**
+	 * The game timer.  Set to 3 minutes (180 seconds).
+	 */
 	private static final int GAME_LENGTH = 180;
 	
+	/**
+	 * These four variables are used for managing the control scheme.
+	 */
 	private boolean aimWithMouse;
 	private boolean aimWithKeyboard;
 	private boolean rotateLeft;
 	private boolean rotateRight;
 	
+	/**
+	 * These images are used for giving a visual indication of which control scheme is
+	 * currently in use.
+	 */
 	private BufferedImage mouseMode;
 	private BufferedImage keyboardMode;
 	
+	/**
+	 * Used for buffering each frame before showing it on screen.
+	 */
 	private Image offScreen = null;
-	
 	
 	/**
 	 * This value is necessary for managing separate threads properly. 
@@ -265,6 +289,7 @@ public class Game extends JComponent implements KeyListener, Runnable, MouseList
 			e.printStackTrace();
 		}
 		
+		//  Level is starting, play the level sound track.
 		SoundManager.playLevelSoundtrack();
 		
 		start();
@@ -962,14 +987,16 @@ public class Game extends JComponent implements KeyListener, Runnable, MouseList
 	}
 	
 	
-	/**
-	 * Handles when a key is pressed and released.  Method is here as KeyListener requires this method, but it
-	 * is empty as it is not necessary for the game to function.
-	 */
 	@Override
 	public void keyTyped(KeyEvent e) {}	
 	
 	
+	/**
+	 * When mouse mode is enabled, this method will allow the user to fire another shell
+	 * by clicking the left mouse button in the play field.
+	 * 
+	 * @param arg0 - the object representing the mouse click action.
+	 */
 	@Override
 	public void mousePressed(MouseEvent arg0)
 	{

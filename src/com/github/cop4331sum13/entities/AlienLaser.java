@@ -1,6 +1,3 @@
-/**
- * 
- */
 package com.github.cop4331sum13.entities;
 
 import javax.imageio.ImageIO;
@@ -9,11 +6,13 @@ import javax.imageio.ImageIO;
  * This class creates a laser fired by an alien ship and manages each laser shot
  * as a separate object.
  * 
- * @author Thomas J. O'Neill
+ * @author Earth's Defenders
  */
 public class AlienLaser extends Alien
 {
-	
+	/**
+	 * Tracks the laser's "life" span since spawning time.
+	 */
 	private int laserLife;
 	
 	
@@ -49,14 +48,23 @@ public class AlienLaser extends Alien
 		this.health = 1;
 		this.laserLife = 95;
 		
-	}  //  End of AlienLaser() constructor.
+	}
 	
 	
+	/**
+	 * Decrements the current life of this laser object.
+	 */
 	public void decreaseLife()
 	{
 		laserLife -= 1;
 	}
 	
+	
+	/**
+	 * Returns the current life of this laser object.
+	 * 
+	 * @return the int representation of current object life.
+	 */
 	public int getLife()
 	{
 		return laserLife;
@@ -64,4 +72,4 @@ public class AlienLaser extends Alien
 	
 	
 	
-}  //  End of AlienLaser class.
+}

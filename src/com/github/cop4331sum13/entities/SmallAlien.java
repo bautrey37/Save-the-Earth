@@ -6,9 +6,9 @@ import com.github.cop4331sum13.Game;
 import com.github.cop4331sum13.gui.GUI;
 
 /**
+ * Creates and manages the small aliens that appear and attack the user tank.
  * 
- * @author Jared
- * 
+ * @author Earth's Defenders
  */
 
 public class SmallAlien extends Alien {
@@ -23,6 +23,9 @@ public class SmallAlien extends Alien {
 
 	private boolean grounded;
 
+	/**
+	 * Constructs a new small alien to place within the game.
+	 */
 	public SmallAlien(double xPos, double yPos, double xVel, double yVel) {
 		super(xPos, yPos, xVel, yVel);
 		grounded = false;
@@ -52,7 +55,11 @@ public class SmallAlien extends Alien {
 	}
 
 	/**
-	 * This method updates the ship's movement direction and speed.
+	 * This method updates the ship's direction and speed.  Specifically, this
+	 * method will cause the small ship to turn towards the tank.
+	 * 
+	 * @param tankX - x coordinate of the user tank.
+	 * @param tankY - y coordinate of the user tank.
 	 */
 	public void autoAccelerate(int tankX, int tankY) {
 		if (!grounded) {

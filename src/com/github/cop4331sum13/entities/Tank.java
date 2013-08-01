@@ -1,10 +1,9 @@
 package com.github.cop4331sum13.entities;
 
-
 /**
  * This class defines the Tank that the user will control.
  * 
- * @author Thomas J. O'Neill
+ * @author Earth's Defenders
  */
 public abstract class Tank extends Entity
 {

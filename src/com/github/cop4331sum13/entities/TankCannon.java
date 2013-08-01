@@ -8,7 +8,7 @@ import javax.imageio.ImageIO;
 /**
  * This class creates the tank cannon of the tank that the user controls midgame.
  * 
- * @author Thomas J. O'Neill
+ * @author Earth's Defenders
  */
 public class TankCannon extends Tank
 {
@@ -18,6 +18,10 @@ public class TankCannon extends Tank
 	 * This values is defined in terms of radians.  For example, 1 = pi; therefore, 2 = pi or one full rotation.
 	 */
 	private double angle;
+	
+	/**
+	 * This array holds all the images representing the tank's cannon.
+	 */
 	public BufferedImage[] cannon;
 	
 	
@@ -55,7 +59,7 @@ public class TankCannon extends Tank
 			
 		}
 		
-	}  //  End of TankCannon constructor.
+	}
 	
 	
 	
@@ -70,7 +74,7 @@ public class TankCannon extends Tank
 		return angle;
 		
 		
-	}  //  End of getAngle() method.
+	}
 	
 	
 	
@@ -117,21 +121,25 @@ public class TankCannon extends Tank
 		
 		
 		
-	}  //  End of updateAngle() method.
+	}
 	
 	
 	
 	/**
+	 * This method updates the cannon's angle of inclination based on keyboard input.
 	 * 
+	 * @param d - indicates which way to rotate the cannon.
 	 */
 	public void updateAngleKeyboard( int d )
 	{
+		//  If d == 1, rotate counterclockwise.
 		if( d == 1 )
 		{
 			angle += .1;
 			if( angle > Math.PI * 1.5 )
 				angle = Math.PI * 1.5;
 		}
+		//  Else if d == 0, rotate clockwise.
 		else // d == 0
 		{
 			angle -= .1;
@@ -141,5 +149,5 @@ public class TankCannon extends Tank
 	}
 	
 	
-}  //  End of TankCannon class.
+}
 

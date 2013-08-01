@@ -1,13 +1,10 @@
-/**
- * 
- */
 package com.github.cop4331sum13.entities;
 
 /**
  * This class functions as the base for both small and large aliens that appear mid game
  * and try to attack the user's tank.
  * 
- * @author Thomas J. O'Neill
+ * @author Earth's Defenders
  */
 public abstract class Alien extends Entity
 {	
@@ -15,15 +12,13 @@ public abstract class Alien extends Entity
 	/**
 	 * This value tracks the angle of inclination from the alien ship midpoint to the
 	 * user tank midpoint.  It is used for sending small ships straight at the tank and
-	 * for large ships to aim their "lasers" at the tank
+	 * for large ships to aim their "lasers" at the tank.
 	 */
-	
 	protected double angleToTank;
 	
 	
-	
 	/**
-	 * 
+	 * Constructs a new Alien object for showing on the in-game level.
 	 */
 	public Alien(double xPos, double yPos, double xVel, double yVel)
 	{
@@ -33,14 +28,15 @@ public abstract class Alien extends Entity
 		//  Initialize class variables.
 		angleToTank = 0.0;
 		
-	}  //  End of Alien() constructor.
+	}
 	
 	
 	
 	/**
 	 * This method updates this Alien object's angle to be correct for the next frame.
 	 * 
-	 * @param
+	 * @param tankX - x coordinate of tank.
+	 * @param tankY - y coordinate of tank.
 	 */
 	public void updateAngleToTank( int tankX, int tankY )
 	{

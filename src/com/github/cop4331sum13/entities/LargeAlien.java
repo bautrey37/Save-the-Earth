@@ -10,10 +10,9 @@ import javax.imageio.ImageIO;
 import com.github.cop4331sum13.Game;
 
 /**
+ * Represents a large alien entity that the user will fight mid-game.
  * 
- * 
- * 
- * @author Thomas J. O'Neill
+ * @author Earth's Defenders
  */
 public class LargeAlien extends Alien
 {
@@ -22,9 +21,13 @@ public class LargeAlien extends Alien
 	private double systemTimeForFire;
 	
 	private static double timeToWaitForAccel = 50;
+	
 	private double timeToWaitForFire;
+	
+	
+	
 	/**
-	 * 
+	 * Construct a new Alien object that the user sees on screen.
 	 */
 	public LargeAlien(double xPos, double yPos, double xVel, double yVel)
 	{
@@ -33,9 +36,8 @@ public class LargeAlien extends Alien
 		systemTimeForFire = System.currentTimeMillis();
 		timeToWaitForFire = Math.random() * 2000.0 + 1000.0;
 		
-		//  Stuff goes here.
 		
-		//  Obtain image file for this tank shell.
+		//  Obtain image file for this large alien.
 		try
 		{
 			image = ImageIO.read(this.getClass().getClassLoader().getResource("Large-Alien-Ship.png"));
@@ -62,7 +64,7 @@ public class LargeAlien extends Alien
 		
 		
 		
-	}  //  End of LargeAlien() constructor.
+	}
 	
 	
 	
@@ -99,10 +101,6 @@ public class LargeAlien extends Alien
 			this.xVelocity += ( Math.sin( tempAngle ) * 0.2 ) % 3.0;
 		}
 		
-		/*
-		this.xVelocity = Math.sin( angleToTank ) * 5.0;
-		this.yVelocity = Math.cos( angleToTank ) * 5.0;
-		*/
 	}
 	
 	
@@ -112,13 +110,14 @@ public class LargeAlien extends Alien
 	 * on a straight path
 	 * 
 	 * @param lasers - the vector list managing all the lasers that have been spawned thus far.
+	 * @param tankX - x coordinate of user tank.
+	 * @param tankY - y coordinate of user tank.
 	 * 
 	 * @return true if a new pair of lasers were added, false if no lasers were added.
 	 */
 	public boolean fireLasers( Vector<AlienLaser> lasers, int tankX, int tankY )
 	{
-		
-		
+		//  Check if enough time has passed prior to firing a new volley of lasers.
 		if( !(System.currentTimeMillis() - systemTimeForAccel > LargeAlien.timeToWaitForAccel) )
 		
 		if( !(System.currentTimeMillis() - systemTimeForFire > timeToWaitForFire ) )
@@ -140,4 +139,4 @@ public class LargeAlien extends Alien
 	}
 	
 	
-}  //  End of LargeAlien class.
+}
