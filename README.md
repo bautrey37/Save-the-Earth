@@ -1,12 +1,15 @@
 COP4331-Sum13
 =============
 
-Project in Processes for Object Oriented Software class this summer 2013.
-
 Team Name:
 Earth's Defenders
 
-Team Members:
+Semester long project in Processes for Object Oriented Software class, summer 2013.  We created a java 2D desktop shooter game.  
+
+
+Team Members
+=============
+
 Brandon Autrey
 Matt Dworkin
 Stephen Maguire
