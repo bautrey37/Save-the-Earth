@@ -1,11 +1,7 @@
-COP4331-Sum13
+Earth's Defenders
 =============
 
-Team Name:
-Earth's Defenders
-
 Semester long project in Processes for Object Oriented Software class, summer 2013.  We created a java 2D desktop shooter game.  
-
 
 Team Members
 =============
