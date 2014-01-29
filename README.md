@@ -5,9 +5,8 @@ Semester long project in Processes for Object Oriented Software class, summer 20
 
 Team Members
 =============
-
-Brandon Autrey
-Matt Dworkin
-Stephen Maguire
-Thomas J. O'Neill
-Jared Wasserman
+- Brandon Autrey
+- Matt Dworkin
+- Stephen Maguire
+- Thomas J. O'Neill
+- Jared Wasserman
