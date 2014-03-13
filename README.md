@@ -1,9 +1,9 @@
-Earth's Defenders
+Save the Earth
 =============
 
-Semester long project in Processes for Object Oriented Software class, summer 2013.  We created a java 2D desktop shooter game.  
+Semester long project in Processes for Object Oriented Software class (COP 4331C), Summer 2013.  We created a 2D desktop shooter game built with Java.  
 
-Team Members
+Earth's Defender's 
 =============
 - Brandon Autrey
 - Matt Dworkin
