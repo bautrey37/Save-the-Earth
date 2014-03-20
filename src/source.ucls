@@ -3,7 +3,7 @@
   associations="false" dependencies="false" nesting-relationships="true">  
   <class id="1" language="java" name="com.github.cop4331sum13.gui.Controls" project="Save the Earth" 
     file="/Save the Earth/src/com/github/cop4331sum13/gui/Controls.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="351" width="194" x="1570" y="696"/>    
+    <position height="369" width="194" x="1533" y="642"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -12,7 +12,7 @@
   </class>  
   <class id="2" language="java" name="com.github.cop4331sum13.gui.Credits" project="Save the Earth" 
     file="/Save the Earth/src/com/github/cop4331sum13/gui/Credits.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="369" width="194" x="45" y="696"/>    
+    <position height="369" width="194" x="474" y="642"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -21,7 +21,7 @@
   </class>  
   <class id="3" language="java" name="com.github.cop4331sum13.gui.Pause" project="Save the Earth" 
     file="/Save the Earth/src/com/github/cop4331sum13/gui/Pause.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="297" width="235" x="999" y="696"/>    
+    <position height="297" width="235" x="962" y="642"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -30,7 +30,7 @@
   </class>  
   <class id="4" language="java" name="com.github.cop4331sum13.gui.TitleMenu" project="Save the Earth" 
     file="/Save the Earth/src/com/github/cop4331sum13/gui/TitleMenu.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="567" width="235" x="1274" y="696"/>    
+    <position height="567" width="235" x="1237" y="642"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -39,7 +39,7 @@
   </class>  
   <class id="5" language="java" name="com.github.cop4331sum13.Game" project="Save the Earth" 
     file="/Save the Earth/src/com/github/cop4331sum13/Game.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="981" width="193" x="1230" y="1303"/>    
+    <position height="1071" width="193" x="1237" y="1249"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -48,7 +48,7 @@
   </class>  
   <class id="6" language="java" name="com.github.cop4331sum13.Launcher" project="Save the Earth" 
     file="/Save the Earth/src/com/github/cop4331sum13/Launcher.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="99" width="122" x="1274" y="37"/>    
+    <position height="99" width="122" x="1237" y="37"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -57,7 +57,7 @@
   </class>  
   <class id="7" language="java" name="com.github.cop4331sum13.entities.Entity" project="Save the Earth" 
     file="/Save the Earth/src/com/github/cop4331sum13/entities/Entity.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="369" width="197" x="485" y="1303"/>    
+    <position height="369" width="197" x="501" y="1249"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -66,7 +66,7 @@
   </class>  
   <class id="8" language="java" name="com.github.cop4331sum13.entities.Tank" project="Save the Earth" 
     file="/Save the Earth/src/com/github/cop4331sum13/entities/Tank.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="171" width="193" x="981" y="2324"/>    
+    <position height="189" width="193" x="1004" y="2360"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -75,7 +75,7 @@
   </class>  
   <class id="9" language="java" name="com.github.cop4331sum13.entities.TankBody" project="Save the Earth" 
     file="/Save the Earth/src/com/github/cop4331sum13/entities/TankBody.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="81" width="218" x="1427" y="2625"/>    
+    <position height="81" width="218" x="1450" y="2661"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -84,7 +84,7 @@
   </class>  
   <class id="10" language="java" name="com.github.cop4331sum13.entities.TankCannon" project="Save the Earth" 
     file="/Save the Earth/src/com/github/cop4331sum13/entities/TankCannon.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="171" width="230" x="1157" y="2625"/>    
+    <position height="171" width="230" x="1180" y="2661"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -93,7 +93,7 @@
   </class>  
   <class id="11" language="java" name="com.github.cop4331sum13.entities.TankShell" project="Save the Earth" 
     file="/Save the Earth/src/com/github/cop4331sum13/entities/TankShell.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="189" width="251" x="866" y="2625"/>    
+    <position height="207" width="251" x="889" y="2661"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -102,7 +102,7 @@
   </class>  
   <class id="12" language="java" name="javax.swing.JPanel" project="Save the Earth" 
     file="C:/Program Files/Java/jre7/lib/rt.jar" binary="true" corner="BOTTOM_RIGHT">    
-    <position height="53" width="87" x="959" y="603"/>    
+    <position height="53" width="87" x="962" y="549"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="false" package="false" protected="false" private="false" static="true"/>      
@@ -111,222 +111,196 @@
   </class>  
   <class id="13" language="java" name="com.github.cop4331sum13.gui.GUI" project="Save the Earth" 
     file="/Save the Earth/src/com/github/cop4331sum13/gui/GUI.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="387" width="139" x="1274" y="176"/>    
+    <position height="333" width="137" x="1237" y="176"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="14" language="java" name="com.github.cop4331sum13.gui.GameCompleted" project="Save the Earth" 
-    file="/Save the Earth/src/com/github/cop4331sum13/gui/GameCompleted.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="243" width="193" x="512" y="696"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
-      visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <class id="15" language="java" name="com.github.cop4331sum13.gui.GameLost" project="Save the Earth" 
-    file="/Save the Earth/src/com/github/cop4331sum13/gui/GameLost.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="243" width="193" x="745" y="696"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
-      visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <class id="16" language="java" name="com.github.cop4331sum13.gui.BackStory" project="Save the Earth" 
+  <class id="14" language="java" name="com.github.cop4331sum13.gui.BackStory" project="Save the Earth" 
     file="/Save the Earth/src/com/github/cop4331sum13/gui/BackStory.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="279" width="193" x="279" y="696"/>    
+    <position height="279" width="193" x="708" y="642"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="17" language="java" name="com.github.cop4331sum13.entities.Alien" project="Save the Earth" 
+  <class id="15" language="java" name="com.github.cop4331sum13.entities.Alien" project="Save the Earth" 
     file="/Save the Earth/src/com/github/cop4331sum13/entities/Alien.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="135" width="256" x="485" y="2324"/>    
+    <position height="117" width="195" x="501" y="2360"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="18" language="java" name="com.github.cop4331sum13.entities.AlienLaser" project="Save the Earth" 
+  <class id="16" language="java" name="com.github.cop4331sum13.entities.AlienLaser" project="Save the Earth" 
     file="/Save the Earth/src/com/github/cop4331sum13/entities/AlienLaser.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="135" width="258" x="308" y="2625"/>    
+    <position height="135" width="258" x="331" y="2661"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="19" language="java" name="com.github.cop4331sum13.entities.LargeAlien" project="Save the Earth" 
+  <class id="17" language="java" name="com.github.cop4331sum13.entities.LargeAlien" project="Save the Earth" 
     file="/Save the Earth/src/com/github/cop4331sum13/entities/LargeAlien.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="189" width="223" x="45" y="2625"/>    
+    <position height="189" width="249" x="42" y="2661"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="20" language="java" name="com.github.cop4331sum13.entities.Meteor" project="Save the Earth" 
+  <class id="18" language="java" name="com.github.cop4331sum13.entities.Meteor" project="Save the Earth" 
     file="/Save the Earth/src/com/github/cop4331sum13/entities/Meteor.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="135" width="204" x="241" y="2324"/>    
+    <position height="81" width="204" x="257" y="2360"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="21" language="java" name="com.github.cop4331sum13.entities.SmallAlien" project="Save the Earth" 
+  <class id="19" language="java" name="com.github.cop4331sum13.entities.SmallAlien" project="Save the Earth" 
     file="/Save the Earth/src/com/github/cop4331sum13/entities/SmallAlien.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="207" width="220" x="606" y="2625"/>    
+    <position height="207" width="220" x="629" y="2661"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="22" language="java" name="com.github.cop4331sum13.animation.Explosion" project="Save the Earth" 
+  <class id="20" language="java" name="com.github.cop4331sum13.animation.Explosion" project="Save the Earth" 
     file="/Save the Earth/src/com/github/cop4331sum13/animation/Explosion.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="261" width="192" x="1214" y="2324"/>    
+    <position height="261" width="192" x="1237" y="2360"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <generalization id="23">    
+  <generalization id="21">    
     <end type="SOURCE" refId="19"/>    
-    <end type="TARGET" refId="17"/>  
+    <end type="TARGET" refId="15"/>  
   </generalization>  
-  <dependency id="24">    
-    <bendpoint x="1146" y="603"/>    
-    <end type="SOURCE" refId="13"/>    
-    <end type="TARGET" refId="3"/>  
-  </dependency>  
-  <dependency id="25">    
-    <end type="SOURCE" refId="5"/>    
-    <end type="TARGET" refId="8"/>  
-  </dependency>  
-  <dependency id="26">    
-    <bendpoint x="1560" y="603"/>    
-    <end type="SOURCE" refId="13"/>    
-    <end type="TARGET" refId="1"/>  
-  </dependency>  
-  <generalization id="27">    
-    <end type="SOURCE" refId="21"/>    
-    <end type="TARGET" refId="17"/>  
-  </generalization>  
-  <dependency id="28">    
-    <end type="SOURCE" refId="4"/>    
-    <end type="TARGET" refId="5"/>  
-  </dependency>  
-  <generalization id="29">    
-    <end type="SOURCE" refId="2"/>    
-    <end type="TARGET" refId="12"/>  
-  </generalization>  
-  <dependency id="30">    
-    <bendpoint x="1283" y="603"/>    
-    <end type="SOURCE" refId="13"/>    
-    <end type="TARGET" refId="4"/>  
-  </dependency>  
-  <generalization id="31">    
+  <generalization id="22">    
     <end type="SOURCE" refId="1"/>    
     <end type="TARGET" refId="12"/>  
   </generalization>  
-  <generalization id="32">    
-    <end type="SOURCE" refId="8"/>    
-    <end type="TARGET" refId="7"/>  
-  </generalization>  
-  <generalization id="33">    
-    <end type="SOURCE" refId="15"/>    
-    <end type="TARGET" refId="12"/>  
-  </generalization>  
-  <generalization id="34">    
-    <end type="SOURCE" refId="3"/>    
-    <end type="TARGET" refId="12"/>  
-  </generalization>  
-  <dependency id="35">    
-    <bendpoint x="1539" y="603"/>    
-    <bendpoint x="1539" y="696"/>    
+  <dependency id="23">    
+    <bendpoint x="1109" y="549"/>    
+    <end type="SOURCE" refId="13"/>    
+    <end type="TARGET" refId="3"/>  
+  </dependency>  
+  <dependency id="24">    
+    <bendpoint x="1502" y="549"/>    
+    <bendpoint x="1502" y="642"/>    
     <end type="SOURCE" refId="13"/>    
     <end type="TARGET" refId="5"/>  
   </dependency>  
-  <generalization id="36">    
-    <end type="SOURCE" refId="17"/>    
+  <generalization id="25">    
+    <end type="SOURCE" refId="8"/>    
     <end type="TARGET" refId="7"/>  
   </generalization>  
+  <generalization id="26">    
+    <end type="SOURCE" refId="16"/>    
+    <end type="TARGET" refId="15"/>  
+  </generalization>  
+  <dependency id="27">    
+    <end type="SOURCE" refId="5"/>    
+    <end type="TARGET" refId="8"/>  
+  </dependency>  
+  <generalization id="28">    
+    <end type="SOURCE" refId="10"/>    
+    <end type="TARGET" refId="8"/>  
+  </generalization>  
+  <dependency id="29">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="5"/>  
+  </dependency>  
+  <generalization id="30">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="12"/>  
+  </generalization>  
+  <dependency id="31">    
+    <bendpoint x="865" y="549"/>    
+    <end type="SOURCE" refId="13"/>    
+    <end type="TARGET" refId="2"/>  
+  </dependency>  
+  <generalization id="32">    
+    <end type="SOURCE" refId="18"/>    
+    <end type="TARGET" refId="7"/>  
+  </generalization>  
+  <dependency id="33">    
+    <bendpoint x="1523" y="549"/>    
+    <end type="SOURCE" refId="13"/>    
+    <end type="TARGET" refId="1"/>  
+  </dependency>  
+  <generalization id="34">    
+    <end type="SOURCE" refId="2"/>    
+    <end type="TARGET" refId="12"/>  
+  </generalization>  
+  <generalization id="35">    
+    <end type="SOURCE" refId="9"/>    
+    <end type="TARGET" refId="8"/>  
+  </generalization>  
+  <dependency id="36">    
+    <end type="SOURCE" refId="13"/>    
+    <end type="TARGET" refId="12"/>  
+  </dependency>  
   <generalization id="37">    
     <end type="SOURCE" refId="11"/>    
     <end type="TARGET" refId="8"/>  
   </generalization>  
   <generalization id="38">    
-    <end type="SOURCE" refId="20"/>    
-    <end type="TARGET" refId="7"/>  
-  </generalization>  
-  <generalization id="39">    
-    <end type="SOURCE" refId="16"/>    
+    <end type="SOURCE" refId="3"/>    
     <end type="TARGET" refId="12"/>  
   </generalization>  
-  <dependency id="40">    
-    <bendpoint x="968" y="696"/>    
-    <end type="SOURCE" refId="5"/>    
-    <end type="TARGET" refId="12"/>  
-  </dependency>  
-  <generalization id="41">    
-    <end type="SOURCE" refId="4"/>    
-    <end type="TARGET" refId="12"/>  
-  </generalization>  
-  <generalization id="42">    
-    <end type="SOURCE" refId="10"/>    
-    <end type="TARGET" refId="8"/>  
-  </generalization>  
-  <dependency id="43">    
-    <bendpoint x="1436" y="2324"/>    
-    <end type="SOURCE" refId="5"/>    
-    <end type="TARGET" refId="9"/>  
-  </dependency>  
-  <generalization id="44">    
-    <end type="SOURCE" refId="18"/>    
-    <end type="TARGET" refId="17"/>  
-  </generalization>  
-  <dependency id="45">    
+  <dependency id="39">    
     <end type="SOURCE" refId="6"/>    
     <end type="TARGET" refId="13"/>  
   </dependency>  
-  <generalization id="46">    
-    <end type="SOURCE" refId="9"/>    
-    <end type="TARGET" refId="8"/>  
-  </generalization>  
-  <dependency id="47">    
-    <bendpoint x="669" y="603"/>    
+  <dependency id="40">    
+    <bendpoint x="1246" y="549"/>    
     <end type="SOURCE" refId="13"/>    
-    <end type="TARGET" refId="2"/>  
+    <end type="TARGET" refId="4"/>  
   </dependency>  
-  <association id="48">    
+  <dependency id="41">    
+    <bendpoint x="931" y="642"/>    
+    <end type="SOURCE" refId="5"/>    
+    <end type="TARGET" refId="12"/>  
+  </dependency>  
+  <association id="42">    
     <end type="SOURCE" refId="5" navigable="false">      
-      <attribute id="49" name="explosions"/>      
-      <multiplicity id="50" minimum="0" maximum="2147483647"/>    
+      <attribute id="43" name="explosions"/>      
+      <multiplicity id="44" minimum="0" maximum="2147483647"/>    
     </end>    
-    <end type="TARGET" refId="22" navigable="true"/>    
+    <end type="TARGET" refId="20" navigable="true"/>    
     <display labels="false" multiplicity="false"/>  
   </association>  
-  <generalization id="51">    
+  <generalization id="45">    
     <end type="SOURCE" refId="14"/>    
     <end type="TARGET" refId="12"/>  
   </generalization>  
-  <dependency id="52">    
+  <dependency id="46">    
     <end type="SOURCE" refId="3"/>    
     <end type="TARGET" refId="5"/>  
   </dependency>  
-  <dependency id="53">    
-    <end type="SOURCE" refId="13"/>    
-    <end type="TARGET" refId="12"/>  
+  <dependency id="47">    
+    <bendpoint x="1459" y="2360"/>    
+    <end type="SOURCE" refId="5"/>    
+    <end type="TARGET" refId="9"/>  
   </dependency>  
+  <generalization id="48">    
+    <end type="SOURCE" refId="15"/>    
+    <end type="TARGET" refId="7"/>  
+  </generalization>  
+  <generalization id="49">    
+    <end type="SOURCE" refId="17"/>    
+    <end type="TARGET" refId="15"/>  
+  </generalization>  
   <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
     accessors="true" visibility="true">    
     <attributes public="true" package="true" protected="true" private="true" static="true"/>    
